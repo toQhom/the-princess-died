@@ -216,6 +216,53 @@ bool Scene::run_fire_swamp() {
 }
 
 bool Scene::run_pit() {
+    string input;
+    int doorPosition = 0;
+    int inigoPosition = 0; 
+
+    srand(time(0));
+
+    while (doorPosition == 0) { // we don't want the door to be where he is!
+        doorPosition = rand() % 11 - 5; // set to random number between -5 and 5, positive is right, make sure not equal 0
+    }
+    cout << "position: " << doorPosition << endl; // DEBUG
+
+    // Storyline
+    cout << "This time, you find yourself in a clearing. Soon, two men enter the clearing. You recognize them as Inigo and Fezzik and remember they are looking for the torture chamber. ";
+    cout << "Inigo prays and trys to follow his sword. Clearly, it isn't working. You sigh and start to push Inigo towards the secret entrance." << endl;
+
+    // could add a choice here 
+
+    // Instructions
+    cout << "To move left type '<' and to move right type '>'. Type more characters afterwards to move farther! (e.g. '>>' moves two right)" << endl;
+
+    while (inigoPosition != doorPosition) {
+        cout << "Enter your push!" << endl;
+        getline(cin, input);
+        if (input.at(0) == '<') {
+            cout << "You pushed left!" << endl;
+            inigoPosition = inigoPosition - input.length();
+        }
+        else if (input.at(0) == '>') {
+            cout << "You pushed right!" << endl;
+            inigoPosition = inigoPosition + input.length();
+        }
+        else { 
+            cout << "That's not a push! Try < or >" << endl;
+        }
+        cout << "Current Position: " << inigoPosition << endl;
+        // Check current position
+        if (inigoPosition == doorPosition) {
+            cout << "whew, he made it" << endl;
+        }
+        else if (inigoPosition < doorPosition) {
+            cout << "Oh no, the door is to the right!" << endl;
+        }
+        else {
+            cout << "Oh no, the door is to the left!" << endl;
+        }
+    }
+    // TODO: say if he went too far, how far it is
 	return CONTINUE;
 }
 
