@@ -51,12 +51,14 @@ bool Scene::run_farm() {
 bool Scene::run_pirate_ship() {
 	cout << "When you step out of the portal and look around you see that you are on a pirate ship with the Dread Pirate Roberts and Westley. As you stand there you see kill all the members aboard but his crew and Westley. He starts towards Westley sword in hand. and imediatly you know that you need to get the sword away from Roberts." << endl;
 	cout << endl;
+	do{
 	cout << "With your skills of slight of hand you think you can \n1) Replace the sword with a banana you found in a pocket \n2) Smack his hand holding the sword \n3) Just stand there and watch \n4) Yell and try to distract Roberts." << endl;
 	getInput();
 
 	if(input == "1" || input == "Replace the sword with a banana you found in a pocket"){
 		cout << "You are successful in keeping Westley alive, you hear him say \" I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. When you look around you see a portal open next to you and step through." << endl;
 		cout << endl;
+		wait = true;
 	}
 
 	else if(input == "2" || input == "Smack his hand holding the sword"){
@@ -79,6 +81,13 @@ bool Scene::run_pirate_ship() {
 		cout << endl;
 		return !CONTINUE;
 	}
+	else{
+		cout << "That doesn't sound quite right, try again" << endl;
+		cout << endl;
+		wait = true;
+	}
+
+	}while(wait)//end of the dowhile loop
 	return CONTINUE;
 }
 
