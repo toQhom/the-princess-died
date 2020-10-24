@@ -1,5 +1,4 @@
 #include "scenes.h"
-#include <cctype>
 
 void Scene::getInput() {
 	getline(cin, input);
@@ -45,6 +44,47 @@ bool Scene::run_opening() {
 }
 
 bool Scene::run_farm() {
+	//set the scene
+	cout << endl << "The wind dies down. The sky above you is clear and the grass below you is soft." << endl;
+	cout << "In the distance you hear a woman's voice calling, \"Farm Boy!\"" << endl;
+	getInput();
+
+	//standing up
+	responses.clear();
+	responses = { "stand up", "stand" };
+	if (find(responses.begin(), responses.end(), input) != responses.end()) {
+		cout << "You stand up." << endl;
+	}
+	else {
+		while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+			cout << "And how do you plan on doing that while lying down?" << endl;
+			getInput();
+		}
+	}
+	
+	//following the voice
+	do {
+		cout << endl << "Where are you going to go?" << endl << "1) Follow the voice" << endl << "2) Nowhere" << endl;
+		getInput();
+		if (input == "follow the voice" || input == "1") {
+			cout << "You follow the voice across some hills of farmland to a small shack, where you find a familiar face." << endl;
+			wait = false;
+		}
+		else if (input == "nowhere" || input == "2") {
+			cout << "Are you sure? (yes/no)";
+			getInput();
+			while (input == "yes" || input == "y") {
+				cout << "Are you sure? (yes/no)";
+				getInput();
+			}
+			wait = false;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+
 	return CONTINUE;
 }
 
