@@ -68,14 +68,14 @@ bool Scene::run_pirate_ship() {
 	}
 
 	else if (input == "3" || input == "Just stand there and watch"){
-		cout << "You do nothing to stop Westley from dying adn are now stuck here forever. Remember kids to never be a bystander" << endl;
+		cout << "You do nothing to stop Westley from dying and are now stuck here forever. Remember kids to never be a bystander" << endl;
 		cout << endl;
 		return !COUNTINUE;
 		
 	}
 
 	else if (input == "4" || input == "Yell and try to distract Roberts."){
-		cout << "You watch as Westley gets killed and suddenly remember that the characters cannot hear or see you. You face palm as you realize that you are now stuck in the book because it can't end." << endl;
+		cout << "You watch as Westley gets killed and suddenly remember that the characters cannot hear you when you yell. You face palm as you realize that you are now stuck in the book because it can't end." << endl;
 		cout << endl;
 		return !CONTINUE;
 	}
