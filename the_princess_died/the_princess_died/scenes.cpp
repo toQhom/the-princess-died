@@ -77,7 +77,10 @@ bool Scene::run_pit() {
 }
 
 bool Scene::run_miracle_max() {
+	
+	
 	return CONTINUE;
+
 }
 
 bool Scene::run_gate() {
