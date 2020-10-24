@@ -29,12 +29,52 @@ int main() {
 
 	continueGame = game.run_opening();
 	if (continueGame) {
-		cout << "I will run the next scene." << endl; //TEST TO DELETE
+		continueGame = game.run_farm();
 	}
-	else {
+	if (continueGame) {
+		continueGame = game.run_pirate_ship();
+	}
+	if (continueGame) {
+		continueGame = game.run_horse_ride();
+	}
+	if (continueGame) {
+		continueGame = game.run_eels();
+	}
+	if (continueGame) {
+		continueGame = game.run_cliffs();
+	}
+	if (continueGame) {
+		continueGame = game.run_poison();
+	}
+	if (continueGame) {
+		continueGame = game.run_fire_swamp();
+	}
+	if (continueGame) {
+		continueGame = game.run_pit();
+	}
+	if (continueGame) {
+		continueGame = game.run_miracle_max();
+	}
+	if (continueGame) {
+		continueGame = game.run_gate();
+	}
+	if (continueGame) {
+		continueGame = game.run_castle();
+	}
+	if (continueGame) {
+		continueGame = game.run_stable();
+	}
+	if (continueGame) {
+		continueGame = game.run_finale();
+	}
+	if (continueGame) {
+		continueGame = game.run_closing();
+	}
+	if (!continueGame) {
 		cout << "You are dead." << endl;
 	}
 
+	cout << "The End" << endl;
 
 	return 0;
 }
