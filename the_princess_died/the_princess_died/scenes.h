@@ -6,23 +6,27 @@
 
 using namespace std;
 
+const bool CONTINUE = true;
+
 class Scene {
 public:
-	void run_opening();
-	void run_farm();
-	void run_pirate_ship();
-	void run_horse_ride();
-	void run_eels();
-	void run_cliffs();
-	void run_poison();
-	void run_fire_swamp();
-	void run_pit();
-	void run_miracle_max();
-	void run_gate();
-	void run_castle();
-	void run_stable();
-	void run_finale();
-	void run_closing();
+	void getInput();
+	bool run_opening();
+	bool run_farm();
+	bool run_pirate_ship();
+	bool run_horse_ride();
+	bool run_eels();
+	bool run_cliffs();
+	bool run_poison();
+	bool run_fire_swamp();
+	bool run_pit();
+	bool run_miracle_max();
+	bool run_gate();
+	bool run_castle();
+	bool run_stable();
+	bool run_finale();
+	bool run_closing();
 private:
 	string input;
+	bool wait;
 };
