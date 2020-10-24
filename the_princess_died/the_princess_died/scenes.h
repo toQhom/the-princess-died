@@ -3,6 +3,8 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -29,4 +31,5 @@ public:
 private:
 	string input;
 	bool wait;
+	vector<string> responses;
 };
