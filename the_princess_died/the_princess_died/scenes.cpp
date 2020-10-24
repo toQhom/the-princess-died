@@ -6,23 +6,26 @@ void Scene::getInput() {
 	//TODO: switch to lowercase
 }
 
-int Scene::run_opening() {
+bool Scene::run_opening() {
+	//set the scene
 	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get there soon to read you the story again." << endl;
 	getInput();
 
+	//makes them wait
 	for (int i = 0; i < 5; i++) {
-		cout << "You wait.";
+		cout << "You wait." << endl;
 		getInput();
 	}
 
+	//response for waiting
 	do {
 		cout << "It doesn't look like your grandfather is coming. What do you do?" << endl;
-		cout << "You can: \n1) Go back to sleep \n2) Continue waiting \n3)Start reading the book anyways" << endl;
+		cout << "You can: \n1) Go back to sleep \n2) Continue waiting \n3) Start reading the book anyways" << endl;
 		getInput();
 
 		if (input == "1" || input == "go back to sleep") {
 			cout << "You sleep the rest of the day. Enjoy your boring life." << endl;
-			return ENDGAME;
+			return !CONTINUE; //ends the game
 		}
 		else if (input == "2" || input == "continue waiting") {
 			cout << "You wait." << endl;
@@ -38,61 +41,61 @@ int Scene::run_opening() {
 		}
 	} while (wait);
 	
+	return CONTINUE; //continues the game
+}
+
+bool Scene::run_farm() {
 	return CONTINUE;
 }
 
-int Scene::run_farm() {
+bool Scene::run_pirate_ship() {
 	return CONTINUE;
 }
 
-int Scene::run_pirate_ship() {
+bool Scene::run_horse_ride() {
 	return CONTINUE;
 }
 
-int Scene::run_horse_ride() {
+bool Scene::run_eels() {
 	return CONTINUE;
 }
 
-int Scene::run_eels() {
+bool Scene::run_cliffs() {
 	return CONTINUE;
 }
 
-int Scene::run_cliffs() {
+bool Scene::run_poison() {
 	return CONTINUE;
 }
 
-int Scene::run_poison() {
+bool Scene::run_fire_swamp() {
 	return CONTINUE;
 }
 
-int Scene::run_fire_swamp() {
+bool Scene::run_pit() {
 	return CONTINUE;
 }
 
-int Scene::run_pit() {
+bool Scene::run_miracle_max() {
 	return CONTINUE;
 }
 
-int Scene::run_miracle_max() {
+bool Scene::run_gate() {
 	return CONTINUE;
 }
 
-int Scene::run_gate() {
+bool Scene::run_castle() {
 	return CONTINUE;
 }
 
-int Scene::run_castle() {
+bool Scene::run_stable() {
 	return CONTINUE;
 }
 
-int Scene::run_stable() {
+bool Scene::run_finale() {
 	return CONTINUE;
 }
 
-int Scene::run_finale() {
-	return CONTINUE;
-}
-
-int Scene::run_closing() {
+bool Scene::run_closing() {
 	return CONTINUE;
 }

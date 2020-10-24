@@ -6,27 +6,26 @@
 
 using namespace std;
 
-const int ENDGAME = -1;
-const int CONTINUE = 0;
+const bool CONTINUE = true;
 
 class Scene {
 public:
 	void getInput();
-	int run_opening();
-	int run_farm();
-	int run_pirate_ship();
-	int run_horse_ride();
-	int run_eels();
-	int run_cliffs();
-	int run_poison();
-	int run_fire_swamp();
-	int run_pit();
-	int run_miracle_max();
-	int run_gate();
-	int run_castle();
-	int run_stable();
-	int run_finale();
-	int run_closing();
+	bool run_opening();
+	bool run_farm();
+	bool run_pirate_ship();
+	bool run_horse_ride();
+	bool run_eels();
+	bool run_cliffs();
+	bool run_poison();
+	bool run_fire_swamp();
+	bool run_pit();
+	bool run_miracle_max();
+	bool run_gate();
+	bool run_castle();
+	bool run_stable();
+	bool run_finale();
+	bool run_closing();
 private:
 	string input;
 	bool wait;
