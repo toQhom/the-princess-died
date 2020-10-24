@@ -89,6 +89,45 @@ bool Scene::run_farm() {
 }
 
 bool Scene::run_pirate_ship() {
+	cout << "When you step out of the portal and look around you see that you are on a pirate ship with the Dread Pirate Roberts and Westley. As you stand there you see kill all the members aboard but his crew and Westley. He starts towards Westley sword in hand. and imediatly you know that you need to get the sword away from Roberts." << endl;
+	cout << endl;
+	do{
+	cout << "With your skills of slight of hand you think you can \n1) Replace the sword with a banana you found in a pocket \n2) Smack his hand holding the sword \n3) Just stand there and watch \n4) Yell and try to distract Roberts." << endl;
+	getInput();
+
+	if(input == "1" || input == "Replace the sword with a banana you found in a pocket"){
+		cout << "You are successful in keeping Westley alive, you hear him say \" I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. When you look around you see a portal open next to you and step through." << endl;
+		cout << endl;
+		wait = true;
+	}
+
+	else if(input == "2" || input == "Smack his hand holding the sword"){
+		cout << "Great job you were able to make the Dread Pirate Roberts drop the sword, but he immediately picks it back up to kill Westley" << endl;
+		cout << "Now you are stuck here and won't be able to finish the story" << endl;
+		cout << endl;
+		return !CONTINUE;
+
+	}
+
+	else if (input == "3" || input == "Just stand there and watch"){
+		cout << "You do nothing to stop Westley from dying and are now stuck here forever. Remember kids to never be a bystander" << endl;
+		cout << endl;
+		return !COUNTINUE;
+		
+	}
+
+	else if (input == "4" || input == "Yell and try to distract Roberts."){
+		cout << "You watch as Westley gets killed and suddenly remember that the characters cannot hear you when you yell. You face palm as you realize that you are now stuck in the book because it can't end." << endl;
+		cout << endl;
+		return !CONTINUE;
+	}
+	else{
+		cout << "That doesn't sound quite right, try again" << endl;
+		cout << endl;
+		wait = true;
+	}
+
+	}while(wait)//end of the dowhile loop
 	return CONTINUE;
 }
 
@@ -102,9 +141,72 @@ bool Scene::run_eels() {
 
 bool Scene::run_cliffs() {
 	return CONTINUE;
-}
+} 
 
 bool Scene::run_poison() {
+	//Vizzini and Man in Black are about to do a battle of the wits. Before Vizinni will agree to 
+	//doing the poison challange you must beat him in a riddle.
+	cout << "You exit the portal and see Vizzini holding a knife to Buttercup's throat as the Man in Black approaches." << endl;
+	cout << "They begin to talk and agree to a battle of the wits" << endl;
+	cout << "The Man in Black draws some poison from his cloak and begins to propose a deadly competition when Vizzini interrupts."<< endl;
+	cout << "\"Before I risk my life I have to know I am facing a worthy opponent, you must solve my riddle first.\"" << endl;
+	do{
+		cout << "\n\"The riddle is: 'What starts with an e and ends with an e and has one letter in it?'" << endl;
+		cout << "You can see the Man in Black struggling, you can: \n1) Watch him struggle \n2) Try an interpretive dance\n3) Whisper the answer" << endl;
+		getInput();
+		//if statement for answer options
+		if (input == "1" || input == "watch him struggle") //answer that leads to an untimely demise
+		{
+			cout << "The Man in Black continues to struggle and eventually gives up." << endl;
+			cout << "He then tries to rush Vizzini to disastrous ends!" << endl;
+			cout << "As Buttercup dies the Man in Black rips off his mask and you see tears rolling down Westley's face." << endl;
+			cout << "Now you are stuck in the book forever." << endl;
+			return !CONTINUE; //ends the game
+		}
+		else if (input == "2" || input == "try an interpretive dance") //answer that allows you to try again
+		{
+			cout << "You begin to wave your arms and tap your feet." << endl;
+			cout << "No one notices your flailing, however the sky begins to darken." << endl;
+			cout << "You've discovered how to do a rain dance." << endl;
+			cout << "The Man in Black glances and the approaching thunderheads and continues to ponder" << endl;
+			wait = true;
+		}
+		else if (input == "3" || input == "whisper the answer") //correct answer
+		{
+			cout << "You go up to the Man in Black and whisper:" << endl;
+			getInput();
+			if (input == "enveope" || input == "eye") //if you enter the correct answer to riddle you win this level
+			{
+				cout << "You are not sure if the Man in Black heard you, then he gets a focused look on his face and exclaims " << input << "!" << endl;
+				cout << "Vizzini, looking dissapointed, agrees to continue onto the Man in Black's battle of wits." << endl;
+			}
+			else //incorrect, try again
+			{
+				cout << "The Man in Black thinks for a moment and murmurs " << input << "under his breath and shakes his head." << endl;
+				cout << "You now know he heard you, but that your answer must be wrong!" << endl;
+				cout << "Think for a minute and try another answer to help the Man in Black" << endl;
+				getInput();
+				if (input == "enveope" || input == "eye") //correct, continue
+				{
+					cout << "You are not sure if the Man in Black heard you, then he gets a focused look on his face and exclaims " << input << "!" << endl;
+					cout << "Vizzini, looking dissapointed, agrees to continue onto the Man in Black's battle of wits." << endl;
+				}
+				else //incorrect, you lose
+				{
+					cout << "The Man in Black thinks again, looking a bit puzzled, then finally says \"" << input << ".\"" << endl;
+					cout << "Vizzini begins to cackle as he realizes he has won the battle of wits, now there is no escape from this book!" << endl;
+					return !CONTINUE;
+				}
+			}
+			wait = false;
+		}
+		else 
+		{
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+	cout << "Vizzini and the Man in Black continue their logic battle as a portal appears before you and you feel the whooshing in your ears yet again." << endl;
 	return CONTINUE;
 }
 
