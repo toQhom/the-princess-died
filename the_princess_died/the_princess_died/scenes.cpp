@@ -8,18 +8,18 @@ void Scene::getInput() {
 
 bool Scene::run_opening() {
 	//set the scene
-	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get there soon to read you the story again." << endl;
+	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get here soon to read you the story again." << endl;
 	getInput();
 
 	//makes them wait
 	for (int i = 0; i < 5; i++) {
-		cout << "You wait." << endl;
+		cout << "Be patient. Stay in bed." << endl;
 		getInput();
 	}
 
 	//response for waiting
 	do {
-		cout << "It doesn't look like your grandfather is coming. What do you do?" << endl;
+		cout << endl << "It doesn't look like your grandfather is coming. What do you do?" << endl;
 		cout << "You can: \n1) Go back to sleep \n2) Continue waiting \n3) Start reading the book anyways" << endl;
 		getInput();
 
