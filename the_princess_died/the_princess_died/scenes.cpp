@@ -1,5 +1,6 @@
 #include "scenes.h"
 #include <cctype>
+#include <vector>
 
 void Scene::getInput() {
 	getline(cin, input);
@@ -116,7 +117,17 @@ bool Scene::run_pit() {
 }
 
 bool Scene::run_miracle_max() {
+
+	cout << "Once you step through the portal you see that you are now at Miracle Max's house. Westley is laying on the table still dead and you over hear Miracle Max say that he can't remember what the ingredients for the pill that will revive Westly" << endl;
+	getInput();
+	do{
+	
+
+
+	}while(wait)
+	
 	return CONTINUE;
+
 }
 
 bool Scene::run_gate() {
