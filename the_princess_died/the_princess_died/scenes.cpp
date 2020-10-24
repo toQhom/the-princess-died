@@ -49,6 +49,36 @@ bool Scene::run_farm() {
 }
 
 bool Scene::run_pirate_ship() {
+	cout << "When you step out of the portal and look around you see that you are on a pirate ship with the Dread Pirate Roberts and Westley. As you stand there you see kill all the members aboard but his crew and Westley. He starts towards Westley sword in hand. and imediatly you know that you need to get the sword away from Roberts." << endl;
+	cout << endl;
+	cout << "With your skills of slight of hand you think you can \n1) Replace the sword with a banana you found in a pocket \n2) Smack his hand holding the sword \n3) Just stand there and watch \n4) Yell and try to distract Roberts." << endl;
+	getInput();
+
+	if(input == "1" || input == "Replace the sword with a banana you found in a pocket"){
+		cout << "You are successful in keeping Westley alive, you hear him say \" I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. When you look around you see a portal open next to you and step through." << endl;
+		cout << endl;
+	}
+
+	else if(input == "2" || input == "Smack his hand holding the sword"){
+		cout << "Great job you were able to make the Dread Pirate Roberts drop the sword, but he immediately picks it back up to kill Westley" << endl;
+		cout << "Now you are stuck here and won't be able to finish the story" << endl;
+		cout << endl;
+		return !CONTINUE;
+
+	}
+
+	else if (input == "3" || input == "Just stand there and watch"){
+		cout << "You do nothing to stop Westley from dying adn are now stuck here forever. Remember kids to never be a bystander" << endl;
+		cout << endl;
+		return !COUNTINUE;
+		
+	}
+
+	else if (input == "4" || input == "Yell and try to distract Roberts."){
+		cout << "You watch as Westley gets killed and suddenly remember that the characters cannot hear or see you. You face palm as you realize that you are now stuck in the book because it can't end." << endl;
+		cout << endl;
+		return !CONTINUE;
+	}
 	return CONTINUE;
 }
 
