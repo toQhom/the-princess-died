@@ -26,54 +26,101 @@ int main() {
 		}
 	} while (!successfulInput);
 
+	transition()
 	cout << "Entering the game. Buckle your seatbelt..." << endl << endl;
 
 	continueGame = game.run_opening();
 	/*if (continueGame) {
 		continueGame = game.run_farm();
 	}
+	
+	transition()
+	
 	if (continueGame) {
 		continueGame = game.run_pirate_ship();
 	}*/
+
+	transition()
+
 	if (continueGame) {
 		continueGame = game.run_horse_ride();
 	}/*
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_eels();
+
+	transition()
+	    
 	}*/
 	if (continueGame) {
 		continueGame = game.run_cliffs();
 	}
+
+	transition()
+	    
 	/*if (continueGame) {
 		continueGame = game.run_poison();
 	}
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_fire_swamp();
 	}
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_pit();
 	}
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_miracle_max();
 	}*/
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_gate();
 	}
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_castle();
 	}/*
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_stable();
 	}*/
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_finale();
 	}
+
+	transition()
+	    
 	if (continueGame) {
 		continueGame = game.run_closing();
 	}
+
+	//transition() idk if we want a transition here
+	    
 	if (!continueGame) {
 		cout << "You are dead." << endl;
 	}
+
+
+	transition()  
+	
 
 	cout << "The End" << endl;
 
