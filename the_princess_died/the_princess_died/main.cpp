@@ -51,10 +51,10 @@ int main() {
 	}
 	if (continueGame) {
 		continueGame = game.run_pit();
-	}
+	}*/
 	if (continueGame) {
 		continueGame = game.run_miracle_max();
-	}*/
+	}
 	if (continueGame) {
 		continueGame = game.run_gate();
 	}

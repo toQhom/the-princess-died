@@ -474,15 +474,12 @@ bool Scene::run_miracle_max() {
 		responses = { "look around", "look", "walk around"};
 
 		//checks for user to walk around the room
+		while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+			cout << "How will you do that without looking at what's around you?" << endl;
+			getInput();
+		}
 		if(find(responses.begin(), responses.end(), input) != responses.end()) {
 			cout << "You look around the room and see papers scattered everywhere with scribbles all over them. \nYou find one that says \"Ingredients For Life Pill\". \nYou know this is what you need, however it seems to be written in some sort of code." << endl;
-		}
-		else{
-			while(!(find(responses.begin(), responses.end(), input) != responses.end())){
-				cout << "How will you do that without looking whats around you?" << endl;
-				getInput();
-			}
-		
 		}
 		
 		//start of recipe prompt
