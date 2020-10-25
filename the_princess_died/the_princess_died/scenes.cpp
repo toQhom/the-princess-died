@@ -296,6 +296,9 @@ bool Scene::run_eels() {
 }
 
 bool Scene::run_cliffs() {
+	//set the scene
+	cout << endl << "";
+
 	return CONTINUE;
 } 
 
@@ -367,8 +370,6 @@ bool Scene::run_poison() {
 	cout << endl << "Vizzini and the Man in Black continue their logic battle as a portal appears before you and you feel the whooshing in your ears yet again." << endl;
 	return CONTINUE;
 }
-
-
 
 
 bool Scene::run_fire_swamp() {
@@ -660,14 +661,14 @@ bool Scene::run_gate() {
 	}
 
 	//Jumps
-	if(input == "2" || input == "jump up to try to get it"){
+	else if(input == "2" || input == "jump up to try to get it"){
 		cout << "Dude, this tree is like 30 feet high.\nNot gonna happen." << endl;
 		cout << "Well... No cloak.... No exit... Have fun living in this book." << endl;
 		return !CONTINUE;
 	}
 
 	//Gust of Wind
-	if(input == "3" || input == "hope for a gust of wind"){
+	else if(input == "3" || input == "hope for a gust of wind"){
 		cout << "All of a sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind." << endl;
 		cout << "You bring back the cloak to the gang and they are able to scare away all the guards." << endl;
 	}
@@ -758,33 +759,35 @@ bool Scene::run_stable() {
 bool Scene::run_finale() {
 	cout << "When you come out of the portal you look around and notice that it is only Westley and Buttercup around." << endl;
 	cout << "You wonder what is wrong with this scene because it seems to be exactly as described in the book..." << endl;
-	cout << "Next thing you know, you watch as Westley leans to kiss Buttercup." << endl;
+	cout << "Next thing you know, you watch as Westley leans in to kiss Buttercup." << endl;
 	cout << endl;
 
 	//give choices but must watch to pass
-	cout << "What is it that you want to do?\n1) Put your hands over your eyes\n2) Vomit 3) Stand there and watch (much to your disliking)" << endl;
+	cout << "What is it that you want to do?\n1) Put your hands over your eyes\n2) Vomit \n3) Stand there and watch (much to your disliking)" << endl;
 	getInput();
 
 	//option one
 	if(input == "1" || input == "put your hands over your eyes"){
-		cout << "They kiss for what feels like an eternity and you see them walk off into the distance." << endl;
-		cout << "However, there is no portal opening for you to leave...\n Looks like you are stuck." << endl;
-		return !CONTINUE;
+		cout << "You can't look away." << endl;
+		cout << "You watch as they kiss passionately..." << endl;
+		cout << "Ew. A kissing book." << endl;
 	}	
 	//option two
-	if(input == "2" || input == "vomit"){
+	else if(input == "2" || input == "vomit"){
 		cout << "You puke all over the ground in front of you" << endl;
-		cout << "Looks like you just ruined your shoes and your life because you are stuck here forever now." << endl;
-		return !CONTINUE;
+		cout << "Looks like you just ruined your shoes." << endl;
+		cout << "You watch as they kiss passionately..." << endl;
+		cout << "Ew. A kissing book." << endl;
 	}
 	//option three
-	if(input == "3" || input == "stand there and watch"){
+	else if(input == "3" || input == "stand there and watch"){
 		cout << "You watch as they kiss passionately..." << endl;
-		cout << "After what feels like an entire year, you finally hear a portal open beside you." << endl;
-		cout << endl;
-		cout << "This portal seems bigger than all the rest, you hope that this means the end of your time in this book." << endl;
-		cout << endl;
+		cout << "Ew. A kissing book." << endl;
 	}
+
+	cout << "After what feels like an entire year, you finally hear a portal open beside you." << endl;
+	cout << endl;
+	cout << "This portal seems bigger than all the rest, you hope that this means the end of your time in this book." << endl;
 	return CONTINUE;
 }
 
@@ -797,13 +800,12 @@ bool Scene::run_closing() {
 		getInput();
 		if (input == "1" || input == "you know, i think i've had enough adventure for one day") {
 			cout << "Your grandfather then gives you a grin and a wink as he pulls out another book." << endl;
-			cout << "He asks, \"How about a different adventure?\" he asks mysteriously" << endl;
-			cout << "He sits down and puts on his glasses and begins to read...\"Once upon a time...\"" << endl;
+			cout << "He asks, \"How about a different adventure?\" he asks mysteriously." << endl;
+			cout << "He sits down and puts on his glasses and begins to read, \"Once upon a time...\"" << endl;
 			wait = false;
 		}
 		else if (input == "2" || input == "sure, but i have to tell you the most amazing story first") {
-			cout << "Your grandfather sits on the bed as you begin to tell him how you saved princess Buttercup." << endl;
-			cout << "The End" << endl;
+			cout << "Your grandfather sits on the bed as you begin to tell him how you saved Buttercup." << endl;
 			wait = false;
 		}
 		else {
