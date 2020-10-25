@@ -8,8 +8,6 @@ void Scene::getInput() {
 }
 
 bool Scene::run_opening() {
-	//DEBUG
-	/*
 	//set the scene
 	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get here soon to read you the story again." << endl;
 	getInput();
@@ -40,7 +38,6 @@ bool Scene::run_opening() {
 			wait = true;
 		}
 	} while (wait);
-	*/
 	return CONTINUE; //continues the game
 }
 
