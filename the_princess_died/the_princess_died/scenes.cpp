@@ -852,21 +852,22 @@ bool Scene::run_pit() {
 	// could add a choice here 
 
 	// Instructions
-	cout << endl << "To move left type '<' and to move right type '>'. Type more characters afterwards to move farther! (e.g. '>>' moves two right)" << endl;
+	cout << endl << "To move left type 'L' and to move right type 'R'. Type more characters afterwards to move farther! (e.g. 'RR' moves two right)" << endl;
 
 	while (inigoPosition != doorPosition) {
 		cout << "Enter your push!" << endl;
+        cout << ">>";
 		getline(cin, input);
-		if (input.at(0) == '<') {
+		if ((input.at(0) == 'l') || (input.at(0) == 'L') {
 			cout << "You pushed left!" << endl;
 			inigoPosition = inigoPosition - input.length();
 		}
-		else if (input.at(0) == '>') {
+		else if ((input.at(0) == 'r') || (input.at(0) == 'R')) {
 			cout << "You pushed right!" << endl;
 			inigoPosition = inigoPosition + input.length();
 		}
 		else {
-			cout << "That's not a push! Try < or >" << endl;
+			cout << "That's not a push! Try L or R" << endl;
 
 		} //good input validation
 
