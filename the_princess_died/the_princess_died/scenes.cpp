@@ -534,6 +534,7 @@ bool Scene::run_pit() {
 
 bool Scene::run_miracle_max() {
 	cout << endl << "Once you step through the portal you see that you are now at Miracle Max's house. \nWestley is laying on the table, still dead (mostly). \nYou overhear Miracle Max say that he can't remember what the ingredients for the pill that will revive Westley." << endl;
+	cout << "How will you help?" << endl;
 	getInput();
 		
 	//vector for right answers to look around the room
@@ -549,6 +550,7 @@ bool Scene::run_miracle_max() {
 			cout << "You look around the room and see papers scattered everywhere with scribbles all over them. \nYou find one that says \"Ingredients For Life Pill\". \nYou know this is what you need, however it seems to be written in some sort of code." << endl;
 		}
 		
+
 		//start of recipe prompt
 		cout << endl << "The hand writing reads... \n1) ecotcohla \n2) beaelly \n3) eseewad" << endl;
 		cout << "What do you think ingredient 1 is? (ecotcohla)" << endl;
@@ -600,11 +602,13 @@ bool Scene::run_miracle_max() {
 		cout << "Now you have know all the ingredients you whisper them in Miracle Max's ear. \nYou see him tilt his head and exclaim the ingredients and run off to go make the pill." << endl;
 		cout << "You can now see a portal open next to you and are free to pass now. Would you like to go?" << endl;
 	getInput();
+
 	if(input != "yes" && input != "y"){
 		do {
 			cout << "Really? You want to stay here? (y/n)" << endl;
 			getInput();
 		} while (!(input == "no" || input == "n"));
+
 	}
 	else{
 		cout<< "You walk into the portal to hopefully find a way out of this book finally." << endl;
@@ -615,6 +619,60 @@ bool Scene::run_miracle_max() {
 }
 
 bool Scene::run_gate() {
+	cout << "As you leave the portal you trip over a rock and call on your face.\nAs you push yourself up you look around seeing that you are at the gate of the castle that is surrounded by gaurds.\nYou remember that this is the wedding scene but don't see Westley and the other scarying the gaurds away.\nWhat do you do?" << endl;
+	response.clear();
+	//find the characters
+	response = {"look for westley", "look for westley and others", "look for everyone", "walk around", "look around"}
+	while(!(find(responses.begin(), responses.end(), input) != responses.end())){
+		cout << "You can't get rid of all the gaurds on your own. Where are Westley and the other?" << endl;
+		getInput();
+	}
+	if(find(responses.begin(), reponses.end(), input) != reponses.end()){
+		cout << "You find them hiding behind a wall and notice that the cloak they use to scare the gaurds away is missing." << endl;
+	}
+	
+	//new question
+	cout << "What will you do to help them?" << endl;
+	response.clear();
+	response = {"look around", "find cloak", "search", "walk around", "Look around", "Find Cloak", "Search"};
+
+	//find the cloak
+	while(!(find(responses.begin(), responses.end(), input) != responses.end())){
+		cout << "How can you find the cloak without looking or searching?" << endl;
+		getInput();
+	}
+	if(find(responses.begin(), reponses.end(), input) != reponses.end()){
+		cout << "Congrats! You found the cloak hung up in a tree. " << endl;
+	}
+
+	//How is this cloak gonna get down
+	cout << "How will you ever get this cloak down?" << endl;
+	cout << "1) Poke it with a stick \n2) Jump up to try to get it \n3) Hope for a gust of wind" << endl;
+	getInput();
+
+	//Poke with stick
+	if(input == "1" || input == "poke it with a stick"){
+		cout << "Congrats! You just poked a hole in the cloak and got it more stuck in the tree" << endl;
+		cout << "Without the cloak the wedding goes off and the book's ending changes keeping you locked in the story forever" << endl;
+		return !CONTINUE;
+	}
+
+	//Jumps
+	if(input == "2" || input == "jump up to try to get it"){
+		cout << "Dude, this tree is like 30 feet high.\nNot gonna happen." << endl;
+		cout << "Well... No cloak.... No exit... Have fun living in this book." << endl;
+		return !CONTINUE;
+	}
+
+	//Gust of Wind
+	if(input == "3" || input == "hope for a gust of wind"){
+		cout << "All of the sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind" << endl;
+		cout << "You bring back the cloak to the gang and they are able to scare away all the gaurds." << endl;
+	}
+
+	cout << "As you watch Westley and the others enter the castle you feel the wind pick up again as a portal opens up beside you and carries you to the next scene." << endl;
+	
+
 	return CONTINUE;
 }
 
