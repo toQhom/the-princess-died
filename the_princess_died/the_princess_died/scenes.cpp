@@ -1,6 +1,9 @@
 #include "scenes.h"
+<<<<<<< HEAD
 #include <cctype>
 #include <vector>
+=======
+>>>>>>> c6fa0114061ba40943b80286573797a415eb2622
 
 void Scene::getInput() {
 	getline(cin, input);
@@ -46,20 +49,61 @@ bool Scene::run_opening() {
 }
 
 bool Scene::run_farm() {
+	//set the scene
+	cout << endl << "The wind dies down. The sky above you is clear and the grass below you is soft." << endl;
+	cout << "In the distance you hear a woman's voice calling, \"Farm Boy!\"" << endl;
+	getInput();
+
+	//standing up
+	responses.clear();
+	responses = { "stand up", "stand" };
+	if (find(responses.begin(), responses.end(), input) != responses.end()) {
+		cout << "You stand up." << endl;
+	}
+	else {
+		while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+			cout << "And how do you plan on doing that while lying down?" << endl;
+			getInput();
+		}
+	}
+	
+	//following the voice
+	do {
+		cout << endl << "Where are you going to go?" << endl << "1) Follow the voice" << endl << "2) Nowhere" << endl;
+		getInput();
+		if (input == "follow the voice" || input == "1") {
+			cout << "You follow the voice across some hills of farmland to a small shack, where you find a familiar face." << endl;
+			wait = false;
+		}
+		else if (input == "nowhere" || input == "2") {
+			cout << "Are you sure? (yes/no)";
+			getInput();
+			while (input == "yes" || input == "y") {
+				cout << "Are you sure? (yes/no)";
+				getInput();
+			}
+			wait = false;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+
 	return CONTINUE;
 }
 
 bool Scene::run_pirate_ship() {
-	cout << "When you step out of the portal and look around you see that you are on a pirate ship with the Dread Pirate Roberts and Westley. As you stand there you see kill all the members aboard but his crew and Westley. He starts towards Westley sword in hand. and imediatly you know that you need to get the sword away from Roberts." << endl;
+	cout << "When you step out of the portal and look around you see that you are on a pirate ship with the Dread Pirate Roberts and Westley. \nAs you stand there you see Roberts kill all the members aboard but his crew and Westley. \nHe starts towards Westley sword in hand and immediately you know that you need to get the sword away from Roberts." << endl;
 	cout << endl;
 	do{
 	cout << "With your skills of slight of hand you think you can \n1) Replace the sword with a banana you found in a pocket \n2) Smack his hand holding the sword \n3) Just stand there and watch \n4) Yell and try to distract Roberts." << endl;
 	getInput();
 
 	if(input == "1" || input == "Replace the sword with a banana you found in a pocket"){
-		cout << "You are successful in keeping Westley alive, you hear him say \" I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. When you look around you see a portal open next to you and step through." << endl;
+		cout << "You are successful in keeping Westley alive, you hear him say \"I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. \nWhen you look around you see a portal open next to you and step through." << endl;
 		cout << endl;
-		wait = true;
+		wait = false;
 	}
 
 	else if(input == "2" || input == "Smack his hand holding the sword"){
@@ -73,7 +117,7 @@ bool Scene::run_pirate_ship() {
 	else if (input == "3" || input == "Just stand there and watch"){
 		cout << "You do nothing to stop Westley from dying and are now stuck here forever. Remember kids to never be a bystander" << endl;
 		cout << endl;
-		return !COUNTINUE;
+		return !CONTINUE;
 		
 	}
 
@@ -88,7 +132,8 @@ bool Scene::run_pirate_ship() {
 		wait = true;
 	}
 
-	}while(wait)//end of the dowhile loop
+	} while (wait);//end of the dowhile loop
+
 	return CONTINUE;
 }
 
@@ -176,18 +221,138 @@ bool Scene::run_fire_swamp() {
 }
 
 bool Scene::run_pit() {
+    string input;
+    int doorPosition = 0;
+    int inigoPosition = 0; 
+
+    srand(time(0));
+
+    while (doorPosition == 0) { // we don't want the door to be where he is!
+        doorPosition = rand() % 11 - 5; // set to random number between -5 and 5, positive is right, make sure not equal 0
+    }
+    cout << "position: " << doorPosition << endl; // DEBUG
+
+    // Storyline
+    cout << "This time, you find yourself in a clearing. Soon, two men enter the clearing. You recognize them as Inigo and Fezzik and remember they are looking for the torture chamber. ";
+    cout << "Inigo prays and trys to follow his sword. Clearly, it isn't working. You sigh and start to push Inigo towards the secret entrance." << endl;
+
+    // could add a choice here 
+
+    // Instructions
+    cout << "To move left type '<' and to move right type '>'. Type more characters afterwards to move farther! (e.g. '>>' moves two right)" << endl;
+
+    while (inigoPosition != doorPosition) {
+        cout << "Enter your push!" << endl;
+        getline(cin, input);
+        if (input.at(0) == '<') {
+            cout << "You pushed left!" << endl;
+            inigoPosition = inigoPosition - input.length();
+        }
+        else if (input.at(0) == '>') {
+            cout << "You pushed right!" << endl;
+            inigoPosition = inigoPosition + input.length();
+        }
+        else { 
+            cout << "That's not a push! Try < or >" << endl;
+        }
+        cout << "Current Position: " << inigoPosition << endl;
+        // Check current position
+        if (inigoPosition == doorPosition) {
+            cout << "whew, he made it" << endl;
+        }
+        else if (inigoPosition < doorPosition) {
+            cout << "Oh no, the door is to the right!" << endl;
+        }
+        else {
+            cout << "Oh no, the door is to the left!" << endl;
+        }
+    }
+    // TODO: say if he went too far, how far it is
 	return CONTINUE;
 }
 
 bool Scene::run_miracle_max() {
 
-	cout << "Once you step through the portal you see that you are now at Miracle Max's house. Westley is laying on the table still dead and you over hear Miracle Max say that he can't remember what the ingredients for the pill that will revive Westly" << endl;
+	cout << "Once you step through the portal you see that you are now at Miracle Max's house. \nWestley is laying on the table still dead and you over hear Miracle Max say that he can't remember what the ingredients for the pill that will revive Westly" << endl;
 	getInput();
-	do{
-	
+		
+	//vector for right answers to look around the room
+		responses.clear();
+		responses = { "look around", "look", "walk around"};
 
+		//checks for user to walk around the room
+		if(find(responses.begin(), responses.end(), input) != responses.end()) {
+			cout << "You look around the room and see papers scattered everywhere with scribbles all over them. \nYou find one that says \"ingredients for life pill\", your know this is what you need however it seems to be written in some sort of code" << endl;
+		}
+		else{
+			while(!(find(responses.begin(), reponses.end(), input) != resonses.end()){
+				cout << "How will you do that without looking whats around you?" << endl;
+				getInput();
+			}
+		
+		}
+		
+		//start of receipe prompt
+		cout << "The hand writing reads \n1)ecotcohla \n2)beaelly \n3)eseewad" << endl;
+		cout << "What do you think ingredient 1 is? (ecotcohla)" << endl;
+		userInput();
 
-	}while(wait)
+		//checks for chocolate
+		while(input != "chocolate"){
+			cout << "That doesn't sound like something that should be in this recipe.\nTry Again!" << endl;
+			cout << "1) ecotcohla" << endl;
+			userInput();
+		}
+		
+		if(input == "chocolate"){
+			cout << "Yes, you remember there is a chocolate coating!" << endl;
+			cout << endl;
+		}
+
+		//2nd ingredient for recipe
+		cout << "What do you think ingredient 2 is? (beaelly)" << endl;
+		userInput();
+
+		//checks for eyeball
+		while(input != "eyeball"){
+			cout << "I don't think that should be in this recipe either.\nTry Again!" << endl;
+			cout << "2) beaelly" << endl;
+			userInput();
+		}
+		if(input == "eyeball"){
+			cout << "Yes! That seems like something that would revive you. \nThat's why we have the chocolate." << endl;
+			cout << endl;
+		}
+
+		//3rd ingredient for recipe
+		cout << "What do you think ingredient 3 is? (eseewad)" << endl;
+		userInput();
+
+		//check for seaweed
+		while(input != "seaweed"){
+			cout << "That doesn't seem like the answer to this scramble.\nTry Again!" << endl;
+			cout << "3) eseewad" << endl;
+			userInput();
+		}
+		if(input == "seaweed"){
+			cout << "Yes! That's it! That is the last ingredient!" << endl;
+			cout << endl;
+		}
+		
+		//reached the ending
+		cout << "Now you have know all the ingredient you whisper them in Miracle Max's ear. \nYou see him tilt his head and exclaim the ingredients and run off to go make the pill" << endl
+	cout << "You can now see a portal open next to you and are free to pass now. Would you like to go?"
+	userInput();
+	if(input != "yes" || input != "y"){
+		while(input != "NO" || input != "N"){
+			cout << "really? You want to stay here? (y/n)" << endl;
+			userInput();
+		}		
+	}
+	else{
+		cout<< "You walk into the portal to hopefully find a way out of this book finally." << endl;
+		cout << endl;
+	}
 	
 	return CONTINUE;
 
