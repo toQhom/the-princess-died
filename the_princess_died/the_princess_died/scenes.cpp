@@ -1,4 +1,9 @@
 #include "scenes.h"
+<<<<<<< HEAD
+#include <cctype>
+#include <vector>
+=======
+>>>>>>> c6fa0114061ba40943b80286573797a415eb2622
 
 void Scene::getInput() {
 	getline(cin, input);
@@ -267,7 +272,90 @@ bool Scene::run_pit() {
 }
 
 bool Scene::run_miracle_max() {
+
+	cout << "Once you step through the portal you see that you are now at Miracle Max's house. \nWestley is laying on the table still dead and you over hear Miracle Max say that he can't remember what the ingredients for the pill that will revive Westly" << endl;
+	getInput();
+		
+	//vector for right answers to look around the room
+		responses.clear();
+		responses = { "look around", "look", "walk around"};
+
+		//checks for user to walk around the room
+		if(find(responses.begin(), responses.end(), input) != responses.end()) {
+			cout << "You look around the room and see papers scattered everywhere with scribbles all over them. \nYou find one that says \"ingredients for life pill\", your know this is what you need however it seems to be written in some sort of code" << endl;
+		}
+		else{
+			while(!(find(responses.begin(), reponses.end(), input) != resonses.end()){
+				cout << "How will you do that without looking whats around you?" << endl;
+				getInput();
+			}
+		
+		}
+		
+		//start of receipe prompt
+		cout << "The hand writing reads \n1)ecotcohla \n2)beaelly \n3)eseewad" << endl;
+		cout << "What do you think ingredient 1 is? (ecotcohla)" << endl;
+		userInput();
+
+		//checks for chocolate
+		while(input != "chocolate"){
+			cout << "That doesn't sound like something that should be in this recipe.\nTry Again!" << endl;
+			cout << "1) ecotcohla" << endl;
+			userInput();
+		}
+		
+		if(input == "chocolate"){
+			cout << "Yes, you remember there is a chocolate coating!" << endl;
+			cout << endl;
+		}
+
+		//2nd ingredient for recipe
+		cout << "What do you think ingredient 2 is? (beaelly)" << endl;
+		userInput();
+
+		//checks for eyeball
+		while(input != "eyeball"){
+			cout << "I don't think that should be in this recipe either.\nTry Again!" << endl;
+			cout << "2) beaelly" << endl;
+			userInput();
+		}
+		if(input == "eyeball"){
+			cout << "Yes! That seems like something that would revive you. \nThat's why we have the chocolate." << endl;
+			cout << endl;
+		}
+
+		//3rd ingredient for recipe
+		cout << "What do you think ingredient 3 is? (eseewad)" << endl;
+		userInput();
+
+		//check for seaweed
+		while(input != "seaweed"){
+			cout << "That doesn't seem like the answer to this scramble.\nTry Again!" << endl;
+			cout << "3) eseewad" << endl;
+			userInput();
+		}
+		if(input == "seaweed"){
+			cout << "Yes! That's it! That is the last ingredient!" << endl;
+			cout << endl;
+		}
+		
+		//reached the ending
+		cout << "Now you have know all the ingredient you whisper them in Miracle Max's ear. \nYou see him tilt his head and exclaim the ingredients and run off to go make the pill" << endl
+	cout << "You can now see a portal open next to you and are free to pass now. Would you like to go?"
+	userInput();
+	if(input != "yes" || input != "y"){
+		while(input != "NO" || input != "N"){
+			cout << "really? You want to stay here? (y/n)" << endl;
+			userInput();
+		}		
+	}
+	else{
+		cout<< "You walk into the portal to hopefully find a way out of this book finally." << endl;
+		cout << endl;
+	}
+	
 	return CONTINUE;
+
 }
 
 bool Scene::run_gate() {
