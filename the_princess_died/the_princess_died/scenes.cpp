@@ -8,11 +8,13 @@ void Scene::getInput() {
 }
 
 bool Scene::run_opening() {
+	//DEBUG
+	/*
 	//set the scene
 	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get here soon to read you the story again." << endl;
 	getInput();
 	//makes them wait
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 2; i++) {
 		cout << "Be patient. Stay in bed." << endl;
 		getInput();
 	}
@@ -38,7 +40,7 @@ bool Scene::run_opening() {
 			wait = true;
 		}
 	} while (wait);
-
+	*/
 	return CONTINUE; //continues the game
 }
 
@@ -70,12 +72,15 @@ bool Scene::run_farm() {
 			wait = false;
 		}
 		else if (input == "nowhere" || input == "2") {
-			cout << "Are you sure? (yes/no)";
+			cout << "You wait." << endl;
+			cout << "Would you like to follow the voice now? (yes/no)" << endl;
 			getInput();
 			while (!(input == "yes" || input == "y")) {
-				cout << "Are you sure? (yes/no)";
+				cout << "You wait." << endl;
+				cout << "Would you like to follow the voice now? (yes/no)" << endl;
 				getInput();
 			}
+			cout << "You follow the voice across some hills of farmland to a small shack, where you find a familiar face." << endl;
 			wait = false;
 		}
 		else {
@@ -125,7 +130,7 @@ bool Scene::run_farm() {
 	cout << "You turn the corner around the shack, and notice a pitcher at your feet." << endl;
 	getInput();
 	responses.clear();
-	responses = { "take pitcher", "pick up pitcher", "grab pitcher", "retrieve the pitcher" };
+	responses = { "take pitcher", "pick up pitcher", "grab pitcher", "retrieve the pitcher", "pick up", "grab", "take" };
 	if (find(responses.begin(), responses.end(), input) != responses.end()) {
 		cout << "You pick up the pitcher as Westley approaches the building." << endl;
 	}
@@ -156,6 +161,10 @@ bool Scene::run_farm() {
 	cout << "As Buttercup and Westley gaze into each others eyes, you feel the wind pick up." << endl;
 	cout << "The door to the shack has been transformed into a portal of swirling gray clouds." << endl;
 
+	//explain a bit
+	cout << endl << "You realize that this is the same story as before, but something is wrong." << endl;
+	cout << "For your own good, you had better repair the storyline." << endl;
+
 	//continue on with the game
 	responses.clear();
 	responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" };
@@ -180,14 +189,14 @@ bool Scene::run_pirate_ship() {
 		cout << "With your skills of slight of hand you think you can \n1) Replace the sword with a banana you found in a pocket \n2) Smack his hand holding the sword \n3) Just stand there and watch \n4) Yell and try to distract Roberts." << endl;
 		getInput();
 
-		if (input == "1" || input == "replace the sword with a banana you found in a pocket") {
+		if (input == "1" || input == "replace the sword with a banana you found in your pocket") {
 			cout << "You are successful in keeping Westley alive, you hear the Dread Pirate Roberts say \"I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. \nWhen you look around you see a portal open next to you and step through." << endl;
 			cout << endl;
 			wait = false;
 		}
 
 		else if (input == "2" || input == "smack his hand holding the sword") {
-			cout << "Great job you were able to make the Dread Pirate Roberts drop the sword, but he immediately picks it back up to kill Westley" << endl;
+			cout << "Great job! You were able to make the Dread Pirate Roberts drop the sword, but he immediately picks it back up to kill Westley" << endl;
 			cout << "Now you are stuck here and won't be able to finish the story" << endl;
 			cout << endl;
 			return !CONTINUE;
@@ -404,7 +413,7 @@ bool Scene::run_eels() {
 	cout << "Then you realize you're falling. The wind rushes around you and you plunge into bitterly cold water." << endl;
 	cout << "You panic! What should you do?" << endl;
 
-	cin >> input; // change to get input
+	getInput();
 
 	if (input == "swim") {
 		cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
@@ -427,7 +436,7 @@ bool Scene::run_eels() {
 	cout << "Buttercup! The eels circle around her. One begins to charge! \nWhat will you do?" << endl;
 
 	cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
-	cin >> input;
+	getInput();
 
 	if (input == "1" || input == "hope the eel goes away") {
 		cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
@@ -447,7 +456,7 @@ bool Scene::run_eels() {
 	cout << endl << "But the peace doesn't last long. Another eel with blind hunger behind its foggy eyes charges at Buttercup." << endl;
 	cout << "What do you do?" << endl;
 	cout << "You can: \n1) Hope the second eel goes away \n2) Try to strangle it \n3) Feed the second eel a banana" << endl;
-	cin >> input;
+	getInput();
 
 	if (input == "1" || input == "hope the second eel goes away") {
 		cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
@@ -1006,9 +1015,9 @@ bool Scene::run_pit() {
 
 	while (inigoPosition != doorPosition) {
 		cout << "Enter your push!" << endl;
-        cout << ">>";
+        cout << ">> ";
 		getline(cin, input);
-		if ((input.at(0) == 'l') || (input.at(0) == 'L') {
+		if ((input.at(0) == 'l') || (input.at(0) == 'L')) {
 			cout << "You pushed left!" << endl;
 			inigoPosition = inigoPosition - input.length();
 		}
@@ -1018,7 +1027,6 @@ bool Scene::run_pit() {
 		}
 		else {
 			cout << "That's not a push! Try L or R" << endl;
-
 		} //good input validation
 
 		// Check current position
