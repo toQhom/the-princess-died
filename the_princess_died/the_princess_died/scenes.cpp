@@ -103,6 +103,8 @@ bool Scene::run_cliffs() {
 	return CONTINUE;
 } 
 
+
+
 bool Scene::run_poison() {
 	//Vizzini and Man in Black are about to do a battle of the wits. Before Vizinni will agree to 
 	//doing the poison challange you must beat him in a riddle.
@@ -170,9 +172,95 @@ bool Scene::run_poison() {
 	return CONTINUE;
 }
 
+
+
+
 bool Scene::run_fire_swamp() {
-	return CONTINUE;
+	cout << "As the pressure returns to normal you begin to get your bearings." << endl;
+	cout << "You notice that you are now in The Fire Swamp." << endl;
+	cout << "In front of you there are three paths. They go left, right, and forwared." << endl;
+	getInput();//if I code 3 options this will branch into an if statement, but for now they all three go to the same story.
+
+	//Left: Rats, Right: Quicksand, Forward: Fire, if they choose backwards they run into shrek 
+	//implement directionality and other story options at a later time
+	//start with fire geyser part
+	cout << "As you walk " << input << " you see Buttercup and Westley ahead of you." << endl;
+	cout << "You run to catch up, only to be stopped by fire geyser!" << endl;
+	cout << "The weird thing is that you didn't hear the popping sound that your Grandpa mentioned yesterday." << endl;
+	
+	//This loop allows you to 
+	do 
+	{
+		cout << "What do you do: \n1) Run to Buttercup and Westley screaming \n2) Observe the geyser\n3) Grab another banana from your pocket and stick it in the geyser" << endl;
+		getInput();
+		//if statement for options
+		if (input == "1" || input == "run to buttercup and westley screaming") //run to buttercup and westley, but how will you warn them, all get burnt to crips
+		{
+			cout << "You reach Westley and Buttercup and begin walking alongside them only for a fire geyser to open up directly in front of you." << endl;
+			cout << "The last thing you see is a bright wave of red." << endl;
+			return !CONTINUE;
+		}
+		else if (input == "2" || input == "observe the geyser")//observe and notice that a portal opens up moments before, allow choice to warn 
+		{
+			cout << "As you scrutinize the geyser that just exploded you notice a mini portal open up moments before it erupts." << endl;
+			
+			//second do while loop that lets you alert buttercup and westley
+			do {
+				cout << "Maybe you can warn Westley and Buttercup if only you could get their attention!" << endl;
+				cout << "How do you want to alert them of when a fire geyser? \n1)Sing an accapella rendition of La Bamba." << endl;
+				cout << "2) Throw the banana at Buttercup and Westley \n3) Pick up rocks and hit them together when you see a portal." << endl;
+				getInput();
+
+				if (input == "1" || input == "sing an accapella rendition of la bamba") {
+					cout << "Your spectacular performance gets the attention of the giant rats." << endl;
+					cout << "After you finish singing they fall out of the trance and devour you and your friends." << endl;
+					return !CONTINUE; //ends the game
+				}
+				else if (input == "2" || input == "throw the banana at buttercup and westley") {
+					cout << "The banana zooms towards Westley when it suddenly changes directions!" << endl;
+					cout << "The banana is now coming directly towards you, its boomerang shape caused it to turn around." << endl;
+					cout << "As you are dodging the rapidly approaching banana, a fire geyser goes off under Westley and Buttercup." << endl;
+					cout << "The last thing you see is a banana colliding with your face." << endl;
+					return !CONTINUE; //ends game
+				}
+				else if (input == "3" || input == "pick up rocks and hit them together when you see a portal.") {
+					cout << "Every time you see a portal appear you make a noise with two rocks, alerting Westly and Buttercup." << endl;
+					cout << "When you see Prince Humperdinck a portal appears beside you." << endl;
+					//NEED PORTAL LOOP!
+					//klsdjflkasdjefpoqiweufrpoiwahjef
+					//lkasjdfl;kasjdflksajdf
+
+					wait = false;
+				}
+				else {
+					cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+					wait = true;
+				}
+			} while (wait);
+
+
+		}
+		else if (input == "3" || input == "grab another banana from your pocket and stick it in the geyser") //the banana explodes into lava banana, which tastes great but kills you!
+		{
+			cout << "As soon as you put the banana where the geyser was you see a portal open below the banana." << endl;
+			cout << "You step back just as the geyser explodes lava hot banana all over you!" << endl;
+			return !CONTINUE; //ends game, you are dead
+		
+		}
+		else 
+		{
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+		
+		
+		
+		return CONTINUE;
 }
+
+
+
 
 bool Scene::run_pit() {
 	return CONTINUE;
