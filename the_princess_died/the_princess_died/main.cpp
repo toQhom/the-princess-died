@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <stdlib.h>
 #include "scenes.h"
 
 using namespace std;
@@ -19,7 +20,8 @@ int main() {
 	string input;
 
 	do {
-		cout << endl << endl <<  "Welcome to The Princess Died Game" << endl;
+		system("CLS");
+		cout <<  "Welcome to The Princess Died Game" << endl;
 		do {
 			cout << endl << "To play this game, type what you want to do and press enter!" << endl;
 			cout << "Try it out, type \"Say Hello\"" << endl;
@@ -40,12 +42,12 @@ int main() {
 
 		continueGame = game.run_opening(); //The Opening
 		transition();
-		
+		/*
 		if (continueGame) { //The Farm
 			continueGame = game.run_farm();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Pirate Ship
 			continueGame = game.run_pirate_ship();
 			transition();
@@ -55,12 +57,12 @@ int main() {
 			continueGame = game.run_horse_ride();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Eels
 			continueGame = game.run_eels();
 			transition();
 		}
-
+		*/
 		if (continueGame) { //The Cliffs of Insanity
 			continueGame = game.run_cliffs();
 			transition();
