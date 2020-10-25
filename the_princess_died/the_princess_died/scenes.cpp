@@ -159,15 +159,15 @@ bool Scene::run_farm() {
 
 	//continue on with the game
 	responses.clear();
-	responses = { "enter portal", "go through portal", "use portal" };
+	responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" };
 	do {
 		getInput();
 		if (find(responses.begin(), responses.end(), input) != responses.end()) {
-			cout << "Shutting you eyes, you enter the portal." << endl;
+			cout << "Shutting your eyes, you enter the portal." << endl;
 			wait = false;
 		}
 		else {
-			cout << "So we're just going to ignore the portal?" << endl;
+			cout << "Why would you ignore a portal!?" << endl;
 			wait = true;
 		}
 	} while (wait);
@@ -520,7 +520,7 @@ bool Scene::run_cliffs() {
 	cout << "You have arrived just in time to resecure the rope to the rock." << endl;
 
 	//continuing the game
-	cout << endl << "As Fezzik reaches the top of the cliff, you feel a familiar wind and turn around to see a portal behind you" << endl;
+	cout << endl << "As Fezzik reaches the top of the cliff, you feel a familiar wind and turn around to see a portal behind you." << endl;
 	cout << "You walk through the portal as Vizzini gets to work cutting through the rope you just fixed." << endl;
 
 
@@ -598,7 +598,17 @@ bool Scene::run_poison() {
 
 
 
-//checked for input validation 
+void fire_geyser() {
+
+}
+void quicksand() {
+
+}
+void rous() {
+
+}
+
+//checked for input validation
 bool Scene::run_fire_swamp()
 {
 	//simple output
@@ -662,16 +672,16 @@ bool Scene::run_fire_swamp()
 					cout << endl << "Westley and Buttercup are able to navigate the woods safely." << endl;
 					cout << "When they see Prince Humperdinck a portal appears beside you." << endl;
 					responses.clear();
-					responses = { "enter portal", "go through portal", "use portal" }; //continue on with the game
+					responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" }; //continue on with the game
 					do //third input validation loop
 					{
 						getInput();
 						if (find(responses.begin(), responses.end(), input) != responses.end()) {
-							cout << "Shutting you eyes, you enter the portal." << endl;
+							cout << "Shutting your eyes, you enter the portal." << endl;
 							wait = false; //correct option, sends out of both do while loops
 						}
 						else {
-							cout << "So we're just going to ignore the portal?" << endl;
+							cout << "Why would you ignore a portal!?" << endl;
 							wait = true; //makes you go through third input validation loop, until you go through the portal
 						}
 					} while (wait); //if it is false then move on
@@ -754,19 +764,20 @@ bool Scene::run_pit() {
 		}
 	}
 	//add a prompt describing the portal
-	cout << "Another portal appears!" << endl;
-	responses.clear();
-	responses = { "enter portal", "go through portal", "use portal" }; //continue on with the game
+	cout << endl << "Another portal appears!" << endl;
+
+	responses.clear(); //broken?
+	responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" };
 	do {
 		getInput();
 		if (find(responses.begin(), responses.end(), input) != responses.end()) {
-			cout << "Shutting you eyes, you enter the portal." << endl;
+			cout << "Shutting your eyes, you enter the portal." << endl;
 			wait = false;
 		}
 		else {
-			cout << "So we're just going to ignore the portal?" << endl;
+			cout << "Why would you ignore a portal!?" << endl;
 			wait = true;
-		}//stuck in a loop
+		}
 	} while (wait);
 
 

@@ -37,13 +37,14 @@ int main() {
 
 	cout << "Entering the game. Buckle your seatbelt..." << endl << endl;
 	transition();
-
+	
 	continueGame = game.run_opening();
-	/*if (continueGame) {
+	/*
+	if (continueGame) {
 		continueGame = game.run_farm();
 		transition();
 	}
-
+	
 
 
 	if (continueGame) {
@@ -64,37 +65,37 @@ int main() {
 		transition();
 
 
-	}*/
+	}
 	if (continueGame) {
 		continueGame = game.run_cliffs();
 		transition();
 	}
+	
 
 
-
-	/*if (continueGame) {
+	if (continueGame) {
 		continueGame = game.run_poison();
 		transition();
 	}
-
+	
 
 	if (continueGame) {
 		continueGame = game.run_fire_swamp();
 		transition();
 	}
-
-
+	*/
+	
 	if (continueGame) {
 		continueGame = game.run_pit();
 		transition();
 	}
 
-
+	
 	if (continueGame) {
 		continueGame = game.run_miracle_max();
 		transition();
 	}
-
+	/*
 
 	if (continueGame) {
 		continueGame = game.run_gate();
