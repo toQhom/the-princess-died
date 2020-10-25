@@ -226,7 +226,72 @@ bool Scene::run_horse_ride() {
 }
 
 bool Scene::run_eels() {
-	return CONTINUE;
+    cout << "It takes you a minute to realize you have left the portal because everything is still dark." << endl;
+    cout << "Then you realize you're falling. The wind rushes around you and you plunge into bitterly cold water." << endl;
+    cout << "You panic! What should you do?" << endl;
+
+    cin >> input; // change to get input
+
+    if (input=="swim") {
+        cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
+    }
+    else {
+        cout << "You continue to sink in the dark water. What do you do?" << endl;
+        cin >> input;
+        if (input == "swim") {
+            cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
+        }
+        else {
+            cout << "The waters close above and you hear a shriek getting closer." << endl;
+            return 0; //!continue;
+        }
+    }
+
+    cout << "Suddenly, a shriek cuts through the night. These are the eel infested waters!" << endl;
+    cout << "Before you can process the danger, the stillness of the night is broken again, this time with a loud splash." << endl;
+    cout << "The princess! The eels circle around her. One begins to charge! \nWhat will you do?" << endl;
+
+    cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
+	cin >> input;
+
+    if (input == "1" || input == "hope the eel goes away") {
+        cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
+        return !CONTINUE; //ends the game
+    }
+    else if (input == "2" || input == "try to strangle it") {
+        cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
+        return !CONTINUE;
+    }
+    else if (input == "3" || input == "feed the eel a banana") {
+        cout << "With the sweet banana between its needlelike teeth, the slimy creature nuzzles up beside you. \nYou seem to have made a friend." << endl;
+    }
+    else {
+        cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+    }
+	
+    cout << endl<< "But the peace doesn't last long. Another eel with blind hunger behind its foggy eyes charges at Buttercup." << endl;
+    cout << "What do you do?" << endl;
+    cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
+	cin >> input;
+
+    if (input == "1" || input == "hope the eel goes away") {
+        cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
+        return !CONTINUE; //ends the game
+    }
+    else if (input == "2" || input == "try to strangle it") {
+        cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
+        return !CONTINUE;
+    }
+    else if (input == "3" || input == "feed the eel a banana") {
+        cout << "You don't have any bananas left." << endl;
+    }
+    else {
+        cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+    }
+
+    cout << "But luckily a giant arm punches the eel from above and Buttercup is lifted safely into the boat." << endl;
+    cout << "The portal opens in the sky again and through it you too are lifted to safety." << endl;
+	return CONTINUE; //continues the game
 }
 
 bool Scene::run_cliffs() {
