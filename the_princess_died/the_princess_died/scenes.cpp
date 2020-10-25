@@ -8,11 +8,13 @@ void Scene::getInput() {
 }
 
 bool Scene::run_opening() {
+	//DEBUG
+	/*
 	//set the scene
 	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get here soon to read you the story again." << endl;
 	getInput();
 	//makes them wait
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 2; i++) {
 		cout << "Be patient. Stay in bed." << endl;
 		getInput();
 	}
@@ -38,7 +40,7 @@ bool Scene::run_opening() {
 			wait = true;
 		}
 	} while (wait);
-
+	*/
 	return CONTINUE; //continues the game
 }
 
@@ -70,12 +72,15 @@ bool Scene::run_farm() {
 			wait = false;
 		}
 		else if (input == "nowhere" || input == "2") {
-			cout << "Are you sure? (yes/no)";
+			cout << "You wait." << endl;
+			cout << "Would you like to follow the voice now? (yes/no)" << endl;
 			getInput();
 			while (!(input == "yes" || input == "y")) {
-				cout << "Are you sure? (yes/no)";
+				cout << "You wait." << endl;
+				cout << "Would you like to follow the voice now? (yes/no)" << endl;
 				getInput();
 			}
+			cout << "You follow the voice across some hills of farmland to a small shack, where you find a familiar face." << endl;
 			wait = false;
 		}
 		else {
@@ -125,7 +130,7 @@ bool Scene::run_farm() {
 	cout << "You turn the corner around the shack, and notice a pitcher at your feet." << endl;
 	getInput();
 	responses.clear();
-	responses = { "take pitcher", "pick up pitcher", "grab pitcher", "retrieve the pitcher" };
+	responses = { "take pitcher", "pick up pitcher", "grab pitcher", "retrieve the pitcher", "pick up", "grab", "take" };
 	if (find(responses.begin(), responses.end(), input) != responses.end()) {
 		cout << "You pick up the pitcher as Westley approaches the building." << endl;
 	}
@@ -155,6 +160,10 @@ bool Scene::run_farm() {
 	cout << "The scene continues as you remember." << endl;
 	cout << "As Buttercup and Westley gaze into each others eyes, you feel the wind pick up." << endl;
 	cout << "The door to the shack has been transformed into a portal of swirling gray clouds." << endl;
+
+	//explain a bit
+	cout << endl << "You realize that this is the same story as before, but something is wrong." << endl;
+	cout << "For your own good, you had better repair the storyline." << endl;
 
 	//continue on with the game
 	responses.clear();

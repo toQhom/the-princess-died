@@ -19,13 +19,13 @@ int main() {
 	string input;
 
 	do {
-		cout << "Welcome to The Princess Died Game" << endl;
+		cout << endl << endl <<  "Welcome to The Princess Died Game" << endl;
 		do {
 			cout << endl << "To play this game, type what you want to do and press enter!" << endl;
 			cout << "Try it out, type \"Say Hello\"" << endl;
 			cout << ">> ";
 			getline(cin, input);
-			if (input == "Say Hello" || input == "say hello" || input == "Say hello" || input == "say Hello") {
+			if (input == "Say Hello" || input == "say hello" || input == "Say hello" || input == "say Hello" || input == "b") { //DEBUG
 				cout << "Well, hello to you too!" << endl;
 				successfulInput = true;
 			}
@@ -37,9 +37,9 @@ int main() {
 
 
 		cout << "Entering the game. Buckle your seatbelt..." << endl << endl;
-		transition();
 
 		continueGame = game.run_opening(); //The Opening
+		transition();
 		
 		if (continueGame) { //The Farm
 			continueGame = game.run_farm();
@@ -129,7 +129,7 @@ int main() {
 				cout << "I don't know what that means. Please try again." << endl << endl;
 				successfulInput = false;
 			}
-		} while (!successfulInput)
+		} while (!successfulInput);
 
 	} while (playOn);
 
