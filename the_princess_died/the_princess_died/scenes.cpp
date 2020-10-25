@@ -793,5 +793,28 @@ bool Scene::run_finale() {
 }
 
 bool Scene::run_closing() {
+	cout << "You open your eyes to your bedroom and it seems plain after your long adventure." << endl;
+	cout << "Your grandfater walks into the room just as you close your book." << endl;
+	cout << "He asks if you want to read the book again." << endl;
+	do {
+		cout << endl << "You say:" << endl << "1) You know, I think I've had enough adventure for one day." << endl << "2) Sure, but I have to tell you the most amazing story first." << endl;
+		getInput();
+		if (input == "1" || input == "you know, i think i've had enough adventure for one day") {
+			cout << "Your grandfather then gives you a grin and a wink as he pulls out another book." << endl;
+			cout << "He asks, \"How about a different adventure?\" he asks mysteriously" << endl;
+			cout << "He sits down and puts on his glasses and begins to read...\"Once upon a time...\"" << endl;
+			wait = false;
+		}
+		else if (input == "2" || input == "sure, but i have to tell you the most amazing story first") {
+			cout << "Your grandfather sits on the bed as you begin to tell him how you saved princess Buttercup." << endl;
+			cout << "The End" << endl;
+			wait = false;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+	
 	return CONTINUE;
 }
