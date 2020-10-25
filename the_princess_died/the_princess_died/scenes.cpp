@@ -64,7 +64,7 @@ bool Scene::run_eels() {
     getInput();
 
     if (input=="swim") {
-        cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
+        cout << "You begin to swim, suddenly very thankful for that grumpy swim teacher you had last year." << endl;
     }
     else {
         cout << "You continue to sink in the dark water. What do you do?" << endl;
@@ -154,22 +154,22 @@ bool Scene::run_pit() {
     cout << "Inigo prays and trys to follow his sword. Clearly, it isn't working. You sigh and start to push Inigo towards the secret entrance." << endl;
 
     // Instructions
-    cout << "To move left type '<' and to move right type '>'. Type more characters afterwards to move farther! (e.g. '>>' moves two right)" << endl;
+    cout << "To move left type 'L' and to move right type 'R'. Type more characters afterwards to move farther! (e.g. 'RR' moves two right)" << endl;
 
     while (inigoPosition != doorPosition) {
         cout << "Enter your push!" << endl;
-        cout << "<<"; 
-        getline(cin, input);
-        if (input.at(0) == '<') {
+        cout << ">>";
+        cin >> input; // can't use getline so can't use getInput()
+        if ((input.at(0) == 'L') || (input.at(0) =='l')) { // will NOT be converted to lowercase
             cout << "You pushed left!" << endl;
             inigoPosition = inigoPosition - input.length();
         }
-        else if (input.at(0) == '>') {
+        else if ((input.at(0) == 'R') || (input.at(0) =='r')) {
             cout << "You pushed right!" << endl;
             inigoPosition = inigoPosition + input.length();
         }
         else { 
-            cout << "That's not a push! Try < or >" << endl;
+            cout << "That's not a push! Try L or R" << endl;
         }
         cout << "Current Position: " << inigoPosition << endl;
         // Check current position
@@ -183,6 +183,7 @@ bool Scene::run_pit() {
             cout << "Oh no, the door is to the left!" << endl;
         }
     }
+    cin.ignore();
 	return CONTINUE;
 }
 
