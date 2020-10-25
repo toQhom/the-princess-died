@@ -837,11 +837,12 @@ bool Scene::run_pit() {
 
 	int doorPosition = 0;
 	int inigoPosition = 0;
+    int difficulty = 13; // higher is harder, range of random numbers
 
 	srand(time(0));
 
 	while (doorPosition == 0) { // we don't want the door to be where he is!
-		doorPosition = rand() % 11 - 5; // set to random number between -5 and 5, positive is right, make sure not equal 0
+		doorPosition = rand() % difficulty - difficulty/2; // set to random number between -6 and 6, positive is right, make sure not equal 0
 	}
 
 	// Storyline
