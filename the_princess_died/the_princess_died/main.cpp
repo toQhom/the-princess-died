@@ -34,87 +34,101 @@ int main() {
 		}
 	} while (!successfulInput);
 
-	transition();
+	
 	cout << "Entering the game. Buckle your seatbelt..." << endl << endl;
+	transition();
 
 	continueGame = game.run_opening();
 	/*if (continueGame) {
 		continueGame = game.run_farm();
+		transition();
 	}
 	
-	transition();
+	
 	
 	if (continueGame) {
 		continueGame = game.run_pirate_ship();
+		transition();
 	}*/
 
-	transition();
+	
 
 	if (continueGame) {
 		continueGame = game.run_horse_ride();
+		transition();
 	}/*
 
-	transition();
+	
 	    
 	if (continueGame) {
 		continueGame = game.run_eels();
+		transition();
 
-	transition();
+	
 	    
 	}*/
 	if (continueGame) {
 		continueGame = game.run_cliffs();
+		transition();
 	}
 
-	transition();
+	
 	    
 	/*if (continueGame) {
 		continueGame = game.run_poison();
+		transition();
 	}
 
-	transition();
+	
 	    
 	if (continueGame) {
 		continueGame = game.run_fire_swamp();
+		transition();
 	}
 
-	transition();
+	
 	    
 	if (continueGame) {
 		continueGame = game.run_pit();
+		transition();
 	}
 
-	transition();
+	
 	    
 	if (continueGame) {
 		continueGame = game.run_miracle_max();
+		transition();
 	}
 
-	transition();
+	
 	    
 	if (continueGame) {
 		continueGame = game.run_gate();
+		transition();
 	}
 
-	transition(); */
+	 */
 	    
 	if (continueGame) {
 		continueGame = game.run_castle();
+		transition();
 	}/*
 
-	transition();
+	
 	    
 	if (continueGame) {
 		continueGame = game.run_stable();
+		transition();
 	}*/
 
-	transition();
+	
 	    
 	if (continueGame) {
 		continueGame = game.run_finale();
+		transition();
 	}
 
-	transition();
+	
 	    
 	if (continueGame) {
 		continueGame = game.run_closing();
@@ -125,7 +139,7 @@ int main() {
 	}
 
 
-	transition();
+	
 	
 
 	cout << "The End" << endl;
