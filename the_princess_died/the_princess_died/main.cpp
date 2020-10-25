@@ -100,13 +100,13 @@ int main() {
 	    
 	if (continueGame) {
 		continueGame = game.run_castle();
-	}/*
-
+	}
+	/*
 	transition();
 	    
 	if (continueGame) {
 		continueGame = game.run_stable();
-	}*/
+	}
 
 	transition();
 	    
@@ -119,6 +119,7 @@ int main() {
 	if (continueGame) {
 		continueGame = game.run_closing();
 	}
+	*/
 	    
 	if (!continueGame) {
 		cout << "You are dead." << endl;
