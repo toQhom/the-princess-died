@@ -15,6 +15,7 @@ const bool CONTINUE = true;
 class Scene {
 public:
 	void getInput();
+	void transition();
 	bool run_opening();
 	bool run_farm();
 	bool run_pirate_ship();
