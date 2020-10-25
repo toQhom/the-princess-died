@@ -14,6 +14,7 @@ int main() {
 	do {
 		cout << endl <<"To play this game, type what you want to do and press enter!" << endl;
 		cout << "Try it out, type \"Say Hello\"" << endl;
+		cout << ">> ";
 		getline(cin, input);
 		if (input == "Say Hello" || input == "say hello" || input == "Say hello" || input == "say Hello") {
 			cout << "Well, hello to you too!" << endl;
@@ -28,22 +29,22 @@ int main() {
 	cout << "Entering the game. Buckle your seatbelt..." << endl << endl;
 
 	continueGame = game.run_opening();
-	if (continueGame) {
+	/*if (continueGame) {
 		continueGame = game.run_farm();
 	}
 	if (continueGame) {
 		continueGame = game.run_pirate_ship();
-	}
+	}*/
 	if (continueGame) {
 		continueGame = game.run_horse_ride();
-	}
+	}/*
 	if (continueGame) {
 		continueGame = game.run_eels();
-	}
+	}*/
 	if (continueGame) {
 		continueGame = game.run_cliffs();
 	}
-	if (continueGame) {
+	/*if (continueGame) {
 		continueGame = game.run_poison();
 	}
 	if (continueGame) {
@@ -54,16 +55,16 @@ int main() {
 	}
 	if (continueGame) {
 		continueGame = game.run_miracle_max();
-	}
+	}*/
 	if (continueGame) {
 		continueGame = game.run_gate();
 	}
 	if (continueGame) {
 		continueGame = game.run_castle();
-	}
+	}/*
 	if (continueGame) {
 		continueGame = game.run_stable();
-	}
+	}*/
 	if (continueGame) {
 		continueGame = game.run_finale();
 	}
@@ -78,3 +79,4 @@ int main() {
 
 	return 0;
 }
+
