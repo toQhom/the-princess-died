@@ -312,6 +312,7 @@ bool Scene::run_fire_swamp() {
 	getInput();//if I code 3 options this will branch into an if statement, but for now they all three go to the same story.
 
 	//Left: Rats, Right: Quicksand, Forward: Fire, if they choose backwards they run into shrek 
+	//implement the do while loop for this section that way it checks the inputs, within each have a sub do-while loop for each direction
 	//implement directionality and other story options at a later time
 	//start with fire geyser part
 	cout << endl << "As you walk " << input << " you see Buttercup and Westley ahead of you." << endl;
@@ -555,10 +556,76 @@ bool Scene::run_gate() {
 }
 
 bool Scene::run_castle() {
+	
 	return CONTINUE;
 }
 
 bool Scene::run_stable() {
+	//This is where we follow fezzik around to find four horses
+	cout << "You exit the portal, a little sad that you missed all of Westley's insults for Humperdinck." << endl;
+	cout << "In front of you, Fezzik is bumbling around, seemingly without a purpose." << endl;
+	cout << "What do you want to do?" << endl;
+	//look around
+	//vector for right answers to look for the stable
+	responses.clear();
+	responses = { "look around", "look", "walk around" };
+
+	//checks for user to see the stable
+	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+		cout << "How do you know what you want to do without looking around first?" << endl;
+		getInput();
+	}
+	cout << "You look up and see the stables ahead." << endl;
+	//vector for right answers to look for the stable
+	responses.clear();
+	responses = { "walk forward", "go to the stables", "walk", "move" };
+
+	//checks for user to see the stable
+	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+		cout <<endl<< "You should probably do something other than just stand there." << endl;
+		getInput();
+	}
+	
+	do {
+		//now we have to get in the stable to let the horses out
+		cout << endl << "You go to the stables and notice that there is a lock." << endl;
+		cout << "You can: \n1) Kick down the door \n2) Pick the lock \n3) Look for a second entrance" << endl;
+		getInput();
+
+		if (input == "1" || input == "kick down the door") {
+			cout << "You successfully kick down the door, but not without the guards noticing." << endl;
+			cout << "The gaurds assume that Fezzik brok down the door and arrest him." << endl;
+			cout << "Since Fezzik doesn't have any escape horses everyone else was caught as well, trapping you in the book." << endl;
+			return !CONTINUE; //ends the game
+		}
+		else if (input == "2" || input == "pick the lock") {
+			cout << "You pick the lock and the stable door swings silently open." << endl;
+			cout << "Seeing this, Fezzik has the idea to steal some horses and goes in the stable" << endl;
+			cout << "As Fezzik exits the stable with four white horses, a portal appears to your right" << endl;
+			getInput();
+			if (input != "yes" || input != "y") {
+				do {
+					cout << endl << "The horses went with Fezzik, you can't pet them. \nDo you want to go through the portal now? (y/n)" << endl;
+					getInput();
+				} while (!(input == "yes" || input == "y"));
+			}
+			else {
+				cout << "You walk into the portal to hopefully find a way out of this book finally." << endl;
+				cout << endl;
+			}
+
+			wait = false;
+		}
+		else if (input == "3" || input == "look for a second entrance") {
+			cout << "You circle the stable, there is no second entrance." << endl;
+			wait = true;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+
 	return CONTINUE;
 }
 
