@@ -344,7 +344,7 @@ bool Scene::run_miracle_max() {
 	cout << "You can now see a portal open next to you and are free to pass now. Would you like to go?"
 	userInput();
 	if(input != "yes" || input != "y"){
-		while(input != "NO" || input != "N"){
+		while(input != "no" || input != "n"){			
 			cout << "really? You want to stay here? (y/n)" << endl;
 			userInput();
 		}		
