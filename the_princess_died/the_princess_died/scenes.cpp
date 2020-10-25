@@ -218,7 +218,186 @@ bool Scene::run_pirate_ship() {
 	return CONTINUE;
 }
 
+//checked input validation
 bool Scene::run_horse_ride() {
+	//set the scene
+	cout << endl << "Stepping out of the portal, you enter a clearing. It is peaceful here." << endl;
+	cout << "But suddenly, Buttercup rushes past you on a horse" << endl;
+	cout << "The issue is, she's heading in the wrong direction. If she keeps going, she'll never run into Vizzini." << endl;
+	cout << "You notice a carrot at your feet. You pick up the carrot and call to the horse." << endl;
+	cout << "All of a sudden, the horse turns around and heads your direction!" << endl;
+	cout << "You take off running, determined to lead the horse to Vizinni." << endl;
+
+	int fork = 1; //int to move through the maze with	
+	
+	while (fork < 10) {
+		if (fork == 1) { //fork 1
+			cout << endl << "You run until you reach a fork in the path." << endl;
+			cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			getInput();
+			if (input == "1") { //good
+				fork = fork + 3;
+			}
+			else if (input == "2") { //bad
+				fork = fork + 1;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to get to Vizzini!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+		else if (fork == 2) { //fork 2
+			cout << endl << "You are currently 1 fork away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				fork = fork - 1;
+			}
+			else if (input == "1") { //bad
+				fork = fork + 1;
+			}
+			else if (input == "2") { //dead
+				cout << "This path seems to be a dead end. You go back." << endl;
+			}
+			else {
+
+			}
+		}
+		else if (fork == 3) { //fork 3
+			cout << endl << "You are currently 2 forks away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				fork = fork - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "This path seems to be a dead end. You go back." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "This path seems to be a dead end. You go back." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to get to Vizzini!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+		else if (fork == 4) { //fork 4
+			cout << endl << "You are currently 1 fork away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				fork = fork - 3;
+			}
+			else if (input == "1") { //bad
+				fork = fork + 1;
+			}
+			else if (input == "2") { //good
+				fork = fork + 3;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to get to Vizzini!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+		else if (fork == 5) { //fork 5
+			cout << endl << "You are currently 2 forks away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				fork = fork - 1;
+			}
+			else if (input == "1") {
+				fork = fork + 1;
+			}
+			else if (input == "2") { //dead
+				cout << "This path seems to be a dead end. You go back." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to get to Vizzini!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+		else if (fork == 6) { //fork 6
+			cout << endl << "You are currently 3 forks away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				fork = fork - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "This path seems to be a dead end. You go back." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "This path seems to be a dead end. You go back." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to get to Vizzini!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+		else if (fork == 7) { //fork 7
+			cout << endl << "You are currently 2 forks away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				fork = fork - 3;
+			}
+			else if (input == "1") { //good
+				fork = fork + 2;
+			}
+			else if (input == "2") { //bad
+				fork = fork + 1;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to get to Vizzini!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+		else if (fork == 8) { //fork 8
+			cout << endl << "You are currently 3 forks away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				fork = fork - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "This path seems to be a dead end. You go back." << endl;
+				cout << "But you know you're getting close." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "This path seems to be a dead end. You go back." << endl;
+				cout << "But you know you're getting close." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to get to Vizzini!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+		else if (fork == 9) { //fork 9
+			cout << endl << "You are currently 3 forks away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				fork = fork - 2;
+			}
+			else if (input == "1") {
+				cout << "This path seems to be a dead end. You go back." << endl;
+				cout << "But you know you're getting close. " << endl;
+			}
+			else if (input == "2") {
+				fork = fork + 1;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to get to Vizzini!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+	}
+
+		//escaping the maze and continuing one
+		cout << "Up ahead, you see Vizzini, Fezzik, and Inigo waiting. \nYou toss the carrot towards them and stand back as the scene unfolds." << endl;
+		cout << "After catching your breath, you enter the portal that has opened to your right." << endl;
+
 	return CONTINUE;
 }
 
@@ -292,10 +471,11 @@ bool Scene::run_eels() {
 	return CONTINUE; //continues the game
 }
 
+//checked input validation
 bool Scene::run_cliffs() {
 	//set the scene
-	cout << endl << "You step out of the portal, but the wind is still rushing around you." << endl;
-	cout << "You stand at the bottom of The Cliffs of Insanity." << endl;
+	cout << endl << "Suddenly, you're falling again. Luckily you land in the sea again. Yay for salt water." << endl;
+	cout << "You pull yourself out of the sea. You stand at the bottom of The Cliffs of Insanity." << endl;
 	cout << "Above you, Fezzik carries Vizzini, Inigo, and Buttercup up the cliff. The Man in Black is slowly gaining on them." << endl;
 	cout << "Yet, every so often, the rope seems to fall a bit more. \nThere's only one explanation: the rope must be slipping from the rock at the top." << endl;
 	cout << "To your left, you notice what appears to be an entrance to a secret passageway. \nYou wonder why they didn't just use that, it seems much easier than scaling the cliff." << endl;
@@ -527,8 +707,6 @@ bool Scene::run_cliffs() {
 	return CONTINUE;
 }
 
-
-
 bool Scene::run_poison() {
 	//Vizzini and Man in Black are about to do a battle of the wits. Before Vizinni will agree to 
 	//doing the poison challange you must beat him in a riddle.
@@ -595,8 +773,6 @@ bool Scene::run_poison() {
 	cout << endl << "Vizzini and the Man in Black continue their logic battle as a portal appears before you and you feel the whooshing in your ears yet again." << endl;
 	return CONTINUE;
 }
-
-
 
 void fire_geyser() {
 
@@ -716,7 +892,6 @@ bool Scene::run_fire_swamp()
 }
 
 
-
 //checked for input validation
 bool Scene::run_pit() {
 	string input;
@@ -783,7 +958,6 @@ bool Scene::run_pit() {
 
 	return CONTINUE;
 }
-
 
 //checked input validation
 bool Scene::run_miracle_max() {
@@ -874,7 +1048,6 @@ bool Scene::run_miracle_max() {
 
 }
 
-
 //checked input validation
 bool Scene::run_gate() {
 	cout << "As you leave the portal you trip over a rock and fall on your face.\nAs you push yourself up you look around seeing that you are at the gate of the castle that is surrounded by guards.\nYou remember that this is the wedding scene but don't see Westley and the other scaring the guards away.\nWhat do you do?" << endl;
@@ -943,7 +1116,7 @@ bool Scene::run_gate() {
 }
 
 
-
+/
 bool Scene::run_castle() {
 
 	return CONTINUE;
