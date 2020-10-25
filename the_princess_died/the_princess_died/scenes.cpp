@@ -8,7 +8,6 @@ void Scene::getInput() {
 }
 
 bool Scene::run_opening() {
-	/*
 	//set the scene
 	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get here soon to read you the story again." << endl;
 	getInput();
@@ -39,7 +38,7 @@ bool Scene::run_opening() {
 			wait = true;
 		}
 	} while (wait);
-	*/
+
 	return CONTINUE; //continues the game
 }
 
@@ -629,9 +628,8 @@ bool Scene::run_fire_swamp()
 	cout << "The weird thing is that you didn't hear the popping sound that your Grandpa mentioned yesterday." << endl;
 
 	//This loop allows you to 
-	do //input validation loop 1
+	do
 	{
-		//display options
 		cout << endl << "What do you do: \n1) Run to Buttercup and Westley screaming \n2) Observe the geyser\n3) Grab another banana from your pocket and stick it in the geyser" << endl;
 		getInput();
 		//if statement for options
@@ -646,8 +644,7 @@ bool Scene::run_fire_swamp()
 			cout << "As you scrutinize the geyser that just exploded you notice a glow coming from the ground just moments before it erupts." << endl;
 
 			//second do while loop that lets you alert buttercup and westley
-			do //second input validation loop
-			{
+			do {
 				cout << endl << "Maybe you can warn Westley and Buttercup if only you could get their attention!" << endl;
 				cout << "How do you want to alert them of when a fire geyser is about to erupt? \n1) Sing an accapella rendition of La Bamba." << endl;
 				cout << "2) Throw the banana at Buttercup and Westley. \n3) Pick up rocks and hit them together when you see a glow." << endl;
@@ -665,13 +662,12 @@ bool Scene::run_fire_swamp()
 					cout << "The last thing you see is a banana colliding with your face." << endl;
 					return !CONTINUE; //ends game
 				}
-				else if (input == "3" || input == "pick up rocks and hit them together when you see a glow") //correct option, so ti should end iwth wait being false 
-				{
-					//decision loop to try to alert about fire geyser
+				else if (input == "3" || input == "pick up rocks and hit them together when you see a glow") {
 					cout << "Every time you see a glow you make a noise with two rocks, alerting Westley and Buttercup." << endl;
 					cout << endl << "Westley and Buttercup are able to navigate the woods safely." << endl;
 					cout << "When they see Prince Humperdinck a portal appears beside you." << endl;
 					responses.clear();
+
 					responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" }; //continue on with the game
 					do //third input validation loop
 					{
@@ -683,19 +679,19 @@ bool Scene::run_fire_swamp()
 						else {
 							cout << "Why would you ignore a portal!?" << endl;
 							wait = true; //makes you go through third input validation loop, until you go through the portal
+
 						}
-					} while (wait); //if it is false then move on
+					} while (wait);
 
-					wait = false; //correct option so set to false
+					wait = false;
 				}
-				else //actual input validation to make you try again if you got it wrong
-				{
+				else {
 					cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-					wait = true; //true to make it repeat
+					wait = true;
 				}
-			} while (wait);//close of second input validation loop
+			} while (wait);
 
-			//wait should already be true to get here
+
 		}
 		else if (input == "3" || input == "grab another banana from your pocket and stick it in the geyser") //the banana explodes into lava banana, which tastes great but kills you!
 		{
@@ -707,9 +703,11 @@ bool Scene::run_fire_swamp()
 		else
 		{
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-			wait = true; //make this whole loop repeat if the input isn't one of the options
+			wait = true;
 		}
+
 	} while (wait); //if the input was valid then continue
+
 
 
 	return CONTINUE;
@@ -717,9 +715,11 @@ bool Scene::run_fire_swamp()
 
 
 
-//checked for input validation
+//input validation checked
 bool Scene::run_pit() {
+
 	string input;
+
 	int doorPosition = 0;
 	int inigoPosition = 0;
 
@@ -751,7 +751,9 @@ bool Scene::run_pit() {
 		}
 		else {
 			cout << "That's not a push! Try < or >" << endl;
+
 		} //good input validation
+
 		// Check current position
 		if (inigoPosition == doorPosition) {
 			cout << "Whew, he made it!" << endl;
@@ -763,11 +765,13 @@ bool Scene::run_pit() {
 			cout << "Oh no, the door is to the left!" << endl;
 		}
 	}
+
 	//add a prompt describing the portal
 	cout << endl << "Another portal appears!" << endl;
 
 	responses.clear(); //broken?
 	responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" };
+
 	do {
 		getInput();
 		if (find(responses.begin(), responses.end(), input) != responses.end()) {
@@ -784,8 +788,8 @@ bool Scene::run_pit() {
 	return CONTINUE;
 }
 
-
-//checked input validation
+//input validated
+//there is some excessive iput validation here, but I left it.
 bool Scene::run_miracle_max() {
 	cout << endl << "Once you step through the portal you see that you are now at Miracle Max's house. \nWestley is laying on the table, still dead (mostly). \nYou overhear Miracle Max say that he can't remember what the ingredients for the pill that will revive Westley." << endl;
 	cout << "How will you help?" << endl;
@@ -794,6 +798,7 @@ bool Scene::run_miracle_max() {
 	//vector for right answers to look around the room
 	responses.clear();
 	responses = { "look around", "look", "walk around" };
+
 
 	//checks for user to walk around the room
 	while (!(find(responses.begin(), responses.end(), input) != responses.end()))
@@ -805,6 +810,7 @@ bool Scene::run_miracle_max() {
 	{
 		cout << "You look around the room and see papers scattered everywhere with scribbles all over them. \nYou find one that says \"Ingredients For Life Pill\". \nYou know this is what you need, however it seems to be written in some sort of code." << endl;
 	}
+
 
 
 	//start of recipe prompt
@@ -824,9 +830,11 @@ bool Scene::run_miracle_max() {
 		cout << endl;
 	}
 
+
 	//2nd ingredient for recipe
 	cout << "What do you think ingredient 2 is? (beaelly)" << endl;
 	getInput();
+
 
 	//checks for eyeball
 	while (input != "eyeball") {
@@ -874,8 +882,7 @@ bool Scene::run_miracle_max() {
 
 }
 
-
-//checked input validation
+//inut valid!
 bool Scene::run_gate() {
 	cout << "As you leave the portal you trip over a rock and fall on your face.\nAs you push yourself up you look around seeing that you are at the gate of the castle that is surrounded by guards.\nYou remember that this is the wedding scene but don't see Westley and the other scaring the guards away.\nWhat do you do?" << endl;
 	getInput();
@@ -905,7 +912,9 @@ bool Scene::run_gate() {
 		cout << "Congrats! You found the cloak hung up in a tree. " << endl;
 	}
 
+
 	do //added input validation 
+
 	{
 		//How is this cloak gonna get down
 		cout << endl << "How will you ever get this cloak down?" << endl;
@@ -918,20 +927,21 @@ bool Scene::run_gate() {
 			cout << "Without the cloak the wedding goes off and the book's ending changes keeping you locked in the story forever" << endl;
 			return !CONTINUE;
 		}
+
 		//Jumps
 		else if (input == "2" || input == "jump up to try to get it") {
 			cout << "Dude, this tree is like 30 feet high.\nNot gonna happen." << endl;
 			cout << "Well... No cloak.... No exit... Have fun living in this book." << endl;
 			return !CONTINUE;
 		}
+
 		//Gust of Wind
 		else if (input == "3" || input == "hope for a gust of wind") {
 			cout << "All of a sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind." << endl;
 			cout << "You bring back the cloak to the gang and they are able to scare away all the guards." << endl;
 			wait = false;
 		}
-		else //input validation
-		{
+		else {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
 			wait = true;
 		}
@@ -942,15 +952,12 @@ bool Scene::run_gate() {
 	return CONTINUE;
 }
 
-
-
 bool Scene::run_castle() {
 
 	return CONTINUE;
 }
 
-
-//checked input validation
+//checked for valid input
 bool Scene::run_stable() {
 	//This is where we follow fezzik around to find four horses
 	cout << "You exit the portal, a little sad that you missed all of Westley's insults for Humperdinck." << endl;
@@ -960,7 +967,7 @@ bool Scene::run_stable() {
 	//look around
 	//vector for right answers to look for the stable
 	responses.clear();
-	responses = { "look around", "look", "walk around", "walk" };
+	responses = { "look around", "look", "walk around" };
 
 	//checks for user to see the stable
 	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
@@ -979,6 +986,7 @@ bool Scene::run_stable() {
 		getInput();
 	}
 
+
 	do //input validation :)
 	{
 		//now we have to get in the stable to let the horses out
@@ -992,14 +1000,12 @@ bool Scene::run_stable() {
 			cout << "Since Fezzik doesn't have any escape horses everyone else was caught as well, trapping you in the book." << endl;
 			return !CONTINUE; //ends the game
 		}
-		else if (input == "2" || input == "pick the lock") //correct option 
-		{
+		else if (input == "2" || input == "pick the lock") {
 			cout << "You pick the lock and the stable door swings silently open." << endl;
 			cout << "Seeing this, Fezzik has the idea to steal some horses and goes into the stable." << endl;
 			cout << endl << "As Fezzik exits the stable with four white horses, a portal appears to your right." << endl;
 			cout << "Do you want to leave?" << endl;
 			getInput();
-			//leave portal input validation
 			if (input != "yes" && input != "y") {
 				do {
 					cout << endl << "The horses went with Fezzik, you can't pet them. \nDo you want to go through the portal now? (y/n)" << endl;
@@ -1011,30 +1017,32 @@ bool Scene::run_stable() {
 				cout << endl;
 			}
 
-			wait = false; //make it so it doesn't repeat
+			wait = false;
 		}
+
 		else if (input == "3" || input == "look for a second entrance") //brings you in a loop around the stable
 		{
+
 			cout << "You circle the stable, there is no second entrance." << endl;
-			wait = true; //set loop to repeat
+			wait = true;
 		}
 		else {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-			wait = true; //repeat because response is bad
+			wait = true;
 		}
-	} while (wait);//end input validation
+	} while (wait);
 
 	return CONTINUE;
 }
 
-//checked input validaiton
+//input validation checked
 bool Scene::run_finale() {
 	cout << "When you come out of the portal you look around and notice that it is only Westley and Buttercup around." << endl;
 	cout << "You wonder what is wrong with this scene because it seems to be exactly as described in the book..." << endl;
 	cout << "Next thing you know, you watch as Westley leans in to kiss Buttercup." << endl;
 	cout << endl;
-	do //added input validation
-	{
+
+	do {
 		//give choices but must watch to pass
 		cout << "What is it that you want to do?\n1) Put your hands over your eyes\n2) Vomit \n3) Stand there and watch (much to your disliking)" << endl;
 		getInput();
@@ -1060,18 +1068,17 @@ bool Scene::run_finale() {
 			cout << "Ew. A kissing book." << endl;
 			wait = false;
 		}
-		else //input validation, check for anything weird 
-		{
+		else {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-			wait = true; //repeat because response is bad
+			wait = true;
 		}
-	} while (wait); //end of input validation
-
+	} while (wait); //input validated
 	cout << "After what feels like an entire year, you finally hear a portal open beside you." << endl;
 	cout << endl;
 	cout << "This portal seems bigger than all the rest, you hope that this means the end of your time in this book." << endl;
 	return CONTINUE;
 }
+
 
 //checked input validation
 bool Scene::run_closing()
@@ -1082,10 +1089,11 @@ bool Scene::run_closing()
 
 	do //input validation 
 	{
+
+   
 		cout << "He asks if you want to read the book again." << endl;
 		cout << endl << "You say:" << endl << "1) You know, I think I've had enough adventure for one day." << endl << "2) Sure, but I have to tell you the most amazing story first." << endl;
 		getInput();
-		//final decision, closing statement :)
 		if (input == "1" || input == "you know, i think i've had enough adventure for one day") {
 			cout << "Your grandfather then gives you a grin and a wink as he pulls out another book." << endl;
 			cout << "He asks, \"How about a different adventure?\" he asks mysteriously." << endl;
