@@ -61,14 +61,14 @@ bool Scene::run_eels() {
     cout << "Then you realize you're falling. The wind rushes around you and you plunge into bitterly cold water." << endl;
     cout << "You panic! What should you do?" << endl;
 
-    cin >> input; // change to get input
+    getInput();
 
     if (input=="swim") {
         cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
     }
     else {
         cout << "You continue to sink in the dark water. What do you do?" << endl;
-        cin >> input;
+        getInput();
         if (input == "swim") {
             cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
         }
@@ -83,7 +83,7 @@ bool Scene::run_eels() {
     cout << "The princess! The eels circle around her. One begins to charge! \nWhat will you do?" << endl;
 
     cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
-	cin >> input;
+	getInput();
 
     if (input == "1" || input == "hope the eel goes away") {
         cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
@@ -103,7 +103,7 @@ bool Scene::run_eels() {
     cout << endl<< "But the peace doesn't last long. Another eel with blind hunger behind its foggy eyes charges at Buttercup." << endl;
     cout << "What do you do?" << endl;
     cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
-	cin >> input;
+	getInput();
 
     if (input == "1" || input == "hope the eel goes away") {
         cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
@@ -141,25 +141,24 @@ bool Scene::run_pit() {
     string input;
     int doorPosition = 0;
     int inigoPosition = 0; 
+    int difficulty = 13; // higher is harder, range of random numbers
 
     srand(time(0));
 
     while (doorPosition == 0) { // we don't want the door to be where he is!
-        doorPosition = rand() % 11 - 5; // set to random number between -5 and 5, positive is right, make sure not equal 0
+        doorPosition = rand() % difficulty - (difficulty/2); // set to random number between -6 and 6, positive is right, make sure not equal 0
     }
-    cout << "position: " << doorPosition << endl; // DEBUG
 
     // Storyline
     cout << "This time, you find yourself in a clearing. Soon, two men enter the clearing. You recognize them as Inigo and Fezzik and remember they are looking for the torture chamber. ";
     cout << "Inigo prays and trys to follow his sword. Clearly, it isn't working. You sigh and start to push Inigo towards the secret entrance." << endl;
-
-    // could add a choice here 
 
     // Instructions
     cout << "To move left type '<' and to move right type '>'. Type more characters afterwards to move farther! (e.g. '>>' moves two right)" << endl;
 
     while (inigoPosition != doorPosition) {
         cout << "Enter your push!" << endl;
+        cout << "<<"; 
         getline(cin, input);
         if (input.at(0) == '<') {
             cout << "You pushed left!" << endl;
@@ -184,7 +183,6 @@ bool Scene::run_pit() {
             cout << "Oh no, the door is to the left!" << endl;
         }
     }
-    // TODO: say if he went too far, how far it is
 	return CONTINUE;
 }
 
