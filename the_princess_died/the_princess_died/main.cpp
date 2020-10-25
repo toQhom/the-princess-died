@@ -42,7 +42,7 @@ int main() {
 
 		continueGame = game.run_opening(); //The Opening
 		transition();
-		/*
+		
 		if (continueGame) { //The Farm
 			continueGame = game.run_farm();
 			transition();
@@ -77,7 +77,7 @@ int main() {
 			continueGame = game.run_fire_swamp();
 			transition();
 		}
-		*/
+
 		if (continueGame) { //The Pit of Despain
 			continueGame = game.run_pit();
 			transition();
@@ -92,17 +92,17 @@ int main() {
 			continueGame = game.run_gate();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Castle Maze
 			continueGame = game.run_castle();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Stable
 			continueGame = game.run_stable();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Finale
 			continueGame = game.run_finale();
 			transition();

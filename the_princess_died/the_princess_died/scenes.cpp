@@ -420,7 +420,7 @@ bool Scene::run_eels() {
 	}
 	else {
 		cout << "You continue to sink in the dark water. What do you do?" << endl;
-		cin >> input;
+		getInput();
 		if (input == "swim") {
 			cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
 		}
@@ -457,7 +457,7 @@ bool Scene::run_eels() {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
 			wait = true;
 		}
-	}while(wait == true)
+	} while (wait);
 
 	//Second Eel
 	do{
@@ -476,13 +476,13 @@ bool Scene::run_eels() {
 		}
 		else if (input == "3" || input == "feed the second eel a banana") {
 			cout << "But what if you get hungry later?" << endl;
-			cout == false;
+			wait = false;
 		}
 		else {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-			wait == true;
+			wait = true;
 		}
-	}while(wait == true)
+	} while (wait);
 
 	cout << "But luckily a giant arm punches the eel from above and Buttercup is lifted safely into the boat." << endl;
 	cout << "The portal opens in the sky again and you are lifted through it." << endl;
@@ -1056,7 +1056,9 @@ bool Scene::run_pit() {
 		//loop for validation
 		do{
 			cout << "Enter your push!" << endl;
-			getInput();
+			cout << ">> ";
+			cin >> input;
+			cin.ignore(256, '\n');
 			if ((input.at(0) == 'l') || (input.at(0) == 'L')) {
 				cout << "You pushed left!" << endl;
 				inigoPosition = inigoPosition - input.length();
@@ -1071,7 +1073,7 @@ bool Scene::run_pit() {
 				cout << "That's not a push! Try L or R" << endl;
 				wait = true;
 			} //good input validation
-		}while(wait == true)
+		} while (wait);
 
 		
 		// Check current position
@@ -1087,23 +1089,8 @@ bool Scene::run_pit() {
 	}
 
 	//add a prompt describing the portal
-	cout << endl << "Another portal appears!" << endl;
-
-	responses.clear();
-	responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" } ;
-
-	do {
-		getInput();
-		if (find(responses.begin(), responses.end(), input) != responses.end()) {
-			cout << "Shutting your eyes, you enter the portal." << endl;
-			wait = false;
-		}
-		else {
-			cout << "Why would you ignore a portal!?" << endl;
-			wait = true;
-		}
-	} while (wait);
-
+	cout << endl << "Another portal appears and you enter it!" << endl;
+	cin.clear();
 
 	return CONTINUE;
 }
@@ -1205,7 +1192,7 @@ bool Scene::run_gate() {
 	getInput();
 	responses.clear();
 	//find the characters
-	responses = { "look for westley", "look for westley and others", "look for everyone", "walk around", "look around" };
+	responses = { "look for westley", "look for westley and others", "look for everyone", "walk around", "look around", "look" };
 	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
 		cout << "You can't get rid of all the guards on your own. Where are Westley and the others?" << endl;
 		getInput();
@@ -1438,7 +1425,7 @@ bool Scene::run_stable() {
 
 		if (input == "1" || input == "kick down the door") {
 			cout << "You successfully kick down the door, but not without the guards noticing." << endl;
-			cout << "The guards assume that Fezzik brok down the door and arrest him." << endl;
+			cout << "The guards assume that Fezzik broke down the door and arrest him." << endl;
 			cout << "Since Fezzik doesn't have any escape horses everyone else was caught as well, trapping you in the book." << endl;
 			return !CONTINUE; //ends the game
 		}
@@ -1524,7 +1511,7 @@ bool Scene::run_closing()
 {
 	//dialogue
 	cout << "You open your eyes to your bedroom and it seems plain after your long adventure." << endl;
-	cout << "Your grandfater walks into the room just as you close your book." << endl;
+	cout << "Your grandfather walks into the room just as you close your book." << endl;
 
 	do //input validation 
 	{
