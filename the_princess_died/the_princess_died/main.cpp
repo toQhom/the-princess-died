@@ -67,17 +67,17 @@ int main() {
 			continueGame = game.run_cliffs();
 			transition();
 		}
-		*/
+		
 		if (continueGame) { //The Battle of the Wits
 			continueGame = game.run_poison();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Fire Swamp
 			continueGame = game.run_fire_swamp();
 			transition();
 		}
-
+		*/
 		if (continueGame) { //The Pit of Despain
 			continueGame = game.run_pit();
 			transition();
