@@ -22,6 +22,9 @@ public:
 	bool run_eels();
 	bool run_cliffs();
 	bool run_poison();
+	void fire_geyser();
+	void quicksand();
+	void rous();
 	bool run_fire_swamp();
 	bool run_pit();
 	bool run_miracle_max();

@@ -11,19 +11,16 @@ bool Scene::run_opening() {
 	//set the scene
 	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get here soon to read you the story again." << endl;
 	getInput();
-
 	//makes them wait
 	for (int i = 0; i < 3; i++) {
 		cout << "Be patient. Stay in bed." << endl;
 		getInput();
 	}
-
 	//response for waiting
 	do {
 		cout << endl << "It doesn't look like your grandfather is coming. What do you do?" << endl;
 		cout << "You can: \n1) Go back to sleep \n2) Continue waiting \n3) Start reading the book anyways" << endl;
 		getInput();
-
 		if (input == "1" || input == "go back to sleep") {
 			cout << "You sleep the rest of the day. Enjoy your boring life." << endl;
 			return !CONTINUE; //ends the game
@@ -161,15 +158,15 @@ bool Scene::run_farm() {
 
 	//continue on with the game
 	responses.clear();
-	responses = { "enter portal", "go through portal", "use portal" };
+	responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" };
 	do {
 		getInput();
 		if (find(responses.begin(), responses.end(), input) != responses.end()) {
-			cout << "Shutting you eyes, you enter the portal." << endl;
+			cout << "Shutting your eyes, you enter the portal." << endl;
 			wait = false;
 		}
 		else {
-			cout << "So we're just going to ignore the portal?" << endl;
+			cout << "Why would you ignore a portal!?" << endl;
 			wait = true;
 		}
 	} while (wait);
@@ -296,7 +293,235 @@ bool Scene::run_eels() {
 
 bool Scene::run_cliffs() {
 	//set the scene
-	cout << endl << "";
+	cout << endl << "You step out of the portal, but the wind is still rushing around you." << endl;
+	cout << "You stand at the bottom of The Cliffs of Insanity." << endl;
+	cout << "Above you, Fezzik carries Vizzini, Inigo, and Buttercup up the cliff. The Man in Black is slowly gaining on them." << endl;
+	cout << "Yet, every so often, the rope seems to fall a bit more. \nThere's only one explanation: the rope must be slipping from the rock at the top." << endl;
+	cout << "To your left, you notice what appears to be an entrance to a secret passageway. \nYou wonder why they didn't just use that, it seems much easier than scaling the cliff." << endl;
+	getInput();
+
+	//enter the passage
+	responses.clear();
+	responses = { "enter passageway", "enter passage", "enter", "go in passageway", "go in passage", "go through entrance", "use entrance", "enter secret passage", "enter secret passageway", "go in secret passage", "go in secret passageway" };
+	if (find(responses.begin(), responses.end(), input) != responses.end()) {
+		cout << "You enter the passageway." << endl;
+	}
+	else if (input == "cheat") {
+		cout << "The number 2321 comes to mind. \nYou enter the passageway and hurry up the steps, sure of yourself.";
+	}
+	else {
+		while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+			cout << "Is now the time for that? There are lives at stake here." << endl;
+			getInput();
+		}
+	}
+
+	int room = 1; //int to move through the passageway with	
+
+	//the passageway maze
+	while (room < 10) {
+		if (room == 1) { //ROOM 1
+			cout << endl << "It is dim in this passageway, but there is just enough light to see three paths ahead of you" << endl;
+			cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") { //good
+				room = room + 2;
+			}
+			else if (input == "3") { //bad
+				room = room + 1;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 2) { //ROOM 2
+			cout << endl << "You are currently 1 flight up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 3) { //ROOM 3
+			cout << endl << "You are currently 1 flight up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 2;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") { //bad
+				room = room + 1;
+			}
+			else if (input == "3") { //good
+				room = room + 3;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 4) { //ROOM 4
+			cout << endl << "You are currently 2 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //bad
+				room = room + 1;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "3") {//dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 5) { //ROOM 5
+			cout << endl << "You are currently 3 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 6) { //ROOM 6
+			cout << endl << "You are currently 2 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 3;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") {
+				room = room + 1;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 7) { //ROOM 7
+			cout << endl << "You are currently 3 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //good
+				room = room + 3;
+			}
+			else if (input == "2") { //bad
+				room = room + 2;
+			}
+			else if (input == "3") { //bad
+				room = room + 1;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 8) { //ROOM 8
+			cout << endl << "You are currently 4 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 9) { //ROOM 9
+			cout << endl << "You are currently 4 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 2;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+	}
+
+	//escaping the maze
+	cout << "Finally! You make it out of the passageway and find yourself at the top of the cliff." << endl;
+	cout << "You have arrived just in time to resecure the rope to the rock." << endl;
+
+	//continuing the game
+	cout << endl << "As Fezzik reaches the top of the cliff, you feel a familiar wind and turn around to see a portal behind you." << endl;
+	cout << "You walk through the portal as Vizzini gets to work cutting through the rope you just fixed." << endl;
+
 
 	return CONTINUE;
 }
@@ -370,16 +595,33 @@ bool Scene::run_poison() {
 	return CONTINUE;
 }
 
-//checked all good :)
-bool Scene::run_fire_swamp() {
+
+
+void fire_geyser() {
+
+}
+void quicksand() {
+
+}
+void rous() {
+
+}
+
+//checked for input validation
+bool Scene::run_fire_swamp()
+{
+	//simple output
 	cout << endl << "As the pressure returns to normal you begin to get your bearings." << endl;
 	cout << "You notice that you are now in The Fire Swamp." << endl;
 	cout << "In front of you there are three paths. They go left, right, and forward." << endl;
+
+	//once I add actual options, add input validation HERE!!!
 	getInput();//if I code 3 options this will branch into an if statement, but for now they all three go to the same story.
 
 	//Left: Rats, Right: Quicksand, Forward: Fire, if they choose backwards they run into shrek 
 	//implement the do while loop for this section that way it checks the inputs, within each have a sub do-while loop for each direction
 	//implement directionality and other story options at a later time
+
 	//start with fire geyser part
 	cout << endl << "As you walk " << input << " you see Buttercup and Westley ahead of you." << endl;
 	cout << "You run to catch up, only to be stopped by a fire geyser!" << endl;
@@ -425,16 +667,19 @@ bool Scene::run_fire_swamp() {
 					cout << endl << "Westley and Buttercup are able to navigate the woods safely." << endl;
 					cout << "When they see Prince Humperdinck a portal appears beside you." << endl;
 					responses.clear();
-					responses = { "enter portal", "go through portal", "use portal" }; //continue on with the game
-					do {
+
+					responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" }; //continue on with the game
+					do //third input validation loop
+					{
 						getInput();
 						if (find(responses.begin(), responses.end(), input) != responses.end()) {
-							cout << "Shutting you eyes, you enter the portal." << endl;
-							wait = false;
+							cout << "Shutting your eyes, you enter the portal." << endl;
+							wait = false; //correct option, sends out of both do while loops
 						}
 						else {
-							cout << "So we're just going to ignore the portal?" << endl;
-							wait = true;
+							cout << "Why would you ignore a portal!?" << endl;
+							wait = true; //makes you go through third input validation loop, until you go through the portal
+
 						}
 					} while (wait);
 
@@ -460,7 +705,9 @@ bool Scene::run_fire_swamp() {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
 			wait = true;
 		}
-	} while (wait);
+
+	} while (wait); //if the input was valid then continue
+
 
 
 	return CONTINUE;
@@ -470,6 +717,8 @@ bool Scene::run_fire_swamp() {
 
 //input validation checked
 bool Scene::run_pit() {
+
+	string input;
 
 	int doorPosition = 0;
 	int inigoPosition = 0;
@@ -502,7 +751,9 @@ bool Scene::run_pit() {
 		}
 		else {
 			cout << "That's not a push! Try < or >" << endl;
-		}//this is the input validation
+
+		} //good input validation
+
 		// Check current position
 		if (inigoPosition == doorPosition) {
 			cout << "Whew, he made it!" << endl;
@@ -515,16 +766,20 @@ bool Scene::run_pit() {
 		}
 	}
 
-	responses.clear();
-	responses = { "enter portal", "go through portal", "use portal" }; //continue on with the game
+	//add a prompt describing the portal
+	cout << endl << "Another portal appears!" << endl;
+
+	responses.clear(); //broken?
+	responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" };
+
 	do {
 		getInput();
 		if (find(responses.begin(), responses.end(), input) != responses.end()) {
-			cout << "Shutting you eyes, you enter the portal." << endl;
+			cout << "Shutting your eyes, you enter the portal." << endl;
 			wait = false;
 		}
 		else {
-			cout << "So we're just going to ignore the portal?" << endl;
+			cout << "Why would you ignore a portal!?" << endl;
 			wait = true;
 		}
 	} while (wait);
@@ -544,14 +799,18 @@ bool Scene::run_miracle_max() {
 	responses.clear();
 	responses = { "look around", "look", "walk around" };
 
+
 	//checks for user to walk around the room
-	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+	while (!(find(responses.begin(), responses.end(), input) != responses.end()))
+	{
 		cout << "How will you do that without looking at what's around you?" << endl;
 		getInput();
 	}
-	if (find(responses.begin(), responses.end(), input) != responses.end()) {
+	if (find(responses.begin(), responses.end(), input) != responses.end())
+	{
 		cout << "You look around the room and see papers scattered everywhere with scribbles all over them. \nYou find one that says \"Ingredients For Life Pill\". \nYou know this is what you need, however it seems to be written in some sort of code." << endl;
 	}
+
 
 
 	//start of recipe prompt
@@ -571,9 +830,11 @@ bool Scene::run_miracle_max() {
 		cout << endl;
 	}
 
+
 	//2nd ingredient for recipe
 	cout << "What do you think ingredient 2 is? (beaelly)" << endl;
 	getInput();
+
 
 	//checks for eyeball
 	while (input != "eyeball") {
@@ -650,7 +911,10 @@ bool Scene::run_gate() {
 	if (find(responses.begin(), responses.end(), input) != responses.end()) {
 		cout << "Congrats! You found the cloak hung up in a tree. " << endl;
 	}
-	do//input vlidation! 
+
+
+	do //added input validation 
+
 	{
 		//How is this cloak gonna get down
 		cout << endl << "How will you ever get this cloak down?" << endl;
@@ -675,7 +939,7 @@ bool Scene::run_gate() {
 		else if (input == "3" || input == "hope for a gust of wind") {
 			cout << "All of a sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind." << endl;
 			cout << "You bring back the cloak to the gang and they are able to scare away all the guards." << endl;
-			wait = false
+			wait = false;
 		}
 		else {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
@@ -722,7 +986,9 @@ bool Scene::run_stable() {
 		getInput();
 	}
 
-	do {
+
+	do //input validation :)
+	{
 		//now we have to get in the stable to let the horses out
 		cout << endl << "You go to the stables and notice that there is a lock." << endl;
 		cout << "You can: \n1) Kick down the door \n2) Pick the lock \n3) Look for a second entrance" << endl;
@@ -753,7 +1019,10 @@ bool Scene::run_stable() {
 
 			wait = false;
 		}
-		else if (input == "3" || input == "look for a second entrance") {
+
+		else if (input == "3" || input == "look for a second entrance") //brings you in a loop around the stable
+		{
+
 			cout << "You circle the stable, there is no second entrance." << endl;
 			wait = true;
 		}
@@ -810,12 +1079,18 @@ bool Scene::run_finale() {
 	return CONTINUE;
 }
 
-//checked for input validation
-bool Scene::run_closing() {
+
+//checked input validation
+bool Scene::run_closing()
+{
+	//dialogue
 	cout << "You open your eyes to your bedroom and it seems plain after your long adventure." << endl;
 	cout << "Your grandfater walks into the room just as you close your book." << endl;
-	
-	do {
+
+	do //input validation 
+	{
+
+   
 		cout << "He asks if you want to read the book again." << endl;
 		cout << endl << "You say:" << endl << "1) You know, I think I've had enough adventure for one day." << endl << "2) Sure, but I have to tell you the most amazing story first." << endl;
 		getInput();
