@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <stdlib.h>
 #include "scenes.h"
 
 using namespace std;
@@ -19,13 +20,14 @@ int main() {
 	string input;
 
 	do {
-		cout << "Welcome to The Princess Died Game" << endl;
+		system("CLS");
+		cout <<  "Welcome to The Princess Died Game" << endl;
 		do {
 			cout << endl << "To play this game, type what you want to do and press enter!" << endl;
 			cout << "Try it out, type \"Say Hello\"" << endl;
 			cout << ">> ";
 			getline(cin, input);
-			if (input == "Say Hello" || input == "say hello" || input == "Say hello" || input == "say Hello") {
+			if (input == "Say Hello" || input == "say hello" || input == "Say hello" || input == "say Hello" || input == "b") { //DEBUG
 				cout << "Well, hello to you too!" << endl;
 				successfulInput = true;
 			}
@@ -37,15 +39,15 @@ int main() {
 
 
 		cout << "Entering the game. Buckle your seatbelt..." << endl << endl;
-		transition();
 
 		continueGame = game.run_opening(); //The Opening
+		transition();
 		
 		if (continueGame) { //The Farm
 			continueGame = game.run_farm();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Pirate Ship
 			continueGame = game.run_pirate_ship();
 			transition();
@@ -55,22 +57,22 @@ int main() {
 			continueGame = game.run_horse_ride();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Eels
 			continueGame = game.run_eels();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Cliffs of Insanity
 			continueGame = game.run_cliffs();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Battle of the Wits
 			continueGame = game.run_poison();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Fire Swamp
 			continueGame = game.run_fire_swamp();
 			transition();
@@ -90,17 +92,17 @@ int main() {
 			continueGame = game.run_gate();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Castle Maze
 			continueGame = game.run_castle();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Stable
 			continueGame = game.run_stable();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Finale
 			continueGame = game.run_finale();
 			transition();
@@ -129,7 +131,7 @@ int main() {
 				cout << "I don't know what that means. Please try again." << endl << endl;
 				successfulInput = false;
 			}
-		} while (!successfulInput)
+		} while (!successfulInput);
 
 	} while (playOn);
 
