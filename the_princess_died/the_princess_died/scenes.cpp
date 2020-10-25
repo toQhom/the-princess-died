@@ -4,7 +4,7 @@ void Scene::getInput() {
 	cout << ">> ";
 	getline(cin, input);
 	transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {return tolower(c); });
-	
+
 }
 
 bool Scene::run_opening() {
@@ -12,19 +12,16 @@ bool Scene::run_opening() {
 	//set the scene
 	cout << "You wake up. You still feel sick from yesterday." << endl << "You hope your grandfather will get here soon to read you the story again." << endl;
 	getInput();
-
 	//makes them wait
 	for (int i = 0; i < 3; i++) {
 		cout << "Be patient. Stay in bed." << endl;
 		getInput();
 	}
-
 	//response for waiting
 	do {
 		cout << endl << "It doesn't look like your grandfather is coming. What do you do?" << endl;
 		cout << "You can: \n1) Go back to sleep \n2) Continue waiting \n3) Start reading the book anyways" << endl;
 		getInput();
-
 		if (input == "1" || input == "go back to sleep") {
 			cout << "You sleep the rest of the day. Enjoy your boring life." << endl;
 			return !CONTINUE; //ends the game
@@ -64,7 +61,7 @@ bool Scene::run_farm() {
 			getInput();
 		}
 	}
-	
+
 	//following the voice
 	do {
 		cout << endl << "Where are you going to go?" << endl << "1) Follow the voice" << endl << "2) Nowhere" << endl;
@@ -98,7 +95,7 @@ bool Scene::run_farm() {
 
 	//initial reaction to the pitcher scene
 	do {
-		cout << endl <<"What do you do?" << endl << "1) Talk to Buttercup" << endl << "2) Tap Buttercup on the shoulder" << endl << "3) Leave the shack" << endl << "4) Give up" << endl;
+		cout << endl << "What do you do?" << endl << "1) Talk to Buttercup" << endl << "2) Tap Buttercup on the shoulder" << endl << "3) Leave the shack" << endl << "4) Give up" << endl;
 		getInput();
 		if (input == "1" || input == "talk to buttercup") {
 			cout << "You call out to Buttercup, but she makes no indication of hearing you." << endl;
@@ -162,7 +159,7 @@ bool Scene::run_farm() {
 
 	//continue on with the game
 	responses.clear();
-	responses = { "enter portal", "go through portal", "use portal", "walk", "move" };
+	responses = { "enter portal", "go through portal", "use portal" };
 	do {
 		getInput();
 		if (find(responses.begin(), responses.end(), input) != responses.end()) {
@@ -180,41 +177,41 @@ bool Scene::run_farm() {
 bool Scene::run_pirate_ship() {
 	cout << endl << "When you step out of the portal and look around you see that you are on a pirate ship with the Dread Pirate Roberts and Westley. \nAs you stand there you see Roberts kill all the members aboard but his crew and Westley. \nHe starts towards Westley, sword in hand, and immediately you know that you need to get the sword away from Roberts." << endl;
 	cout << endl;
-	do{
-	cout << "With your skills of slight of hand you think you can \n1) Replace the sword with a banana you found in a pocket \n2) Smack his hand holding the sword \n3) Just stand there and watch \n4) Yell and try to distract Roberts." << endl;
-	getInput();
+	do {
+		cout << "With your skills of slight of hand you think you can \n1) Replace the sword with a banana you found in a pocket \n2) Smack his hand holding the sword \n3) Just stand there and watch \n4) Yell and try to distract Roberts." << endl;
+		getInput();
 
-	if(input == "1" || input == "replace the sword with a banana you found in a pocket"){
-		cout << "You are successful in keeping Westley alive, you hear the Dread Pirate Roberts say \"I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. \nWhen you look around you see a portal open next to you and step through." << endl;
-		cout << endl;
-		wait = false;
-	}
+		if (input == "1" || input == "replace the sword with a banana you found in a pocket") {
+			cout << "You are successful in keeping Westley alive, you hear the Dread Pirate Roberts say \"I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. \nWhen you look around you see a portal open next to you and step through." << endl;
+			cout << endl;
+			wait = false;
+		}
 
-	else if(input == "2" || input == "smack his hand holding the sword"){
-		cout << "Great job you were able to make the Dread Pirate Roberts drop the sword, but he immediately picks it back up to kill Westley" << endl;
-		cout << "Now you are stuck here and won't be able to finish the story" << endl;
-		cout << endl;
-		return !CONTINUE;
+		else if (input == "2" || input == "smack his hand holding the sword") {
+			cout << "Great job you were able to make the Dread Pirate Roberts drop the sword, but he immediately picks it back up to kill Westley" << endl;
+			cout << "Now you are stuck here and won't be able to finish the story" << endl;
+			cout << endl;
+			return !CONTINUE;
 
-	}
+		}
 
-	else if (input == "3" || input == "just stand there and watch"){
-		cout << "You do nothing to stop Westley from dying and are now stuck here forever. Remember kids to never be a bystander" << endl;
-		cout << endl;
-		return !CONTINUE;
-		
-	}
+		else if (input == "3" || input == "just stand there and watch") {
+			cout << "You do nothing to stop Westley from dying and are now stuck here forever. Remember kids to never be a bystander" << endl;
+			cout << endl;
+			return !CONTINUE;
 
-	else if (input == "4" || input == "yell and try to distract roberts."){
-		cout << "You watch as Westley gets killed and suddenly remember that the characters cannot hear you when you yell. You face palm as you realize that you are now stuck in the book because it can't end." << endl;
-		cout << endl;
-		return !CONTINUE;
-	}
-	else{
-		cout << "That doesn't sound quite right, try again" << endl;
-		cout << endl;
-		wait = true;
-	}
+		}
+
+		else if (input == "4" || input == "yell and try to distract roberts.") {
+			cout << "You watch as Westley gets killed and suddenly remember that the characters cannot hear you when you yell. You face palm as you realize that you are now stuck in the book because it can't end." << endl;
+			cout << endl;
+			return !CONTINUE;
+		}
+		else {
+			cout << "That doesn't sound quite right, try again" << endl;
+			cout << endl;
+			wait = true;
+		}
 
 	} while (wait);//end of the dowhile loop
 
@@ -226,319 +223,92 @@ bool Scene::run_horse_ride() {
 }
 
 bool Scene::run_eels() {
-    cout << "It takes you a minute to realize you have left the portal because everything is still dark." << endl;
-    cout << "Then you realize you're falling. The wind rushes around you and you plunge into bitterly cold water." << endl;
-    cout << "You panic! What should you do?" << endl;
+	cout << "It takes you a minute to realize you have left the portal because everything is still dark." << endl;
+	cout << "Then you realize you're falling. The wind rushes around you and you plunge into bitterly cold water." << endl;
+	cout << "You panic! What should you do?" << endl;
 
-    cin >> input; // change to get input
+	cin >> input; // change to get input
 
-    if (input=="swim") {
-        cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
-    }
-    else {
-        cout << "You continue to sink in the dark water. What do you do?" << endl;
-        cin >> input;
-        if (input == "swim") {
-            cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
-        }
-        else {
-            cout << "The waters close above and you hear a shriek getting closer." << endl;
-            return 0; //!continue;
-        }
-    }
+	if (input == "swim") {
+		cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
+	}
+	else {
+		cout << "You continue to sink in the dark water. What do you do?" << endl;
+		cin >> input;
+		if (input == "swim") {
+			cout << "You begin to swim, thanking heaven for that grumpy swim teacher you had in 5th grade." << endl;
+		}
+		else {
+			cout << "The waters close above and you hear a shriek getting closer." << endl;
+			return 0; //!continue;
+		}
+	}
 
 	cout << "Suddenly, a shriek cuts through the night. " << endl;
 	cout << "\nThese are eel infested waters!" << endl;
-    cout << "Before you can process the danger, the stillness of the night is broken again, this time with a loud splash." << endl;
-    cout << "Buttercup! The eels circle around her. One begins to charge! \nWhat will you do?" << endl;
+	cout << "Before you can process the danger, the stillness of the night is broken again, this time with a loud splash." << endl;
+	cout << "Buttercup! The eels circle around her. One begins to charge! \nWhat will you do?" << endl;
 
-    cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
+	cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
 	cin >> input;
 
-    if (input == "1" || input == "hope the eel goes away") {
-        cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
-        return !CONTINUE; //ends the game
-    }
-    else if (input == "2" || input == "try to strangle it") {
-        cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
-        return !CONTINUE;
-    }
-    else if (input == "3" || input == "feed the eel a banana") {
-        cout << "With the sweet banana between its needlelike teeth, the slimy creature nuzzles up beside you. \nYou seem to have made a friend." << endl;
-    }
-    else {
-        cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-    }
-	
-    cout << endl<< "But the peace doesn't last long. Another eel with blind hunger behind its foggy eyes charges at Buttercup." << endl;
-    cout << "What do you do?" << endl;
-    cout << "You can: \n1) Hope the second eel goes away \n2) Try to strangle it \n3) Feed the second eel a banana" << endl;
+	if (input == "1" || input == "hope the eel goes away") {
+		cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
+		return !CONTINUE; //ends the game
+	}
+	else if (input == "2" || input == "try to strangle it") {
+		cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
+		return !CONTINUE;
+	}
+	else if (input == "3" || input == "feed the eel a banana") {
+		cout << "With the sweet banana between its needlelike teeth, the slimy creature nuzzles up beside you. \nYou seem to have made a friend." << endl;
+	}
+	else {
+		cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+	}
+
+	cout << endl << "But the peace doesn't last long. Another eel with blind hunger behind its foggy eyes charges at Buttercup." << endl;
+	cout << "What do you do?" << endl;
+	cout << "You can: \n1) Hope the second eel goes away \n2) Try to strangle it \n3) Feed the second eel a banana" << endl;
 	cin >> input;
 
-    if (input == "1" || input == "hope the second eel goes away") {
-        cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
-        return !CONTINUE; //ends the game
-    }
-    else if (input == "2" || input == "try to strangle it") {
-        cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
-        return !CONTINUE;
-    }
-    else if (input == "3" || input == "feed the second eel a banana") {
-        cout << "But what if you get hungry later?" << endl;
-    }
-    else {
-        cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-    }
+	if (input == "1" || input == "hope the second eel goes away") {
+		cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
+		return !CONTINUE; //ends the game
+	}
+	else if (input == "2" || input == "try to strangle it") {
+		cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
+		return !CONTINUE;
+	}
+	else if (input == "3" || input == "feed the second eel a banana") {
+		cout << "But what if you get hungry later?" << endl;
+	}
+	else {
+		cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+	}
 
-    cout << "But luckily a giant arm punches the eel from above and Buttercup is lifted safely into the boat." << endl;
-    cout << "The portal opens in the sky again and you are lifted through it." << endl;
+	cout << "But luckily a giant arm punches the eel from above and Buttercup is lifted safely into the boat." << endl;
+	cout << "The portal opens in the sky again and you are lifted through it." << endl;
 	return CONTINUE; //continues the game
 }
 
 bool Scene::run_cliffs() {
 	//set the scene
-	cout << endl << "You step out of the portal, but the wind is still rushing around you." << endl;
-	cout << "You stand at the bottom of The Cliffs of Insanity." << endl;
-	cout << "Above you, Fezzik carries Vizzini, Inigo, and Buttercup up the cliff. The Man in Black is slowly gaining on them." << endl;
-	cout << "Yet, every so often, the rope seems to fall a bit more. \nThere's only one explanation: the rope must be slipping from the rock at the top." << endl;
-	cout << "To your left, you notice what appears to be an entrance to a secret passageway. \nYou wonder why they didn't just use that, it seems much easier than scaling the cliff." << endl;
-	getInput();
-
-	//enter the passage
-	responses.clear();
-	responses = { "enter passageway", "enter passage", "enter", "go in passageway", "go in passage", "go through entrance", "use entrance", "enter secret passage", "enter secret passageway", "go in secret passage", "go in secret passageway" };
-	if (find(responses.begin(), responses.end(), input) != responses.end()) {
-		cout << "You enter the passageway." << endl;
-	}
-	else if (input == "cheat") {
-		cout << "The number 2321 comes to mind. \nYou enter the passageway and hurry up the steps, sure of yourself.";
-	}
-	else {
-		while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
-			cout << "Is now the time for that? There are lives at stake here." << endl;
-			getInput();
-		}
-	}
-	
-	int room = 1; //int to move through the passageway with	
-
-	//the passageway maze
-	while (room < 10) {
-		if (room == 1) { //ROOM 1
-			cout << endl << "It is dim in this passageway, but there is just enough light to see three paths ahead of you" << endl;
-			cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "1") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else if (input == "2") { //good
-				room = room + 2;
-			}
-			else if (input == "3") { //bad
-				room = room + 1;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-		else if (room == 2) { //ROOM 2
-			cout << endl << "You are currently 1 flight up." << endl;
-			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "0") { //back
-				room = room - 1;
-			}
-			else if (input == "1") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else if (input == "2") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else if (input == "3") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-		else if (room == 3) { //ROOM 3
-			cout << endl << "You are currently 1 flight up." << endl;
-			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "0") { //back
-				room = room - 2;
-			}
-			else if (input == "1") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else if (input == "2") { //bad
-				room = room + 1;
-			}
-			else if (input == "3") { //good
-				room = room + 3;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-		else if (room == 4) { //ROOM 4
-			cout << endl << "You are currently 2 flights up." << endl;
-			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "0") { //back
-				room = room - 1;
-			}
-			else if (input == "1") { //bad
-				room = room + 1;
-			}
-			else if (input == "2") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else if (input == "3") {//dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-		else if (room == 5) { //ROOM 5
-			cout << endl << "You are currently 3 flights up." << endl;
-			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "0") { //back
-				room = room - 1;
-			}
-			else if (input == "1") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else if (input == "2") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else if (input == "3") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-		else if (room == 6) { //ROOM 6
-			cout << endl << "You are currently 2 flights up." << endl;
-			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "0") { //back
-				room = room - 3;
-			}
-			else if (input == "1") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else if (input == "2") {
-				room = room + 1;
-			}
-			else if (input == "3") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-		else if (room == 7) { //ROOM 7
-			cout << endl << "You are currently 3 flights up." << endl;
-			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "0") { //back
-				room = room - 1;
-			}
-			else if (input == "1") { //good
-				room = room + 3;
-			}
-			else if (input == "2") { //bad
-				room = room + 2;
-			}
-			else if (input == "3") { //bad
-				room = room + 1;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-		else if (room == 8) { //ROOM 8
-			cout << endl << "You are currently 4 flights up." << endl;
-			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "0") { //back
-				room = room - 1;
-			}
-			else if (input == "1") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-				cout << "It's cold up here. You're so close to the top." << endl;
-			}
-			else if (input == "2") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-				cout << "It's cold up here. You're so close to the top." << endl;
-			}
-			else if (input == "3") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-				cout << "It's cold up here. You're so close to the top." << endl;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-		else if (room == 9) { //ROOM 9
-			cout << endl << "You are currently 4 flights up." << endl;
-			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			getInput();
-			if (input == "0") { //back
-				room = room - 2;
-			}
-			else if (input == "1") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-				cout << "It's cold up here. You're so close to the top." << endl;
-			}
-			else if (input == "2") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-				cout << "It's cold up here. You're so close to the top." << endl;
-			}
-			else if (input == "3") { //dead
-				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
-				cout << "It's cold up here. You're so close to the top." << endl;
-			}
-			else {
-				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
-				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
-			}
-		}
-	}
-
-	//escaping the maze
-	cout << "Finally! You make it out of the passageway and find yourself at the top of the cliff." << endl;
-	cout << "You have arrived just in time to resecure the rope to the rock." << endl;
-
-	//continuing the game
-	cout << endl << "As Fezzik reaches the top of the cliff, you feel a familiar wind and turn around to see a portal behind you" << endl;
-	cout << "You walk through the portal as Vizzini gets to work cutting through the rope you just fixed." << endl;
+	cout << endl << "";
 
 	return CONTINUE;
-} 
+}
 
 
 
 bool Scene::run_poison() {
 	//Vizzini and Man in Black are about to do a battle of the wits. Before Vizinni will agree to 
-	//doing the poison challenge you must beat him in a riddle.
+	//doing the poison challange you must beat him in a riddle.
 	cout << "You exit the portal and see Vizzini holding a knife to Buttercup's throat as the Man in Black approaches." << endl;
 	cout << "They begin to talk and agree to a battle of the wits." << endl;
-	cout << "The Man in Black draws some poison from his cloak and begins to propose a deadly competition when Vizzini interrupts."<< endl;
+	cout << "The Man in Black draws some poison from his cloak and begins to propose a deadly competition when Vizzini interrupts." << endl;
 	cout << "\"Before I risk my life I have to know I am facing a worthy opponent, you must solve my riddle first.\"" << endl;
-	do{
+	do {
 		cout << "\n\"The riddle is: 'What starts with an e and ends with an e and has one letter in it?'\"" << endl;
 		cout << "You can see the Man in Black struggling, you can: \n1) Watch him struggle \n2) Try an interpretive dance\n3) Whisper the answer" << endl;
 		getInput();
@@ -588,7 +358,7 @@ bool Scene::run_poison() {
 			}
 			wait = false;
 		}
-		else 
+		else
 		{
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
 			wait = true;
@@ -599,23 +369,31 @@ bool Scene::run_poison() {
 }
 
 
-bool Scene::run_fire_swamp() {
+
+//checked for input validation 
+bool Scene::run_fire_swamp()
+{
+	//simple output
 	cout << endl << "As the pressure returns to normal you begin to get your bearings." << endl;
 	cout << "You notice that you are now in The Fire Swamp." << endl;
 	cout << "In front of you there are three paths. They go left, right, and forward." << endl;
+
+	//once I add actual options, add input validation HERE!!!
 	getInput();//if I code 3 options this will branch into an if statement, but for now they all three go to the same story.
 
 	//Left: Rats, Right: Quicksand, Forward: Fire, if they choose backwards they run into shrek 
 	//implement the do while loop for this section that way it checks the inputs, within each have a sub do-while loop for each direction
 	//implement directionality and other story options at a later time
+
 	//start with fire geyser part
 	cout << endl << "As you walk " << input << " you see Buttercup and Westley ahead of you." << endl;
 	cout << "You run to catch up, only to be stopped by a fire geyser!" << endl;
 	cout << "The weird thing is that you didn't hear the popping sound that your Grandpa mentioned yesterday." << endl;
-	
+
 	//This loop allows you to 
-	do 
+	do //input validation loop 1
 	{
+		//display options
 		cout << endl << "What do you do: \n1) Run to Buttercup and Westley screaming \n2) Observe the geyser\n3) Grab another banana from your pocket and stick it in the geyser" << endl;
 		getInput();
 		//if statement for options
@@ -628,9 +406,10 @@ bool Scene::run_fire_swamp() {
 		else if (input == "2" || input == "observe the geyser")//observe and notice that a portal opens up moments before, allow choice to warn 
 		{
 			cout << "As you scrutinize the geyser that just exploded you notice a glow coming from the ground just moments before it erupts." << endl;
-			
+
 			//second do while loop that lets you alert buttercup and westley
-			do {
+			do //second input validation loop
+			{
 				cout << endl << "Maybe you can warn Westley and Buttercup if only you could get their attention!" << endl;
 				cout << "How do you want to alert them of when a fire geyser is about to erupt? \n1) Sing an accapella rendition of La Bamba." << endl;
 				cout << "2) Throw the banana at Buttercup and Westley. \n3) Pick up rocks and hit them together when you see a glow." << endl;
@@ -648,98 +427,106 @@ bool Scene::run_fire_swamp() {
 					cout << "The last thing you see is a banana colliding with your face." << endl;
 					return !CONTINUE; //ends game
 				}
-				else if (input == "3" || input == "pick up rocks and hit them together when you see a glow") {
+				else if (input == "3" || input == "pick up rocks and hit them together when you see a glow") //correct option, so ti should end iwth wait being false 
+				{
+					//decision loop to try to alert about fire geyser
 					cout << "Every time you see a glow you make a noise with two rocks, alerting Westley and Buttercup." << endl;
 					cout << endl << "Westley and Buttercup are able to navigate the woods safely." << endl;
 					cout << "When they see Prince Humperdinck a portal appears beside you." << endl;
 					responses.clear();
 					responses = { "enter portal", "go through portal", "use portal" }; //continue on with the game
-					do {
+					do //third input validation loop
+					{
 						getInput();
 						if (find(responses.begin(), responses.end(), input) != responses.end()) {
 							cout << "Shutting you eyes, you enter the portal." << endl;
-							wait = false;
+							wait = false; //correct option, sends out of both do while loops
 						}
 						else {
 							cout << "So we're just going to ignore the portal?" << endl;
-							wait = true;
+							wait = true; //makes you go through third input validation loop, until you go through the portal
 						}
-					} while (wait);
+					} while (wait); //if it is false then move on
 
-					wait = false;
+					wait = false; //correct option so set to false
 				}
-				else {
+				else //actual input validation to make you try again if you got it wrong
+				{
 					cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-					wait = true;
+					wait = true; //true to make it repeat
 				}
-			} while (wait);
+			} while (wait);//close of second input validation loop
 
-
+			//wait should already be true to get here
 		}
 		else if (input == "3" || input == "grab another banana from your pocket and stick it in the geyser") //the banana explodes into lava banana, which tastes great but kills you!
 		{
 			cout << "As soon as you put the banana where the geyser was you see a portal open below the banana." << endl;
 			cout << "You step back just as the geyser explodes lava hot banana all over you!" << endl;
 			return !CONTINUE; //ends game, you are dead
-		
+
 		}
-		else 
+		else
 		{
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-			wait = true;
+			wait = true; //make this whole loop repeat if the input isn't one of the options
 		}
-	} while (wait);
-		
-		
+	} while (wait); //if the input was valid then continue
+
+
 	return CONTINUE;
 }
 
 
+
+//checked for input validation
 bool Scene::run_pit() {
-    string input;
-    int doorPosition = 0;
-    int inigoPosition = 0; 
+	string input;
+	int doorPosition = 0;
+	int inigoPosition = 0;
 
-    srand(time(0));
+	srand(time(0));
 
-    while (doorPosition == 0) { // we don't want the door to be where he is!
-        doorPosition = rand() % 11 - 5; // set to random number between -5 and 5, positive is right, make sure not equal 0
-    }
+	while (doorPosition == 0) { // we don't want the door to be where he is!
+		doorPosition = rand() % 11 - 5; // set to random number between -5 and 5, positive is right, make sure not equal 0
+	}
 
-    // Storyline
-    cout << endl << "This time, you find yourself in a clearing. Soon, two men enter the clearing. \nYou recognize them as Inigo and Fezzik and remember they are looking for The Pit of Despair. " << endl;
-    cout << "Inigo prays and trys to follow his sword. Clearly, it isn't working. \nYou sigh and start to push Inigo towards the secret entrance." << endl;
+	// Storyline
+	cout << endl << "This time, you find yourself in a clearing. Soon, two men enter the clearing. \nYou recognize them as Inigo and Fezzik and remember they are looking for The Pit of Despair. " << endl;
+	cout << "Inigo prays and trys to follow his sword. Clearly, it isn't working. \nYou sigh and start to push Inigo towards the secret entrance." << endl;
 
-    // could add a choice here 
+	// could add a choice here 
 
-    // Instructions
-    cout << endl << "To move left type '<' and to move right type '>'. Type more characters afterwards to move farther! (e.g. '>>' moves two right)" << endl;
+	// Instructions
+	cout << endl << "To move left type '<' and to move right type '>'. Type more characters afterwards to move farther! (e.g. '>>' moves two right)" << endl;
 
-    while (inigoPosition != doorPosition) {
-        cout << "Enter your push!" << endl;
-        getline(cin, input);
-        if (input.at(0) == '<') {
-            cout << "You pushed left!" << endl;
-            inigoPosition = inigoPosition - input.length();
-        }
-        else if (input.at(0) == '>') {
-            cout << "You pushed right!" << endl;
-            inigoPosition = inigoPosition + input.length();
-        }
-        else { 
-            cout << "That's not a push! Try < or >" << endl;
-        }
-        // Check current position
-        if (inigoPosition == doorPosition) {
-            cout << "Whew, he made it!" << endl;
-        }
-        else if (inigoPosition < doorPosition) {
-            cout << "Oh no, the door is to the right!" << endl;
-        }
-        else {
-            cout << "Oh no, the door is to the left!" << endl;
-        }
-    }
+	while (inigoPosition != doorPosition) {
+		cout << "Enter your push!" << endl;
+		getline(cin, input);
+		if (input.at(0) == '<') {
+			cout << "You pushed left!" << endl;
+			inigoPosition = inigoPosition - input.length();
+		}
+		else if (input.at(0) == '>') {
+			cout << "You pushed right!" << endl;
+			inigoPosition = inigoPosition + input.length();
+		}
+		else {
+			cout << "That's not a push! Try < or >" << endl;
+		} //good input validation
+		// Check current position
+		if (inigoPosition == doorPosition) {
+			cout << "Whew, he made it!" << endl;
+		}
+		else if (inigoPosition < doorPosition) {
+			cout << "Oh no, the door is to the right!" << endl;
+		}
+		else {
+			cout << "Oh no, the door is to the left!" << endl;
+		}
+	}
+	//add a prompt describing the portal
+	cout << "Another portal appears!" << endl;
 	responses.clear();
 	responses = { "enter portal", "go through portal", "use portal" }; //continue on with the game
 	do {
@@ -751,85 +538,89 @@ bool Scene::run_pit() {
 		else {
 			cout << "So we're just going to ignore the portal?" << endl;
 			wait = true;
-		}
+		}//stuck in a loop
 	} while (wait);
 
 
 	return CONTINUE;
 }
 
+
+//checked input validation
 bool Scene::run_miracle_max() {
 	cout << endl << "Once you step through the portal you see that you are now at Miracle Max's house. \nWestley is laying on the table, still dead (mostly). \nYou overhear Miracle Max say that he can't remember what the ingredients for the pill that will revive Westley." << endl;
 	cout << "How will you help?" << endl;
 	getInput();
-		
+
 	//vector for right answers to look around the room
-		responses.clear();
-		responses = { "look around", "look", "walk around"};
+	responses.clear();
+	responses = { "look around", "look", "walk around" };
 
-		//checks for user to walk around the room
-		while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
-			cout << "How will you do that without looking at what's around you?" << endl;
-			getInput();
-		}
-		if(find(responses.begin(), responses.end(), input) != responses.end()) {
-			cout << "You look around the room and see papers scattered everywhere with scribbles all over them. \nYou find one that says \"Ingredients For Life Pill\". \nYou know this is what you need, however it seems to be written in some sort of code." << endl;
-		}
-		
-
-		//start of recipe prompt
-		cout << endl << "The hand writing reads... \n1) ecotcohla \n2) beaelly \n3) eseewad" << endl;
-		cout << "What do you think ingredient 1 is? (ecotcohla)" << endl;
+	//checks for user to walk around the room
+	while (!(find(responses.begin(), responses.end(), input) != responses.end()))
+	{
+		cout << "How will you do that without looking at what's around you?" << endl;
 		getInput();
+	}
+	if (find(responses.begin(), responses.end(), input) != responses.end())
+	{
+		cout << "You look around the room and see papers scattered everywhere with scribbles all over them. \nYou find one that says \"Ingredients For Life Pill\". \nYou know this is what you need, however it seems to be written in some sort of code." << endl;
+	}
 
-		//checks for chocolate
-		while(input != "chocolate"){
-			cout << "That doesn't sound like something that should be in this recipe.\nTry Again!\n" << endl;
-			cout << "1) ecotcohla" << endl;
-			getInput();
-		}
-		
-		if(input == "chocolate"){
-			cout << "Yes, you remember there is a chocolate coating!" << endl;
-			cout << endl;
-		}
 
-		//2nd ingredient for recipe
-		cout << "What do you think ingredient 2 is? (beaelly)" << endl;
-		getInput();
-
-		//checks for eyeball
-		while(input != "eyeball"){
-			cout << "I don't think that should be in this recipe either.\nTry Again!\n" << endl;
-			cout << "2) beaelly" << endl;
-			getInput();
-		}
-		if(input == "eyeball"){
-			cout << "Yes! That seems like something that would revive you. \nThat's why we have the chocolate." << endl;
-			cout << endl;
-		}
-
-		//3rd ingredient for recipe
-		cout << "What do you think ingredient 3 is? (eseewad)" << endl;
-		getInput();
-
-		//check for seaweed
-		while(input != "seaweed"){
-			cout << "That doesn't seem like the answer to this scramble.\nTry Again!\n" << endl;
-			cout << "3) eseewad" << endl;
-			getInput();
-		}
-		if(input == "seaweed"){
-			cout << "Yes! That's it! That is the last ingredient!" << endl;
-			cout << endl;
-		}
-		
-		//reached the ending
-		cout << "Now you have know all the ingredients you whisper them in Miracle Max's ear. \nYou see him tilt his head and exclaim the ingredients and run off to go make the pill." << endl;
-		cout << "You can now see a portal open next to you and are free to pass now. Would you like to go?" << endl;
+	//start of recipe prompt
+	cout << endl << "The hand writing reads... \n1) ecotcohla \n2) beaelly \n3) eseewad" << endl;
+	cout << "What do you think ingredient 1 is? (ecotcohla)" << endl;
 	getInput();
 
-	if(input != "yes" && input != "y"){
+	//checks for chocolate
+	while (input != "chocolate") {
+		cout << "That doesn't sound like something that should be in this recipe.\nTry Again!\n" << endl;
+		cout << "1) ecotcohla" << endl;
+		getInput();
+	}
+
+	if (input == "chocolate") {
+		cout << "Yes, you remember there is a chocolate coating!" << endl;
+		cout << endl;
+	}
+
+	//2nd ingredient for recipe
+	cout << "What do you think ingredient 2 is? (beaelly)" << endl;
+	getInput();
+
+	//checks for eyeball
+	while (input != "eyeball") {
+		cout << "I don't think that should be in this recipe either.\nTry Again!\n" << endl;
+		cout << "2) beaelly" << endl;
+		getInput();
+	}
+	if (input == "eyeball") {
+		cout << "Yes! That seems like something that would revive you. \nThat's why we have the chocolate." << endl;
+		cout << endl;
+	}
+
+	//3rd ingredient for recipe
+	cout << "What do you think ingredient 3 is? (eseewad)" << endl;
+	getInput();
+
+	//check for seaweed
+	while (input != "seaweed") {
+		cout << "That doesn't seem like the answer to this scramble.\nTry Again!\n" << endl;
+		cout << "3) eseewad" << endl;
+		getInput();
+	}
+	if (input == "seaweed") {
+		cout << "Yes! That's it! That is the last ingredient!" << endl;
+		cout << endl;
+	}
+
+	//reached the ending
+	cout << "Now you have know all the ingredients you whisper them in Miracle Max's ear. \nYou see him tilt his head and exclaim the ingredients and run off to go make the pill." << endl;
+	cout << "You can now see a portal open next to you and are free to pass now. Would you like to go?" << endl;
+	getInput();
+
+	if (input != "yes" && input != "y") {
 		do {
 			cout << "Really? You want to stay here? (y/n)" << endl;
 			getInput();
@@ -844,71 +635,83 @@ bool Scene::run_miracle_max() {
 
 }
 
+
+//checked input validation
 bool Scene::run_gate() {
 	cout << "As you leave the portal you trip over a rock and fall on your face.\nAs you push yourself up you look around seeing that you are at the gate of the castle that is surrounded by guards.\nYou remember that this is the wedding scene but don't see Westley and the other scaring the guards away.\nWhat do you do?" << endl;
 	getInput();
 	responses.clear();
 	//find the characters
 	responses = { "look for westley", "look for westley and others", "look for everyone", "walk around", "look around" };
-	while(!(find(responses.begin(), responses.end(), input) != responses.end())){
+	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
 		cout << "You can't get rid of all the guards on your own. Where are Westley and the others?" << endl;
 		getInput();
 	}
-	if(find(responses.begin(), responses.end(), input) != responses.end()){
+	if (find(responses.begin(), responses.end(), input) != responses.end()) {
 		cout << "You find them hiding behind a wall and notice that the cloak they use to scare the guards away is missing." << endl;
 	}
-	
+
 	//new question
 	cout << endl << "What will you do to help them?" << endl;
 	getInput();
 	responses.clear();
-	responses = {"look around", "find cloak", "search", "walk around", "Look around", "Find Cloak", "Search"};
+	responses = { "look around", "find cloak", "search", "walk around", "Look around", "Find Cloak", "Search" };
 
 	//find the cloak
-	while(!(find(responses.begin(), responses.end(), input) != responses.end())){
+	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
 		cout << "How can you find the cloak without looking or searching?" << endl;
 		getInput();
 	}
-	if(find(responses.begin(), responses.end(), input) != responses.end()){
+	if (find(responses.begin(), responses.end(), input) != responses.end()) {
 		cout << "Congrats! You found the cloak hung up in a tree. " << endl;
 	}
 
-	//How is this cloak gonna get down
-	cout << endl << "How will you ever get this cloak down?" << endl;
-	cout << "1) Poke it with a stick \n2) Jump up to try to get it \n3) Hope for a gust of wind" << endl;
-	getInput();
+	do //added input validation 
+	{
+		//How is this cloak gonna get down
+		cout << endl << "How will you ever get this cloak down?" << endl;
+		cout << "1) Poke it with a stick \n2) Jump up to try to get it \n3) Hope for a gust of wind" << endl;
+		getInput();
 
-	//Poke with stick
-	if(input == "1" || input == "poke it with a stick"){
-		cout << "Congrats! You just poked a hole in the cloak and got it more stuck in the tree" << endl;
-		cout << "Without the cloak the wedding goes off and the book's ending changes keeping you locked in the story forever" << endl;
-		return !CONTINUE;
-	}
+		//Poke with stick
+		if (input == "1" || input == "poke it with a stick") {
+			cout << "Congrats! You just poked a hole in the cloak and got it more stuck in the tree" << endl;
+			cout << "Without the cloak the wedding goes off and the book's ending changes keeping you locked in the story forever" << endl;
+			return !CONTINUE;
+		}
+		//Jumps
+		else if (input == "2" || input == "jump up to try to get it") {
+			cout << "Dude, this tree is like 30 feet high.\nNot gonna happen." << endl;
+			cout << "Well... No cloak.... No exit... Have fun living in this book." << endl;
+			return !CONTINUE;
+		}
+		//Gust of Wind
+		else if (input == "3" || input == "hope for a gust of wind") {
+			cout << "All of a sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind." << endl;
+			cout << "You bring back the cloak to the gang and they are able to scare away all the guards." << endl;
+			wait = false
+		}
+		else //input validation
+		{
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait)
+		cout << "As you watch Westley and the others enter the castle you feel the wind pick up again as a portal opens up beside you and carries you to the next scene." << endl;
 
-	//Jumps
-	else if(input == "2" || input == "jump up to try to get it"){
-		cout << "Dude, this tree is like 30 feet high.\nNot gonna happen." << endl;
-		cout << "Well... No cloak.... No exit... Have fun living in this book." << endl;
-		return !CONTINUE;
-	}
-
-	//Gust of Wind
-	else if(input == "3" || input == "hope for a gust of wind"){
-		cout << "All of a sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind." << endl;
-		cout << "You bring back the cloak to the gang and they are able to scare away all the guards." << endl;
-	}
-
-	cout << "As you watch Westley and the others enter the castle you feel the wind pick up again as a portal opens up beside you and carries you to the next scene." << endl;
-	
 
 	return CONTINUE;
 }
+
+
 
 bool Scene::run_castle() {
-	
+
 	return CONTINUE;
 }
 
+
+//checked input validation
 bool Scene::run_stable() {
 	//This is where we follow fezzik around to find four horses
 	cout << "You exit the portal, a little sad that you missed all of Westley's insults for Humperdinck." << endl;
@@ -918,7 +721,7 @@ bool Scene::run_stable() {
 	//look around
 	//vector for right answers to look for the stable
 	responses.clear();
-	responses = { "look around", "look", "walk around" };
+	responses = { "look around", "look", "walk around", "walk" };
 
 	//checks for user to see the stable
 	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
@@ -933,11 +736,12 @@ bool Scene::run_stable() {
 
 	//checks for user to see the stable
 	while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
-		cout <<endl<< "You should probably do something other than just stand there." << endl;
+		cout << endl << "You should probably do something other than just stand there." << endl;
 		getInput();
 	}
-	
-	do {
+
+	do //input validation :)
+	{
 		//now we have to get in the stable to let the horses out
 		cout << endl << "You go to the stables and notice that there is a lock." << endl;
 		cout << "You can: \n1) Kick down the door \n2) Pick the lock \n3) Look for a second entrance" << endl;
@@ -949,12 +753,14 @@ bool Scene::run_stable() {
 			cout << "Since Fezzik doesn't have any escape horses everyone else was caught as well, trapping you in the book." << endl;
 			return !CONTINUE; //ends the game
 		}
-		else if (input == "2" || input == "pick the lock") {
+		else if (input == "2" || input == "pick the lock") //correct option 
+		{
 			cout << "You pick the lock and the stable door swings silently open." << endl;
 			cout << "Seeing this, Fezzik has the idea to steal some horses and goes into the stable." << endl;
 			cout << endl << "As Fezzik exits the stable with four white horses, a portal appears to your right." << endl;
 			cout << "Do you want to leave?" << endl;
 			getInput();
+			//leave portal input validation
 			if (input != "yes" && input != "y") {
 				do {
 					cout << endl << "The horses went with Fezzik, you can't pet them. \nDo you want to go through the portal now? (y/n)" << endl;
@@ -966,49 +772,61 @@ bool Scene::run_stable() {
 				cout << endl;
 			}
 
-			wait = false;
+			wait = false; //make it so it doesn't repeat
 		}
-		else if (input == "3" || input == "look for a second entrance") {
+		else if (input == "3" || input == "look for a second entrance") //brings you in a loop around the stable
+		{
 			cout << "You circle the stable, there is no second entrance." << endl;
-			wait = true;
+			wait = true; //set loop to repeat
 		}
 		else {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-			wait = true;
+			wait = true; //repeat because response is bad
 		}
-	} while (wait);
+	} while (wait);//end input validation
 
 	return CONTINUE;
 }
 
+//checked input validaiton
 bool Scene::run_finale() {
 	cout << "When you come out of the portal you look around and notice that it is only Westley and Buttercup around." << endl;
 	cout << "You wonder what is wrong with this scene because it seems to be exactly as described in the book..." << endl;
 	cout << "Next thing you know, you watch as Westley leans in to kiss Buttercup." << endl;
 	cout << endl;
+	do //added input validation
+	{
+		//give choices but must watch to pass
+		cout << "What is it that you want to do?\n1) Put your hands over your eyes\n2) Vomit \n3) Stand there and watch (much to your disliking)" << endl;
+		getInput();
 
-	//give choices but must watch to pass
-	cout << "What is it that you want to do?\n1) Put your hands over your eyes\n2) Vomit \n3) Stand there and watch (much to your disliking)" << endl;
-	getInput();
-
-	//option one
-	if(input == "1" || input == "put your hands over your eyes"){
-		cout << "You can't look away." << endl;
-		cout << "You watch as they kiss passionately..." << endl;
-		cout << "Ew. A kissing book." << endl;
-	}	
-	//option two
-	else if(input == "2" || input == "vomit"){
-		cout << "You puke all over the ground in front of you" << endl;
-		cout << "Looks like you just ruined your shoes." << endl;
-		cout << "You watch as they kiss passionately..." << endl;
-		cout << "Ew. A kissing book." << endl;
-	}
-	//option three
-	else if(input == "3" || input == "stand there and watch"){
-		cout << "You watch as they kiss passionately..." << endl;
-		cout << "Ew. A kissing book." << endl;
-	}
+		//option one
+		if (input == "1" || input == "put your hands over your eyes") {
+			cout << "You can't look away." << endl;
+			cout << "You watch as they kiss passionately..." << endl;
+			cout << "Ew. A kissing book." << endl;
+			wait = false;
+		}
+		//option two
+		else if (input == "2" || input == "vomit") {
+			cout << "You puke all over the ground in front of you" << endl;
+			cout << "Looks like you just ruined your shoes." << endl;
+			cout << "You watch as they kiss passionately..." << endl;
+			cout << "Ew. A kissing book." << endl;
+			wait = false;
+		}
+		//option three
+		else if (input == "3" || input == "stand there and watch") {
+			cout << "You watch as they kiss passionately..." << endl;
+			cout << "Ew. A kissing book." << endl;
+			wait = false;
+		}
+		else //input validation, check for anything weird 
+		{
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true; //repeat because response is bad
+		}
+	} while (wait); //end of input validation
 
 	cout << "After what feels like an entire year, you finally hear a portal open beside you." << endl;
 	cout << endl;
@@ -1016,13 +834,19 @@ bool Scene::run_finale() {
 	return CONTINUE;
 }
 
-bool Scene::run_closing() {
+//checked input validation
+bool Scene::run_closing()
+{
+	//dialogue
 	cout << "You open your eyes to your bedroom and it seems plain after your long adventure." << endl;
 	cout << "Your grandfater walks into the room just as you close your book." << endl;
-	cout << "He asks if you want to read the book again." << endl;
-	do {
+
+	do //input validation 
+	{
+		cout << "He asks if you want to read the book again." << endl;
 		cout << endl << "You say:" << endl << "1) You know, I think I've had enough adventure for one day." << endl << "2) Sure, but I have to tell you the most amazing story first." << endl;
 		getInput();
+		//final decision, closing statement :)
 		if (input == "1" || input == "you know, i think i've had enough adventure for one day") {
 			cout << "Your grandfather then gives you a grin and a wink as he pulls out another book." << endl;
 			cout << "He asks, \"How about a different adventure?\" he asks mysteriously." << endl;
@@ -1038,6 +862,6 @@ bool Scene::run_closing() {
 			wait = true;
 		}
 	} while (wait);
-	
+
 	return CONTINUE;
 }
