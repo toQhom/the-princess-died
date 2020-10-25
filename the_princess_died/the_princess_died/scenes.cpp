@@ -294,7 +294,235 @@ bool Scene::run_eels() {
 
 bool Scene::run_cliffs() {
 	//set the scene
-	cout << endl << "";
+	cout << endl << "You step out of the portal, but the wind is still rushing around you." << endl;
+	cout << "You stand at the bottom of The Cliffs of Insanity." << endl;
+	cout << "Above you, Fezzik carries Vizzini, Inigo, and Buttercup up the cliff. The Man in Black is slowly gaining on them." << endl;
+	cout << "Yet, every so often, the rope seems to fall a bit more. \nThere's only one explanation: the rope must be slipping from the rock at the top." << endl;
+	cout << "To your left, you notice what appears to be an entrance to a secret passageway. \nYou wonder why they didn't just use that, it seems much easier than scaling the cliff." << endl;
+	getInput();
+
+	//enter the passage
+	responses.clear();
+	responses = { "enter passageway", "enter passage", "enter", "go in passageway", "go in passage", "go through entrance", "use entrance", "enter secret passage", "enter secret passageway", "go in secret passage", "go in secret passageway" };
+	if (find(responses.begin(), responses.end(), input) != responses.end()) {
+		cout << "You enter the passageway." << endl;
+	}
+	else if (input == "cheat") {
+		cout << "The number 2321 comes to mind. \nYou enter the passageway and hurry up the steps, sure of yourself.";
+	}
+	else {
+		while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+			cout << "Is now the time for that? There are lives at stake here." << endl;
+			getInput();
+		}
+	}
+
+	int room = 1; //int to move through the passageway with	
+
+	//the passageway maze
+	while (room < 10) {
+		if (room == 1) { //ROOM 1
+			cout << endl << "It is dim in this passageway, but there is just enough light to see three paths ahead of you" << endl;
+			cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") { //good
+				room = room + 2;
+			}
+			else if (input == "3") { //bad
+				room = room + 1;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 2) { //ROOM 2
+			cout << endl << "You are currently 1 flight up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 3) { //ROOM 3
+			cout << endl << "You are currently 1 flight up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 2;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") { //bad
+				room = room + 1;
+			}
+			else if (input == "3") { //good
+				room = room + 3;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 4) { //ROOM 4
+			cout << endl << "You are currently 2 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //bad
+				room = room + 1;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "3") {//dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 5) { //ROOM 5
+			cout << endl << "You are currently 3 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 6) { //ROOM 6
+			cout << endl << "You are currently 2 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 3;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else if (input == "2") {
+				room = room + 1;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 7) { //ROOM 7
+			cout << endl << "You are currently 3 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //good
+				room = room + 3;
+			}
+			else if (input == "2") { //bad
+				room = room + 2;
+			}
+			else if (input == "3") { //bad
+				room = room + 1;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 8) { //ROOM 8
+			cout << endl << "You are currently 4 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (room == 9) { //ROOM 9
+			cout << endl << "You are currently 4 flights up." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				room = room - 2;
+			}
+			else if (input == "1") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else if (input == "3") { //dead
+				cout << "You have reached a dead end. You go back.\nHurry before the rope falls!" << endl;
+				cout << "It's cold up here. You're so close to the top." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nHurry, there are lives at stake!" << endl;
+				cout << "You can choose \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+	}
+
+	//escaping the maze
+	cout << "Finally! You make it out of the passageway and find yourself at the top of the cliff." << endl;
+	cout << "You have arrived just in time to resecure the rope to the rock." << endl;
+
+	//continuing the game
+	cout << endl << "As Fezzik reaches the top of the cliff, you feel a familiar wind and turn around to see a portal behind you" << endl;
+	cout << "You walk through the portal as Vizzini gets to work cutting through the rope you just fixed." << endl;
+
 
 	return CONTINUE;
 }
@@ -689,15 +917,15 @@ bool Scene::run_gate() {
 		else if (input == "3" || input == "hope for a gust of wind") {
 			cout << "All of a sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind." << endl;
 			cout << "You bring back the cloak to the gang and they are able to scare away all the guards." << endl;
-			wait = false
+			wait = false;
 		}
 		else //input validation
 		{
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
 			wait = true;
 		}
-	} while (wait)
-		cout << "As you watch Westley and the others enter the castle you feel the wind pick up again as a portal opens up beside you and carries you to the next scene." << endl;
+	} while (wait);
+	cout << "As you watch Westley and the others enter the castle you feel the wind pick up again as a portal opens up beside you and carries you to the next scene." << endl;
 
 
 	return CONTINUE;
