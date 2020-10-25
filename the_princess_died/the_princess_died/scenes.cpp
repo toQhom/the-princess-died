@@ -435,43 +435,54 @@ bool Scene::run_eels() {
 	cout << "Before you can process the danger, the stillness of the night is broken again, this time with a loud splash." << endl;
 	cout << "Buttercup! The eels circle around her. One begins to charge! \nWhat will you do?" << endl;
 
-	cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
-	getInput();
 
-	if (input == "1" || input == "hope the eel goes away") {
-		cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
-		return !CONTINUE; //ends the game
-	}
-	else if (input == "2" || input == "try to strangle it") {
-		cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
-		return !CONTINUE;
-	}
-	else if (input == "3" || input == "feed the eel a banana") {
-		cout << "With the sweet banana between its needlelike teeth, the slimy creature nuzzles up beside you. \nYou seem to have made a friend." << endl;
-	}
-	else {
-		cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-	}
+	//first option
+	do{
+		cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
+		getInput();
 
-	cout << endl << "But the peace doesn't last long. Another eel with blind hunger behind its foggy eyes charges at Buttercup." << endl;
-	cout << "What do you do?" << endl;
-	cout << "You can: \n1) Hope the second eel goes away \n2) Try to strangle it \n3) Feed the second eel a banana" << endl;
-	getInput();
+		if (input == "1" || input == "hope the eel goes away") {
+			cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
+			return !CONTINUE; //ends the game
+		}	
+		else if (input == "2" || input == "try to strangle it") {
+			cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
+			return !CONTINUE;
+		}
+		else if (input == "3" || input == "feed the eel a banana") {
+			cout << "With the sweet banana between its needlelike teeth, the slimy creature nuzzles up beside you. \nYou seem to have made a friend." << endl;
+			wait = false;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	}while(wait == true)
 
-	if (input == "1" || input == "hope the second eel goes away") {
-		cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
-		return !CONTINUE; //ends the game
-	}
-	else if (input == "2" || input == "try to strangle it") {
-		cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
-		return !CONTINUE;
-	}
-	else if (input == "3" || input == "feed the second eel a banana") {
-		cout << "But what if you get hungry later?" << endl;
-	}
-	else {
-		cout << "That response is inconceivable. Try reading your options again. :(" << endl;
-	}
+	//Second Eel
+	do{
+		cout << endl << "But the peace doesn't last long. Another eel with blind hunger behind its foggy eyes charges at Buttercup." << endl;
+		cout << "What do you do?" << endl;
+		cout << "You can: \n1) Hope the second eel goes away \n2) Try to strangle it \n3) Feed the second eel a banana" << endl;
+		getInput();
+
+		if (input == "1" || input == "hope the second eel goes away") {
+			cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
+			return !CONTINUE; //ends the game
+		}
+		else if (input == "2" || input == "try to strangle it") {
+			cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
+			return !CONTINUE;
+		}
+		else if (input == "3" || input == "feed the second eel a banana") {
+			cout << "But what if you get hungry later?" << endl;
+			cout == false;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait == true;
+		}
+	}while(wait == true)
 
 	cout << "But luckily a giant arm punches the eel from above and Buttercup is lifted safely into the boat." << endl;
 	cout << "The portal opens in the sky again and you are lifted through it." << endl;
@@ -1014,21 +1025,27 @@ bool Scene::run_pit() {
 	cout << endl << "To move left type 'L' and to move right type 'R'. Type more characters afterwards to move farther! (e.g. 'RR' moves two right)" << endl;
 
 	while (inigoPosition != doorPosition) {
-		cout << "Enter your push!" << endl;
-        cout << ">> ";
-		getline(cin, input);
-		if ((input.at(0) == 'l') || (input.at(0) == 'L')) {
-			cout << "You pushed left!" << endl;
-			inigoPosition = inigoPosition - input.length();
-		}
-		else if ((input.at(0) == 'r') || (input.at(0) == 'R')) {
-			cout << "You pushed right!" << endl;
-			inigoPosition = inigoPosition + input.length();
-		}
-		else {
-			cout << "That's not a push! Try L or R" << endl;
-		} //good input validation
+		//loop for validation
+		do{
+			cout << "Enter your push!" << endl;
+			getInput();
+			if ((input.at(0) == 'l') || (input.at(0) == 'L')) {
+				cout << "You pushed left!" << endl;
+				inigoPosition = inigoPosition - input.length();
+				wait = false;
+			}
+			else if ((input.at(0) == 'r') || (input.at(0) == 'R')) {
+				cout << "You pushed right!" << endl;
+				inigoPosition = inigoPosition + input.length();
+				wait = false;
+			}
+			else {
+				cout << "That's not a push! Try L or R" << endl;
+				wait = true;
+			} //good input validation
+		}while(wait == true)
 
+		
 		// Check current position
 		if (inigoPosition == doorPosition) {
 			cout << "Whew, he made it!" << endl;
