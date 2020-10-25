@@ -22,8 +22,8 @@ int main() {
 	do {
 		system("CLS");
 		cout << "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*" << endl;
-		cout << "| 			WELCOME ALL                |" << endl;
-		cout << "| 		THIS IS THE PRINCESS DIED          |" << endl;
+		cout << "|                   WELCOME ALL                   |" << endl;
+		cout << "|            THIS IS THE PRINCESS DIED            |" << endl;
 		cout << "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*" << endl;
 		do {
 			cout << endl << "To play this game, type what you want to do and press enter!" << endl;
