@@ -36,10 +36,10 @@ int main() {
 	}*/
 	if (continueGame) {
 		continueGame = game.run_horse_ride();
-	}
+	}/*
 	if (continueGame) {
 		continueGame = game.run_eels();
-	}
+	}*/
 	if (continueGame) {
 		continueGame = game.run_cliffs();
 	}
@@ -51,19 +51,19 @@ int main() {
 	}
 	if (continueGame) {
 		continueGame = game.run_pit();
-	}*/
+	}
 	if (continueGame) {
 		continueGame = game.run_miracle_max();
-	}
+	}*/
 	if (continueGame) {
 		continueGame = game.run_gate();
 	}
 	if (continueGame) {
 		continueGame = game.run_castle();
-	}
+	}/*
 	if (continueGame) {
 		continueGame = game.run_stable();
-	}
+	}*/
 	if (continueGame) {
 		continueGame = game.run_finale();
 	}

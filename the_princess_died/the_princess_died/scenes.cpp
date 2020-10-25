@@ -247,9 +247,10 @@ bool Scene::run_eels() {
         }
     }
 
-    cout << "Suddenly, a shriek cuts through the night. These are the eel infested waters!" << endl;
+	cout << "Suddenly, a shriek cuts through the night. " << endl;
+	cout << "\nThese are eel infested waters!" << endl;
     cout << "Before you can process the danger, the stillness of the night is broken again, this time with a loud splash." << endl;
-    cout << "The princess! The eels circle around her. One begins to charge! \nWhat will you do?" << endl;
+    cout << "Buttercup! The eels circle around her. One begins to charge! \nWhat will you do?" << endl;
 
     cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
 	cin >> input;
@@ -271,10 +272,10 @@ bool Scene::run_eels() {
 	
     cout << endl<< "But the peace doesn't last long. Another eel with blind hunger behind its foggy eyes charges at Buttercup." << endl;
     cout << "What do you do?" << endl;
-    cout << "You can: \n1) Hope the eel goes away \n2) Try to strangle it \n3) Feed the eel a banana" << endl;
+    cout << "You can: \n1) Hope the second eel goes away \n2) Try to strangle it \n3) Feed the second eel a banana" << endl;
 	cin >> input;
 
-    if (input == "1" || input == "hope the eel goes away") {
+    if (input == "1" || input == "hope the second eel goes away") {
         cout << "Buttercup faces a gruesome death. The eel turns towards you and shrieks." << endl;
         return !CONTINUE; //ends the game
     }
@@ -282,15 +283,15 @@ bool Scene::run_eels() {
         cout << "12,000 volts charge through your body. Of course they had to be electric eels too." << endl;
         return !CONTINUE;
     }
-    else if (input == "3" || input == "feed the eel a banana") {
-        cout << "You don't have any bananas left." << endl;
+    else if (input == "3" || input == "feed the second eel a banana") {
+        cout << "But what if you get hungry later?" << endl;
     }
     else {
         cout << "That response is inconceivable. Try reading your options again. :(" << endl;
     }
 
     cout << "But luckily a giant arm punches the eel from above and Buttercup is lifted safely into the boat." << endl;
-    cout << "The portal opens in the sky again and through it you too are lifted to safety." << endl;
+    cout << "The portal opens in the sky again and you are lifted through it." << endl;
 	return CONTINUE; //continues the game
 }
 
@@ -599,7 +600,7 @@ bool Scene::run_miracle_max() {
 		cout << "Now you have know all the ingredients you whisper them in Miracle Max's ear. \nYou see him tilt his head and exclaim the ingredients and run off to go make the pill." << endl;
 		cout << "You can now see a portal open next to you and are free to pass now. Would you like to go?" << endl;
 	getInput();
-	if(input != "yes" || input != "y"){
+	if(input != "yes" && input != "y"){
 		do {
 			cout << "Really? You want to stay here? (y/n)" << endl;
 			getInput();
@@ -627,6 +628,7 @@ bool Scene::run_stable() {
 	cout << "You exit the portal, a little sad that you missed all of Westley's insults for Humperdinck." << endl;
 	cout << "In front of you, Fezzik is bumbling around, seemingly without a purpose." << endl;
 	cout << "What do you want to do?" << endl;
+	getInput();
 	//look around
 	//vector for right answers to look for the stable
 	responses.clear();
@@ -638,6 +640,7 @@ bool Scene::run_stable() {
 		getInput();
 	}
 	cout << "You look up and see the stables ahead." << endl;
+	getInput();
 	//vector for right answers to look for the stable
 	responses.clear();
 	responses = { "walk forward", "go to the stables", "walk", "move" };
@@ -662,17 +665,18 @@ bool Scene::run_stable() {
 		}
 		else if (input == "2" || input == "pick the lock") {
 			cout << "You pick the lock and the stable door swings silently open." << endl;
-			cout << "Seeing this, Fezzik has the idea to steal some horses and goes in the stable" << endl;
-			cout << "As Fezzik exits the stable with four white horses, a portal appears to your right" << endl;
+			cout << "Seeing this, Fezzik has the idea to steal some horses and goes into the stable." << endl;
+			cout << endl << "As Fezzik exits the stable with four white horses, a portal appears to your right." << endl;
+			cout << "Do you want to leave?" << endl;
 			getInput();
-			if (input != "yes" || input != "y") {
+			if (input != "yes" && input != "y") {
 				do {
 					cout << endl << "The horses went with Fezzik, you can't pet them. \nDo you want to go through the portal now? (y/n)" << endl;
 					getInput();
 				} while (!(input == "yes" || input == "y"));
 			}
 			else {
-				cout << "You walk into the portal to hopefully find a way out of this book finally." << endl;
+				cout << "You waltz through the portal, confident that this story is just about over." << endl;
 				cout << endl;
 			}
 
