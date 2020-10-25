@@ -849,28 +849,30 @@ bool Scene::run_pit() {
 	cout << endl << "This time, you find yourself in a clearing. Soon, two men enter the clearing. \nYou recognize them as Inigo and Fezzik and remember they are looking for The Pit of Despair. " << endl;
 	cout << "Inigo prays and trys to follow his sword. Clearly, it isn't working. \nYou sigh and start to push Inigo towards the secret entrance." << endl;
 
-	// could add a choice here 
-
 	// Instructions
 	cout << endl << "To move left type 'L' and to move right type 'R'. Type more characters afterwards to move farther! (e.g. 'RR' moves two right)" << endl;
 
 	while (inigoPosition != doorPosition) {
 		cout << "Enter your push!" << endl;
         cout << ">>";
-		getline(cin, input);
-		if ((input.at(0) == 'l') || (input.at(0) == 'L') {
+        cin >> input;
+
+        bool validInput = false;
+    while(!validInput) {
+		if ((input.at(0) == 'l') || (input.at(0) == 'L')) {
 			cout << "You pushed left!" << endl;
 			inigoPosition = inigoPosition - input.length();
+            validInput = true;
 		}
 		else if ((input.at(0) == 'r') || (input.at(0) == 'R')) {
 			cout << "You pushed right!" << endl;
 			inigoPosition = inigoPosition + input.length();
+            validInput = true;
 		}
 		else {
 			cout << "That's not a push! Try L or R" << endl;
-
 		} //good input validation
-
+    }
 		// Check current position
 		if (inigoPosition == doorPosition) {
 			cout << "Whew, he made it!" << endl;
