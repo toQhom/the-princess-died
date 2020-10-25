@@ -21,7 +21,10 @@ int main() {
 
 	do {
 		system("CLS");
-		cout <<  "Welcome to The Princess Died Game" << endl;
+		cout << "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*" << endl;
+		cout << "| 			WELCOME ALL                |" << endl;
+		cout << "| 		THIS IS THE PRINCESS DIED          |" << endl;
+		cout << "*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*" << endl;
 		do {
 			cout << endl << "To play this game, type what you want to do and press enter!" << endl;
 			cout << "Try it out, type \"Say Hello\"" << endl;
