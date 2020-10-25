@@ -7,14 +7,6 @@ void Scene::getInput() {
 	
 }
 
-void Scene:transition(){
-
-	cout << endl;
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-	cout << endl;	    
-	
-}
-
 bool Scene::run_opening() {
 	/*
 	//set the scene
@@ -541,10 +533,6 @@ bool Scene::run_pit() {
 }
 
 bool Scene::run_miracle_max() {
-<<<<<<< HEAD
-	
-	
-=======
 	cout << endl << "Once you step through the portal you see that you are now at Miracle Max's house. \nWestley is laying on the table, still dead (mostly). \nYou overhear Miracle Max say that he can't remember what the ingredients for the pill that will revive Westley." << endl;
 	cout << "How will you help?" << endl;
 	getInput();
@@ -781,13 +769,13 @@ bool Scene::run_finale() {
 	if(input == "1" || input == "put your hands over your eyes"){
 		cout << "They kiss for what feels like an eternity and you see them walk off into the distance." << endl;
 		cout << "However, there is no portal opening for you to leave...\n Looks like you are stuck." << endl;
-		return !CONTINUE
+		return !CONTINUE;
 	}	
 	//option two
 	if(input == "2" || input == "vomit"){
 		cout << "You puke all over the ground in front of you" << endl;
 		cout << "Looks like you just ruined your shoes and your life because you are stuck here forever now." << endl;
-		return !CONTINUE
+		return !CONTINUE;
 	}
 	//option three
 	if(input == "3" || input == "stand there and watch"){
