@@ -217,7 +217,6 @@ bool Scene::run_pirate_ship() {
 	return CONTINUE;
 }
 
-//checked input validation
 bool Scene::run_horse_ride() {
 	//set the scene
 	cout << endl << "Stepping out of the portal, you enter a clearing. It is peaceful here." << endl;
@@ -470,7 +469,6 @@ bool Scene::run_eels() {
 	return CONTINUE; //continues the game
 }
 
-//checked input validation
 bool Scene::run_cliffs() {
 	//set the scene
 	cout << endl << "Suddenly, you're falling again. Luckily you land in the sea again. Yay for salt water." << endl;
@@ -773,7 +771,7 @@ bool Scene::run_poison() {
 	return CONTINUE;
 }
 
-void fire_geyser() {
+bool Scene::fire_geyser() {
 	//start with fire geyser part
 	cout << endl << "You turn left and you see Buttercup and Westley ahead of you." << endl;
 	cout << "You run to catch up, only to be stopped by a fire geyser!" << endl;
@@ -843,15 +841,14 @@ void fire_geyser() {
 
 	} while (wait); //if the input was valid then continue
 
+	return CONTINUE;
 }
-//right
-void quicksand() {
+
+bool Scene::quicksand() {
 	cout << endl << "You turn right and you see Buttercup and Westley ahead of you." << endl;
 	cout << "You notice that Westley is walking in front of Buttercup." << endl;
 	cout << "You also remember from yesterday that whoever is in front is about to hit quicksand!" << endl;
 	cout << "Sure enough! Westley hits the quicksand and goes down fast." << endl;
-
-
 
 	do {
 		cout << endl << "Buttercup stands there frozen, what will you do?" << endl;
@@ -859,10 +856,8 @@ void quicksand() {
 
 		getInput();
 		//left goes to the fire geyser challange
-		if (input == "1" || input == "cut a vine and ancor it") //correct answer, you win 
+		if (input == "1" || input == "cut a vine and anchor it") //correct answer, you win 
 		{
-
-
 			do {
 				cout << "You cut the nearest vine and tie it to a tree" << endl;
 				cout << "You can now: \n1)Dive into the quicksand \n2)Whisper instructions to Buttercup \n3)Tie the vine into a lasso" << endl << endl;//add a second round of choices in the correct option
@@ -905,7 +900,7 @@ void quicksand() {
 		}
 		else if (input == "3" || input == "whisper instructions to buttercup") //incorrect answer, you die
 		{
-			cout << "You instruct Buttercup to cut a vine and help Westley climb out" << end;
+			cout << "You instruct Buttercup to cut a vine and help Westley climb out" << endl;
 			cout << "She then sinks to her knees and begins to cry." << endl;
 			cout << "You sit beside her until Prince Humperdinck arrives and takes her to the palace" << endl;
 			wait = false;
@@ -916,17 +911,18 @@ void quicksand() {
 		}
 	} while (wait);
 
-
+	return CONTINUE;
 }
-//forward
-void rous() {
+
+bool Scene::rous() {
 	cout << endl << "You look ahead and you see Buttercup and Westley ahead of you." << endl;
 	cout << "You hurry to catch up to them and hear a rustling" << endl;
 	cout << "Suddenly a ROUS (Rodent of Unusual Size) leaps out of the foliage and attacks Westley!" << endl;
 	cout << "\nHis sword is knocked out of his hand and slides to your feet." << endl;
+
+	return CONTINUE;
 }
 
-//checked for input validation
 bool Scene::run_fire_swamp()
 {
 
@@ -938,17 +934,23 @@ bool Scene::run_fire_swamp()
 		getInput();
 		//left goes to the fire geyser challange
 		if (input == "left" || input == "turn left") {
-			fire_geyser();
+			if (fire_geyser() != CONTINUE) {
+				return !CONTINUE;
+			}
 			wait = false;
 		}
 		else if (input == "right" || input == "turn right")//right takes you to quicksand 
 		{
-			quicksand();
+			if (quicksand() != CONTINUE) {
+				return !CONTINUE;
+			}
 			wait = false;
 		}
 		else if (input == "forward" || input == "walk forward") //going forward takes you to rous 
 		{
-			rous();
+			if (rous() != CONTINUE) {
+				return !CONTINUE;
+			}
 			wait = false;
 		}
 		else {
@@ -979,7 +981,6 @@ bool Scene::run_fire_swamp()
 	return CONTINUE;
 }
 
-//input validation checked
 bool Scene::run_pit() {
 
 	string input;
@@ -1209,7 +1210,6 @@ bool Scene::run_gate() {
 	} while (wait);
 	cout << "As you watch Westley and the others enter the castle you feel the wind pick up again as a portal opens up beside you and carries you to the next scene." << endl;
 
-
 	return CONTINUE;
 }
 
@@ -1306,7 +1306,7 @@ bool Scene::run_castle() {
 				hall = hall + 1;
 			}
 			else if (input == "2") { //good
-				hall = hall + 2
+				hall = hall + 2;
 			}
 			else if (input == "3") { //dead
 				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
@@ -1345,10 +1345,9 @@ bool Scene::run_castle() {
 	return CONTINUE;
 }
 
-//checked for valid input
 bool Scene::run_stable() {
 	//This is where we follow fezzik around to find four horses
-	cout << end << "You exit the portal, a little sad that you missed all of Westley's insults for Humperdinck." << endl;
+	cout << endl << "You exit the portal, a little sad that you missed all of Westley's insults for Humperdinck." << endl;
 	cout << "In front of you, Fezzik is bumbling around, seemingly without a purpose." << endl;
 	cout << "What do you want to do?" << endl;
 	getInput();
@@ -1423,7 +1422,6 @@ bool Scene::run_stable() {
 	return CONTINUE;
 }
 
-//input validation checked
 bool Scene::run_finale() {
 	cout << "When you come out of the portal you look around and notice that it is only Westley and Buttercup around." << endl;
 	cout << "You wonder what is wrong with this scene because it seems to be exactly as described in the book..." << endl;
@@ -1467,8 +1465,6 @@ bool Scene::run_finale() {
 	return CONTINUE;
 }
 
-
-//checked input validation
 bool Scene::run_closing()
 {
 	//dialogue
