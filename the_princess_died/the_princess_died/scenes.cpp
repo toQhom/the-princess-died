@@ -593,6 +593,8 @@ bool Scene::run_poison() {
 	return CONTINUE;
 }
 
+//left
+void fire_geyser() {
 	//start with fire geyser part
 	cout << endl << "You turn left and you see Buttercup and Westley ahead of you." << endl;
 	cout << "You run to catch up, only to be stopped by a fire geyser!" << endl;
@@ -635,6 +637,8 @@ bool Scene::run_poison() {
 				}
 				else if (input == "3" || input == "pick up rocks and hit them together when you see a glow") {
 					cout << "Every time you see a glow you make a noise with two rocks, alerting Westley and Buttercup." << endl;
+
+
 					wait = false;
 				}
 				else {
@@ -659,6 +663,119 @@ bool Scene::run_poison() {
 		}
 
 	} while (wait); //if the input was valid then continue
+
+}
+//right
+void quicksand() {
+	cout << endl << "You turn right and you see Buttercup and Westley ahead of you." << endl;
+	cout << "You notice that Westley is walking in front of Buttercup." << endl;
+	cout << "You also remember from yesterday that whoever is in front is about to hit quicksand!" << endl;
+	cout << "Sure enough! Westley hits the quicksand and goes down fast." << endl;
+
+
+
+	do {
+		cout << endl << "Buttercup stands there frozen, what will you do?" << endl;
+		cout << "1) Cut a vine and ancor it \n2)Dive into the quicksand\n3) Whisper instructions to Buttercup" << endl;
+
+		getInput();
+		//left goes to the fire geyser challange
+		if (input == "1" || input == "cut a vine and ancor it") //correct answer, you win 
+		{
+
+
+			do {
+				cout << "You cut the nearest vine and tie it to a tree" << endl;
+				cout << "You can now: \n1)Dive into the quicksand \n2)Whisper instructions to Buttercup \n3)Tie the vine into a lasso" << endl << endl;//add a second round of choices in the correct option
+
+				getInput();
+
+				if (input == "1" || input == "dive into the quicksand") //dive into quicksand to save westley
+				{
+					cout << "You dive into the quicksand and attempt to rescue Westley" << endl;
+					cout << "Sadly, he does not notice your prescence and you are unable to save him" << endl;
+					return !CONTINUE;
+				}
+				else if (input == "2" || input == "whisper instructions to buttercup")//convince buttercup to save westley
+				{
+					cout << "After tying off the vine you place it next to Buttercup and whisper in her ear" << endl;
+					cout << "Your direct instructions shake her out of her stupor and she saves Westley!" << endl;
+					wait = false;
+				}
+				else if (input == "3" || input == "tie the vine into a lasso") //waste time and die 
+				{
+					cout << "Now you have a lasso, this would be helpful if you were trying to catch a ROUS." << endl;
+					cout << "Unfortunately, tying the correct knot took to long and it is to late to rescue Westley." << endl;
+					cout << "A distraught Buttercup leaps into the quicksand in a feeble and unsuccessful attempt to save him" << endl;
+					cout << "You are now stuck in the book forever." << endl;
+					return !CONTINUE;
+				}
+				else {
+					cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+					wait = true;
+				}
+			} while (wait);
+
+		}
+		else if (input == "2" || input == "dive into the quicksand")//incorrect answer, you die
+		{
+			cout << "You sink rapidly into the quicksand." << endl;
+			cout << "You watch as Buttercup watches in shock before diving in after Westley." << endl;
+			cout << "Your vision goes fuzzy, then black" << endl;
+			wait = false;
+		}
+		else if (input == "3" || input == "whisper instructions to buttercup") //incorrect answer, you die
+		{
+			cout << "You instruct Buttercup to cut a vine and help Westley climb out" << end;
+			cout << "She then sinks to her knees and begins to cry." << endl;
+			cout << "You sit beside her until Prince Humperdinck arrives and takes her to the palace" << endl;
+			wait = false;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+
+
+}
+//forward
+void rous() {
+	cout << endl << "You look ahead and you see Buttercup and Westley ahead of you." << endl;
+	cout << "You hurry to catch up to them and hear a rustling" << endl;
+	cout << "Suddenly a ROUS (Rodent of Unusual Size) leaps out of the foliage and attacks Westley!" << endl;
+	cout << "\nHis sword is knocked out of his hand and slides to your feet." << endl;
+
+
+	do {
+		cout << "You can: \n1)Kick the sword towards Westley \n2)Run away \nPick up the sword" << endl;
+
+		getInput();
+		//left goes to the fire geyser challange
+		if (input == "1" || input == "kick the sword towards westley") {
+			cout << "The sword takes a much straighter trajectory than anticipated." << endl;
+			cout << "Instead of landing where Westley can grab it, the sword impales him" << endl;
+			cout << "You might have been ok if the rattle of the sword hadn't caught the ROUS' attention." << endl;
+			return !CONTINUE;
+		}
+		else if (input == "2" || input == "run away")//running away takes you to quicksand
+		{
+			cout << "You run fratically and eventually the ferocious squeaks of the ROUS fade." << endl;
+			cout << "Just as you begin to relax your foot hits quicksand and you sink to your demise." << endl;
+			return !CONTINUE;
+		}
+		else if (input == "3" || input == "walk forward") //attacking the ROUS makes you win
+		{
+			cout << "You run towards the ROUS like a maniac, slashing and hacking with the sword" << endl;
+			cout << "You manage to kill the ROUS without hurting Westly." << endl;
+			wait = false;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+}
 
 //checked for input validation
 bool Scene::run_fire_swamp()
@@ -690,7 +807,7 @@ bool Scene::run_fire_swamp()
 			wait = true;
 		}
 	} while (wait);
-	
+
 	cout << endl << "Westley and Buttercup are able to navigate the rest of the woods safely." << endl;
 	cout << "When they see Prince Humperdinck a portal appears beside you." << endl;
 	responses.clear();
@@ -712,8 +829,6 @@ bool Scene::run_fire_swamp()
 
 	return CONTINUE;
 }
-
-
 
 //input validation checked
 bool Scene::run_pit() {
