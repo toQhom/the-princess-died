@@ -42,7 +42,7 @@ int main() {
 
 		continueGame = game.run_opening(); //The Opening
 		transition();
-		/*
+		
 		if (continueGame) { //The Farm
 			continueGame = game.run_farm();
 			transition();
@@ -62,17 +62,17 @@ int main() {
 			continueGame = game.run_eels();
 			transition();
 		}
-		*/
+		
 		if (continueGame) { //The Cliffs of Insanity
 			continueGame = game.run_cliffs();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Battle of the Wits
 			continueGame = game.run_poison();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Fire Swamp
 			continueGame = game.run_fire_swamp();
 			transition();
@@ -92,17 +92,17 @@ int main() {
 			continueGame = game.run_gate();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Castle Maze
 			continueGame = game.run_castle();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Stable
 			continueGame = game.run_stable();
 			transition();
 		}
-
+		
 		if (continueGame) { //The Finale
 			continueGame = game.run_finale();
 			transition();
