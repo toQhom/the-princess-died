@@ -83,7 +83,7 @@ int main() {
 		continueGame = game.run_fire_swamp();
 		transition();
 	}
-	*/
+	
 	
 	if (continueGame) {
 		continueGame = game.run_pit();
@@ -95,7 +95,7 @@ int main() {
 		continueGame = game.run_miracle_max();
 		transition();
 	}
-	/*
+	
 
 	if (continueGame) {
 		continueGame = game.run_gate();
