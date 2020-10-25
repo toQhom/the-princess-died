@@ -1,9 +1,9 @@
 #include "scenes.h"
-#include <cctype>
-#include <vector>
 
 void Scene::getInput() {
+	cout << ">> ";
 	getline(cin, input);
+	transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {return tolower(c); });
 	//TODO: switch to lowercase
 }
 
@@ -184,13 +184,13 @@ bool Scene::run_pirate_ship() {
 	cout << "With your skills of slight of hand you think you can \n1) Replace the sword with a banana you found in a pocket \n2) Smack his hand holding the sword \n3) Just stand there and watch \n4) Yell and try to distract Roberts." << endl;
 	getInput();
 
-	if(input == "1" || input == "Replace the sword with a banana you found in a pocket"){
+	if(input == "1" || input == "replace the sword with a banana you found in a pocket"){
 		cout << "You are successful in keeping Westley alive, you hear the Dread Pirate Roberts say \"I\'ll most likely kill you in the morning\" to Westley just like you remember in the book. \nWhen you look around you see a portal open next to you and step through." << endl;
 		cout << endl;
 		wait = false;
 	}
 
-	else if(input == "2" || input == "Smack his hand holding the sword"){
+	else if(input == "2" || input == "smack his hand holding the sword"){
 		cout << "Great job you were able to make the Dread Pirate Roberts drop the sword, but he immediately picks it back up to kill Westley" << endl;
 		cout << "Now you are stuck here and won't be able to finish the story" << endl;
 		cout << endl;
@@ -198,14 +198,14 @@ bool Scene::run_pirate_ship() {
 
 	}
 
-	else if (input == "3" || input == "Just stand there and watch"){
+	else if (input == "3" || input == "just stand there and watch"){
 		cout << "You do nothing to stop Westley from dying and are now stuck here forever. Remember kids to never be a bystander" << endl;
 		cout << endl;
 		return !CONTINUE;
 		
 	}
 
-	else if (input == "4" || input == "Yell and try to distract Roberts."){
+	else if (input == "4" || input == "yell and try to distract roberts."){
 		cout << "You watch as Westley gets killed and suddenly remember that the characters cannot hear you when you yell. You face palm as you realize that you are now stuck in the book because it can't end." << endl;
 		cout << endl;
 		return !CONTINUE;
@@ -610,8 +610,8 @@ bool Scene::run_miracle_max() {
 		} while (!(input == "no" || input == "n"));
 
 	}
-	else{
-		cout<< "You walk into the portal to hopefully find a way out of this book finally." << endl;
+	else {
+		cout << "You walk into the portal to hopefully find a way out of this book finally." << endl;
 		cout << endl;
 	}
 	return CONTINUE;
@@ -619,34 +619,36 @@ bool Scene::run_miracle_max() {
 }
 
 bool Scene::run_gate() {
-	cout << "As you leave the portal you trip over a rock and call on your face.\nAs you push yourself up you look around seeing that you are at the gate of the castle that is surrounded by gaurds.\nYou remember that this is the wedding scene but don't see Westley and the other scarying the gaurds away.\nWhat do you do?" << endl;
-	response.clear();
+	cout << "As you leave the portal you trip over a rock and fall on your face.\nAs you push yourself up you look around seeing that you are at the gate of the castle that is surrounded by guards.\nYou remember that this is the wedding scene but don't see Westley and the other scaring the guards away.\nWhat do you do?" << endl;
+	getInput();
+	responses.clear();
 	//find the characters
-	response = {"look for westley", "look for westley and others", "look for everyone", "walk around", "look around"}
+	responses = { "look for westley", "look for westley and others", "look for everyone", "walk around", "look around" };
 	while(!(find(responses.begin(), responses.end(), input) != responses.end())){
-		cout << "You can't get rid of all the gaurds on your own. Where are Westley and the other?" << endl;
+		cout << "You can't get rid of all the guards on your own. Where are Westley and the others?" << endl;
 		getInput();
 	}
-	if(find(responses.begin(), reponses.end(), input) != reponses.end()){
-		cout << "You find them hiding behind a wall and notice that the cloak they use to scare the gaurds away is missing." << endl;
+	if(find(responses.begin(), responses.end(), input) != responses.end()){
+		cout << "You find them hiding behind a wall and notice that the cloak they use to scare the guards away is missing." << endl;
 	}
 	
 	//new question
-	cout << "What will you do to help them?" << endl;
-	response.clear();
-	response = {"look around", "find cloak", "search", "walk around", "Look around", "Find Cloak", "Search"};
+	cout << endl << "What will you do to help them?" << endl;
+	getInput();
+	responses.clear();
+	responses = {"look around", "find cloak", "search", "walk around", "Look around", "Find Cloak", "Search"};
 
 	//find the cloak
 	while(!(find(responses.begin(), responses.end(), input) != responses.end())){
 		cout << "How can you find the cloak without looking or searching?" << endl;
 		getInput();
 	}
-	if(find(responses.begin(), reponses.end(), input) != reponses.end()){
+	if(find(responses.begin(), responses.end(), input) != responses.end()){
 		cout << "Congrats! You found the cloak hung up in a tree. " << endl;
 	}
 
 	//How is this cloak gonna get down
-	cout << "How will you ever get this cloak down?" << endl;
+	cout << endl << "How will you ever get this cloak down?" << endl;
 	cout << "1) Poke it with a stick \n2) Jump up to try to get it \n3) Hope for a gust of wind" << endl;
 	getInput();
 
@@ -666,8 +668,8 @@ bool Scene::run_gate() {
 
 	//Gust of Wind
 	if(input == "3" || input == "hope for a gust of wind"){
-		cout << "All of the sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind" << endl;
-		cout << "You bring back the cloak to the gang and they are able to scare away all the gaurds." << endl;
+		cout << "All of a sudden the wind picks up and you are able to catch the cloak as it falls down from the tree, gently carried by the wind." << endl;
+		cout << "You bring back the cloak to the gang and they are able to scare away all the guards." << endl;
 	}
 
 	cout << "As you watch Westley and the others enter the castle you feel the wind pick up again as a portal opens up beside you and carries you to the next scene." << endl;
@@ -717,7 +719,7 @@ bool Scene::run_stable() {
 
 		if (input == "1" || input == "kick down the door") {
 			cout << "You successfully kick down the door, but not without the guards noticing." << endl;
-			cout << "The gaurds assume that Fezzik brok down the door and arrest him." << endl;
+			cout << "The guards assume that Fezzik brok down the door and arrest him." << endl;
 			cout << "Since Fezzik doesn't have any escape horses everyone else was caught as well, trapping you in the book." << endl;
 			return !CONTINUE; //ends the game
 		}

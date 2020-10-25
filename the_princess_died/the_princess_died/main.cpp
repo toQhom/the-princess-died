@@ -14,6 +14,7 @@ int main() {
 	do {
 		cout << endl <<"To play this game, type what you want to do and press enter!" << endl;
 		cout << "Try it out, type \"Say Hello\"" << endl;
+		cout << ">> ";
 		getline(cin, input);
 		if (input == "Say Hello" || input == "say hello" || input == "Say hello" || input == "say Hello") {
 			cout << "Well, hello to you too!" << endl;
@@ -78,3 +79,4 @@ int main() {
 
 	return 0;
 }
+
