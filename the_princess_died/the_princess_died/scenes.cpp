@@ -359,6 +359,10 @@ bool Scene::run_miracle_max() {
 }
 
 bool Scene::run_gate() {
+	cout << "As you leave the portal you trip over a rock and call on your face.\nAs you push yourself up you look around seeing that you are at the gate of the castle that is surrounded by gaurds.\nYou remember that this is the wedding scene but don't see Westley and the other scarying the gaurds away.\nWhat do you do?" << endl;
+	reponse.clear();
+	reponse = {"look for westley", "look for westley and others", "look for everyone", "walk around", "look around"};
+
 	return CONTINUE;
 }
 
