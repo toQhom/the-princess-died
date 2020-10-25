@@ -73,7 +73,7 @@ bool Scene::run_farm() {
 		else if (input == "nowhere" || input == "2") {
 			cout << "Are you sure? (yes/no)";
 			getInput();
-			while (input == "yes" || input == "y") {
+			while (!(input == "yes" || input == "y")) {
 				cout << "Are you sure? (yes/no)";
 				getInput();
 			}
@@ -81,6 +81,91 @@ bool Scene::run_farm() {
 		}
 		else {
 			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+
+	//setting the scene at the shack
+	cout << endl << "In the shack, Buttercup stands, preparing dinner for herself." << endl;
+	cout << "You recognize this scene, it's exactly as your grandfather described it yesterday!" << endl;
+	cout << "Westley enters, drops fire wood into a pile in the corner, and starts to walk out the door." << endl;
+	cout << "Buttercup enters and calls out to him, \"Oh Farm Boy\". She looks around for something for him to grab." << endl;
+	cout << "Seeing nothing, she says, \"Nevermind\". Westley leaves." << endl;
+	cout << "This is wrong. There is no pitcher here like in the story from yesterday." << endl;
+
+	//initial reaction to the pitcher scene
+	do {
+		cout << endl <<"What do you do?" << endl << "1) Talk to Buttercup" << endl << "2) Tap Buttercup on the shoulder" << endl << "3) Leave the shack" << endl << "4) Give up" << endl;
+		getInput();
+		if (input == "1" || input == "talk to buttercup") {
+			cout << "You call out to Buttercup, but she makes no indication of hearing you." << endl;
+			wait = true;
+		}
+		else if (input == "2" || input == "tap buttercup on the shoulder") {
+			cout << "You walk over and tap Buttercup on the shoulder, but she does not seem to feel it." << endl;
+			wait = true;
+		}
+		else if (input == "3" || input == "leave the shack") {
+			cout << "You walk out of the shack." << endl;
+			wait = false;
+		}
+		else if (input == "4" || input == "give up") {
+			cout << "Somewhere in the distance, Westley realizes he does not have any chance with Buttercup." << endl;
+			cout << "He leaves the farm, off to some new adventure." << endl;
+			cout << "You resign yourself to a life of nothing, as you are stuck on the farm for eternity." << endl;
+			return !CONTINUE;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+
+	//retreiving the pitcher
+	cout << endl << "As you step out of the shack, you see Westley returning to the shack with more firewood." << endl;
+	cout << "You turn the corner around the shack, and notice a pitcher at your feet." << endl;
+	getInput();
+	responses = { "take pitcher", "pick up pitcher", "grab pitcher", "retreive the pitcher" };
+	if (find(responses.begin(), responses.end(), input) != responses.end()) {
+		cout << "You pick up the pitcher as Westley approaches the building." << endl;
+	}
+	else {
+		int counter = 0;
+		while (!(find(responses.begin(), responses.end(), input) != responses.end())) {
+			counter++;
+			cout << "You could do that, but Westley is approaching the shack and the pitcher is still at your feet." << endl;
+			getInput();
+		}
+		if (counter > 3) {
+			cout << "You pick up the pitcher, but it is too late." << endl;
+			cout << "As Westley leaves the shack, he realizes he does not have any chance with Buttercup." << endl;
+			cout << "He leaves the farm, off to some new adventure." << endl;
+			cout << "You resign yourself to a life of nothing, as you are stuck on the farm for eternity." << endl;
+			return !CONTINUE;
+		}
+		else {
+			cout << "You pick up the pitcher." << endl;
+		}
+	}
+
+	//resolve the situation
+	cout << endl << "You reenter the shack. Buttercup does not notice." << endl;
+	cout << "You place the pitcher above Buttercup's head as Westley returns." << endl;
+	cout << "Again, Buttercup calls him. This time, she notices the pitcher above her head." << endl;
+	cout << "The scene continues as you remember." << endl;
+	cout << "As Buttercup and Westley gaze into each others eyes, you feel the wind pick up." << endl;
+	cout << "The door to the shack has been transformed into a portal of swirling gray clouds." << endl;
+
+	//continue on with the game
+	responses = { "enter portal", "go through portal", "use portal" };
+	do {
+		getInput();
+		if (find(responses.begin(), responses.end(), input) != responses.end()) {
+			cout << "Shutting you eyes, you enter the portal." << endl;
+			wait = false;
+		}
+		else {
+			cout << "So we're just going to ignore the portal?" << endl;
 			wait = true;
 		}
 	} while (wait);
