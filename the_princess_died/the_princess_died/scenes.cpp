@@ -526,8 +526,6 @@ bool Scene::run_cliffs() {
 	return CONTINUE;
 }
 
-
-
 bool Scene::run_poison() {
 	//Vizzini and Man in Black are about to do a battle of the wits. Before Vizinni will agree to 
 	//doing the poison challange you must beat him in a riddle.
@@ -595,35 +593,8 @@ bool Scene::run_poison() {
 	return CONTINUE;
 }
 
-
-
-void fire_geyser() {
-
-}
-void quicksand() {
-
-}
-void rous() {
-
-}
-
-//checked for input validation
-bool Scene::run_fire_swamp()
-{
-	//simple output
-	cout << endl << "As the pressure returns to normal you begin to get your bearings." << endl;
-	cout << "You notice that you are now in The Fire Swamp." << endl;
-	cout << "In front of you there are three paths. They go left, right, and forward." << endl;
-
-	//once I add actual options, add input validation HERE!!!
-	getInput();//if I code 3 options this will branch into an if statement, but for now they all three go to the same story.
-
-	//Left: Rats, Right: Quicksand, Forward: Fire, if they choose backwards they run into shrek 
-	//implement the do while loop for this section that way it checks the inputs, within each have a sub do-while loop for each direction
-	//implement directionality and other story options at a later time
-
 	//start with fire geyser part
-	cout << endl << "As you walk " << input << " you see Buttercup and Westley ahead of you." << endl;
+	cout << endl << "You turn left and you see Buttercup and Westley ahead of you." << endl;
 	cout << "You run to catch up, only to be stopped by a fire geyser!" << endl;
 	cout << "The weird thing is that you didn't hear the popping sound that your Grandpa mentioned yesterday." << endl;
 
@@ -664,25 +635,6 @@ bool Scene::run_fire_swamp()
 				}
 				else if (input == "3" || input == "pick up rocks and hit them together when you see a glow") {
 					cout << "Every time you see a glow you make a noise with two rocks, alerting Westley and Buttercup." << endl;
-					cout << endl << "Westley and Buttercup are able to navigate the woods safely." << endl;
-					cout << "When they see Prince Humperdinck a portal appears beside you." << endl;
-					responses.clear();
-
-					responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" }; //continue on with the game
-					do //third input validation loop
-					{
-						getInput();
-						if (find(responses.begin(), responses.end(), input) != responses.end()) {
-							cout << "Shutting your eyes, you enter the portal." << endl;
-							wait = false; //correct option, sends out of both do while loops
-						}
-						else {
-							cout << "Why would you ignore a portal!?" << endl;
-							wait = true; //makes you go through third input validation loop, until you go through the portal
-
-						}
-					} while (wait);
-
 					wait = false;
 				}
 				else {
@@ -708,7 +660,55 @@ bool Scene::run_fire_swamp()
 
 	} while (wait); //if the input was valid then continue
 
+//checked for input validation
+bool Scene::run_fire_swamp()
+{
 
+	do {
+		cout << endl << "As the pressure returns to normal you begin to get your bearings." << endl;
+		cout << "You notice that you are now in The Fire Swamp." << endl;
+		cout << "In front of you there are three paths. They go left, right, and forward." << endl;
+
+		getInput();
+		//left goes to the fire geyser challange
+		if (input == "left" || input == "turn left") {
+			fire_geyser();
+			wait = false;
+		}
+		else if (input == "right" || input == "turn right")//right takes you to quicksand 
+		{
+			quicksand();
+			wait = false;
+		}
+		else if (input == "forward" || input == "walk forward") //going forward takes you to rous 
+		{
+			rous();
+			wait = false;
+		}
+		else {
+			cout << "That response is inconceivable. Try reading your options again. :(" << endl;
+			wait = true;
+		}
+	} while (wait);
+	
+	cout << endl << "Westley and Buttercup are able to navigate the rest of the woods safely." << endl;
+	cout << "When they see Prince Humperdinck a portal appears beside you." << endl;
+	responses.clear();
+
+	responses = { "enter portal", "go through portal", "use portal", "walk", "enter", "go through" }; //continue on with the game
+	do //third input validation loop
+	{
+		getInput();
+		if (find(responses.begin(), responses.end(), input) != responses.end()) {
+			cout << "You strut confidently towards the windy portal." << endl;
+			wait = false; //correct option, sends out of both do while loops
+		}
+		else {
+			cout << "Why would you ignore a portal!?" << endl;
+			wait = true; //makes you go through third input validation loop, until you go through the portal
+
+		}
+	} while (wait);
 
 	return CONTINUE;
 }
