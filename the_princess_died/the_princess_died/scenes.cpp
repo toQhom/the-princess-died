@@ -1116,8 +1116,134 @@ bool Scene::run_gate() {
 }
 
 
-/
 bool Scene::run_castle() {
+	cout << "You appear next to Westley in the castle as Fezzik walks off to help Inigo with The Six-Fingered Man" << endl;
+	cout << "Westley waits a moment, then gathers himself and attempts to walk down the hallways in search of Buttercup." << endl;
+	cout << "Before he can get far, he starts to fall. You reach out and catch him just in time." << endl;
+	cout << "There's no way he can get to Buttercup like this. You've got to help him get there." << endl;
+	cout << "Propping Westley up on your shoulder, you start down the hallway." << endl;
+
+	int hall = 1; //int to move through the maze with	
+
+	while (hall < 7) {
+		if (hall == 1) { //hall 1
+			cout << endl << "You walk until you reach an intersection in the hallways." << endl;
+			cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			getInput();
+			if (input == "1") { //bad
+				hall = hall + 1;
+			}
+			else if (input == "2") { //good
+				hall = hall + 2;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to find Buttercup!" << endl;
+				cout << "You can choose \'1\' to go left or \'2\' to go right" << endl;
+			}
+		}
+		else if (hall == 2) { //hall 2
+			cout << endl << "You are currently 1 hall away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				hall = hall - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to find Buttercup!" << endl;
+				cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			}
+		}
+		else if (hall == 3) { //hall 3
+			cout << endl << "You are currently 1 hall away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				hall = hall - 2;
+			}
+			else if (input == "1") { //dead
+				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
+			}
+			else if (input == "2") { //good
+				hall = hall + 2;
+			}
+			else if (input == "3") { //bad
+				hall = hall + 1;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to find Buttercup!" << endl;
+				cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (hall == 4) { //hall 4
+			cout << endl << "You are currently 2 halls away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				hall = hall - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to find Buttercup!" << endl;
+				cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			}
+		}
+		else if (hall == 5) { //hall 5
+			cout << endl << "You are currently 2 halls away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go right, or \'3\' to go straight" << endl;
+			getInput();
+			if (input == "0") { //back
+				hall = hall - 2;
+			}
+			else if (input == "1") { //bad
+				hall = hall + 1;
+			}
+			else if (input == "2") { //good
+				hall = hall + 2
+			}
+			else if (input == "3") { //dead
+				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to find Buttercup!" << endl;
+				cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' to go straight, or \'3\' to go right" << endl;
+			}
+		}
+		else if (hall == 6) { //hall 6
+			cout << endl << "You are currently 3 halls away from the beginning." << endl;
+			cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			getInput();
+			if (input == "0") { //back
+				hall = hall - 1;
+			}
+			else if (input == "1") { //dead
+				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
+			}
+			else if (input == "2") { //dead
+				cout << "You've reached the end of the hallway. No sign of Buttercup. You go back." << endl;
+			}
+			else {
+				cout << "Um... where are you going? \nYou've got to find Buttercup!" << endl;
+				cout << "You can choose \'0\' to go back, \'1\' to go left, \'2\' or to go right" << endl;
+			}
+		}
+	}
+
+	//escaping the maze
+	cout << "The scent of Buttercup's perfume is strong here. This must be her chamber." << endl;
+	cout << "Westley gathers enough strength to walk into the room and lay on the bed." << endl;
+	cout << "Across the hall, a doorway has turned into a portal." << endl;
+	cout << "You take one last look around at the castle before entering the portal." << endl;
 
 	return CONTINUE;
 }
@@ -1126,7 +1252,7 @@ bool Scene::run_castle() {
 //checked input validation
 bool Scene::run_stable() {
 	//This is where we follow fezzik around to find four horses
-	cout << "You exit the portal, a little sad that you missed all of Westley's insults for Humperdinck." << endl;
+	cout << end << "You exit the portal, a little sad that you missed all of Westley's insults for Humperdinck." << endl;
 	cout << "In front of you, Fezzik is bumbling around, seemingly without a purpose." << endl;
 	cout << "What do you want to do?" << endl;
 	getInput();
