@@ -62,12 +62,12 @@ int main() {
 			continueGame = game.run_eels();
 			transition();
 		}
-		*/
+		
 		if (continueGame) { //The Cliffs of Insanity
 			continueGame = game.run_cliffs();
 			transition();
 		}
-
+		*/
 		if (continueGame) { //The Battle of the Wits
 			continueGame = game.run_poison();
 			transition();

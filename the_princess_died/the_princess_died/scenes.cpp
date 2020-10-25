@@ -480,7 +480,7 @@ bool Scene::run_eels() {
 
 bool Scene::run_cliffs() {
 	//set the scene
-	cout << endl << "Suddenly, you're falling again. Luckily you land in the sea again. Yay for salt water." << endl;
+	cout << endl << "Suddenly, you're falling again. Luckily, you land in the sea... again. Yay for salt water." << endl;
 	cout << "You pull yourself out of the sea. You stand at the bottom of The Cliffs of Insanity." << endl;
 	cout << "Above you, Fezzik carries Vizzini, Inigo, and Buttercup up the cliff. The Man in Black is slowly gaining on them." << endl;
 	cout << "Yet, every so often, the rope seems to fall a bit more. \nThere's only one explanation: the rope must be slipping from the rock at the top." << endl;
@@ -489,7 +489,7 @@ bool Scene::run_cliffs() {
 
 	//enter the passage
 	responses.clear();
-	responses = { "enter passageway", "enter passage", "enter", "go in passageway", "go in passage", "go through entrance", "use entrance", "enter secret passage", "enter secret passageway", "go in secret passage", "go in secret passageway" };
+	responses = { "enter passageway", "enter passage", "enter", "go in passageway", "go in passage", "go through entrance", "use entrance", "enter secret passage", "enter secret passageway", "go in secret passage", "go in secret passageway", "walk" };
 	if (find(responses.begin(), responses.end(), input) != responses.end()) {
 		cout << "You enter the passageway." << endl;
 	}
@@ -728,7 +728,7 @@ bool Scene::run_poison() {
 		if (input == "1" || input == "watch him struggle") //answer that leads to an untimely demise
 		{
 			cout << "The Man in Black continues to struggle and eventually gives up." << endl;
-			cout << "He then tries to rush Vizzini to disastrous ends!" << endl;
+			cout << "He rushes at Vizzini, to a disastrous end!" << endl;
 			cout << "As Buttercup dies the Man in Black rips off his mask and you see tears rolling down Westley's face." << endl;
 			cout << "Now you are stuck in the book forever." << endl;
 			return !CONTINUE; //ends the game
