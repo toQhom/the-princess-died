@@ -4,7 +4,7 @@ void Scene::getInput() {
 	cout << ">> ";
 	getline(cin, input);
 	transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {return tolower(c); });
-	//TODO: switch to lowercase
+	
 }
 
 bool Scene::run_opening() {
@@ -618,7 +618,6 @@ bool Scene::run_miracle_max() {
 		cout << "You walk into the portal to hopefully find a way out of this book finally." << endl;
 		cout << endl;
 	}
->>>>>>> ef2a9b30e1952c7ff2671ae93c76b91ad183f4cb
 	return CONTINUE;
 
 }
@@ -761,6 +760,35 @@ bool Scene::run_stable() {
 }
 
 bool Scene::run_finale() {
+	cout << "When you come out of the portal you look around and notice that it is only Westley and Buttercup around." << endl;
+	cout << "You wonder what is wrong with this scene because it seems to be exactly as described in the book..." << endl;
+	cout << "Next thing you know, you watch as Westley leans to kiss Buttercup." << endl;
+	cout << endl;
+
+	//give choices but must watch to pass
+	cout << "What is it that you want to do?\n1) Put your hands over your eyes\n2) Vomit 3) Stand there and watch (much to your disliking)" << endl;
+	getInput();
+
+	//option one
+	if(input == "1" || input == "put your hands over your eyes"){
+		cout << "They kiss for what feels like an eternity and you see them walk off into the distance." << endl;
+		cout << "However, there is no portal opening for you to leave...\n Looks like you are stuck." << endl;
+		return !CONTINUE
+	}	
+	//option two
+	if(input == "2" || input == "vomit"){
+		cout << "You puke all over the ground in front of you" << endl;
+		cout << "Looks like you just ruined your shoes and your life because you are stuck here forever now." << endl;
+		return !CONTINUE
+	}
+	//option three
+	if(input == "3" || input == "stand there and watch"){
+		cout << "You watch as they kiss passionately..." << endl;
+		cout << "After what feels like an entire year, you finally hear a portal open beside you." << endl;
+		cout << endl;
+		cout << "This portal seems bigger than all the rest, you hope that this means the end of your time in this book." << endl;
+		cout << endl;
+	}
 	return CONTINUE;
 }
 
